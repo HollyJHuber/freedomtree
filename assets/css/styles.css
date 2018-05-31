@@ -9,10 +9,10 @@
 html {
 	font: normal 16px sans-serif;
 	color: rgb(85, 85, 85, 1);
-	background-color: #333;
+	background-color: #333; /* may not want this here */
 }
 
-nav {
+nav, ul {
 	list-style: none;
 }
 
@@ -23,7 +23,7 @@ a {
 }
 
 a:hover {
-	opacity: 1.;
+	opacity: 1;
 }
 
 a.btn {
@@ -39,25 +39,24 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 100px 80px;
+	padding: 80px 60px;
+}
+
+@media(max-width: 800px){
+	section {
+		padding: 40px 20px;
+	}
 }
 
 /* Header Styles */
 
 header {
-	position: absolute;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 35px 100px 0;
-	animation: 2s fadein 0.5s forwards;
-	opacity: 0;
-}
-@keyframes fadein {
-	100% {
-		opacity: 1;
-	}
+	padding: 30px 60px 0;
+	color: #fff;
 }
 
 header h2{
@@ -79,20 +78,28 @@ header nav li{
 	position: relative;
 	justify-content: center;
 	text-align: center;
-	min-height: 100vh;
+	color: #fff;
+	opacity: 0;
+	margin-top: 100px;
+	animation: 1s slidefade 0.5s forwards;
 }
 
-.hero .background-image{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 75%;
-	height: 75%;
-	background-size: cover;
-	z-index: -1;
-	background-color: #333;
+
+.hero img {
+    /*position: absolute;*/
+    top 0;
+    left 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: -1;
+    background-color: #333;
 }
 
-.hero a.btn{
-	padding: 20px 46px;
+/* hero slides up and fades in */
+@keyframes slidefade {
+	100% {
+		opacity: 1;
+		margin: 0;
+	}
 }
