@@ -113,3 +113,36 @@ header nav li{
 		margin: 0;
 	}
 }
+
+/* Interview Styles */
+
+.interview {
+	background-color: #ffc029;
+	color: #000;
+	font-size: 1.5em;
+	line-height: 2em;
+}
+
+/* Footer Styles */
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+}
+
+footer ul {
+    display: flex;
+} 
+
+footer ul li {
+    margin-left: 16px;
+}
+
+footer p {
+    font-size: .9em;
+    align-self: center;
+}
