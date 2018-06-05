@@ -23,21 +23,20 @@ nav {
 	background-color: rgba(138,117,56);
 	font-family: "Quicksand", sans-serif;
 	font-weight: 700;
+	color: rgba(255,255,255,1);
 	padding: 5px;
+}
+
+nav a {
 	color: rgba(255,255,255,1);
 }
 
-nav a{
-	color: rgba(255,255,255,1);
-}
-
-.topNav, .navMenu{
+.topNav, .navMenu {
 	display: flex;
 	align-items: flex-end;
 	flex-direction: row;
 	justify-content: space-between;
 }
-
 
 .navLogo {
 	height: 48px;
@@ -54,6 +53,31 @@ nav a{
 
 .navItemLg {
 	display: none;
+}
+
+/* HERO STYLES */
+
+section.hero {
+	background-color: rgba(26,13,0,1);
+	padding: 30px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.logo, .tagline {
+	max-width: 800px;
+}
+
+.tagline {
+	opacity: 0;
+	margin: 100px;
+	animation: 2s slidefade 0.5s forwards;
+}
+@keyframes slidefade {
+	100% {
+		opacity: 1;
+		margin: 5px;
+	}
 }
 
 /* MEDIA QUERIES */
