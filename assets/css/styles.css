@@ -1,148 +1,78 @@
-/* General Styles */
+
+/* RESET CSS */
 
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
-html {
-	font: normal 16px sans-serif;
-	color: rgb(85, 85, 85, 1);
-	background-color: #333; /* may not want this here */
+li {
+  list-style: none;
 }
 
-nav, ul {
-	list-style: none;
-}
 
-a {
-	text-decoration: none;
-	opacity: 0.75;
-	color: #fff;
-}
+/* GENERAL STYLES */
 
-a:hover {
-	opacity: 1;
-}
 
-a.btn {
-	border-radius: 4px;
-	text-transform: uppercase;
-	font-weight: bold;
-	text-align: center;
-	background-color: #ff8821;
-	opacity: 1;
-}
 
-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 80px 60px;
-}
+/* NAV STYLES */
 
-@media(max-width: 800px){
-	section {
-		padding: 40px 20px;
-	}
-}
-
-/* Header Styles */
-
-header {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 30px 60px 0;
-	color: #fff;
-}
-
-header h2{
+nav {
+	background-color: rgba(138,117,56);
 	font-family: "Quicksand", sans-serif;
+	font-weight: 700;
+	padding: 5px;
+	color: rgba(255,255,255,1);
 }
 
-header nav{
+nav a{
+	color: rgba(255,255,255,1);
+}
+
+.topNav, .navMenu{
 	display: flex;
-	margin-right -15px;
+	align-items: flex-end;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
-header nav li{
-	margin: 0 15px;
+
+.navLogo {
+	height: 48px;
 }
 
-@media(max-width: 800px){
-	header {
-		padding: 20px 30px;
-		flex-direction: column;
+.navText {
+	height: 36px;
+	margin: 0 0 0 10;
+}
+
+.navItem {
+	padding: 10px;
+}
+
+.navItemLg {
+	display: none;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 480px){
+
+	.navItemLg {
+		display: inline-block;
 	}
 
-	header h2{
-		margin-bottom: 15px;
+	.navItemSm {
+		display: none;
 	}
-}
-/* Hero Styles */
 
-.hero {
-	position: relative;
-	justify-content: center;
-	text-align: center;
-	color: #fff;
-	opacity: 0;
-	margin-top: 100px;
-	animation: 0.7s slidefade 0.5s forwards;
-}
-
-
-.hero img {
-    /*position: absolute;*/
-    top 0;
-    left 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    z-index: -1;
-    background-color: #333;
-}
-
-/* hero slides up and fades in */
-@keyframes slidefade {
-	100% {
-		opacity: 1;
-		margin: 0;
+	nav a{
+	color: rgba(255,255,255,0.75);
 	}
-}
 
-/* Interview Styles */
-
-.interview {
-	background-color: #ffc029;
-	color: #000;
-	font-size: 1.5em;
-	line-height: 2em;
-}
-
-/* Footer Styles */
-
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #000;
-    color: #fff;
-    padding: 20px 0;
-}
-
-footer ul {
-    display: flex;
-} 
-
-footer ul li {
-    margin-left: 16px;
-}
-
-footer p {
-    font-size: .9em;
-    align-self: center;
+	nav a:hover{
+		color: rgba(255,255,255,1);
+	}
 }
