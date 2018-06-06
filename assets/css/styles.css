@@ -20,7 +20,7 @@ li {
 /* NAV STYLES */
 
 nav {
-	background-color: rgba(138,117,56);
+	background-color: rgba(138,117,56,1);
 	font-family: "Quicksand", sans-serif;
 	font-weight: 700;
 	color: rgba(255,255,255,1);
@@ -86,6 +86,7 @@ section.hero {
 	background-color: rgba(255,192,41,1);
 	font-family: "Open Sans", sans-serif;
 	text-align: center;
+	color: rgba(26,13,0,1);
 }
 
 .interview h1 {
@@ -125,9 +126,31 @@ i {
 
 .interview h5 {
 	font-weight: normal;
-	padding-top: 10px;
+	padding: 10px 0;
 }
 
+/* Footer Styles */
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(26,13,0,1);
+    color: #fff;
+    padding: 20px 0;
+}
+
+footer ul {
+    display: flex;
+} 
+
+footer ul li {
+    margin-left: 16px;
+}
+
+footer a {
+	color: #fff;
+}
 
 /* MEDIA QUERIES */
 
