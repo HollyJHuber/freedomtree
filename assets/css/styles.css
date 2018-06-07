@@ -39,12 +39,12 @@ nav a {
 }
 
 .navLogo {
-	height: 48px;
+	height: 42px;
 }
 
 .navText {
-	height: 36px;
-	margin: 0 0 0 10;
+	height: 30px;
+	margin: 0 0 0 5;
 }
 
 .navItem {
@@ -64,20 +64,9 @@ section.hero {
 	align-items: center;
 	flex-direction: column;
 }
-.logo, .tagline {
+.logo {
+	padding: 0 20px;
 	max-width: 800px;
-}
-
-.tagline {
-	opacity: 0;
-	margin: 100px;
-	animation: 2s slidefade 0.5s forwards;
-}
-@keyframes slidefade {
-	100% {
-		opacity: 1;
-		margin: 5px;
-	}
 }
 
 /* INTERVIEW STYLES */
@@ -104,7 +93,8 @@ i {
 .what1 {
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 1.5em;	
+	font-size: 1.5em;
+	padding-bottom: 20px;	
 }
 
 .col1, .col2{
@@ -123,6 +113,7 @@ i {
 	margin-right: 15%;
 	text-align: left;
 }
+
 
 .interview h5 {
 	font-weight: normal;
