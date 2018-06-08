@@ -95,17 +95,14 @@ i {
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 1.5em;
-	padding-bottom: 10px;	
+	padding-bottom: 10px;
+	color: rgba(26,13,0,1);
+	font-weight: 400;	
 }
 
 .what1.show {
 	color: orangered;
 	font-weight: 700;
-}
-
-.what1.hide {
-	color: rgba(26,13,0,1);
-	font-weight: 400;
 }
 
 .col1, .col2{
