@@ -76,6 +76,7 @@ section.hero {
 	font-family: "Open Sans", sans-serif;
 	text-align: center;
 	color: rgba(26,13,0,1);
+	cursor: default; /* makes cursor a pointer */
 }
 
 .interview h1 {
@@ -94,7 +95,7 @@ i {
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 1.5em;
-	padding-bottom: 20px;	
+	padding-bottom: 10px;	
 }
 
 .col1, .col2{
@@ -112,6 +113,14 @@ i {
 	width: 60%;
 	margin-right: 15%;
 	text-align: left;
+}
+
+.what2 {
+	color: rgba(26,13,0,1);
+	font-weight: normal;
+	font-size: .825em;
+	line-height: 2em;
+	display: none;
 }
 
 /* Footer Styles */
@@ -175,11 +184,14 @@ footer a {
 #religion2 {
 	
 }
-
-.col2 > ul {
+/*changed to .what2, both worked*/
+/*.col2 > ul {
 	color: rgba(26,13,0,1);
 	font-weight: normal;
 	font-size: .825em;
 	line-height: 2em;
 	display: none;
-}
+}*/
+
+
+

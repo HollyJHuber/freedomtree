@@ -2,20 +2,26 @@
 // document ready wrapper tells scripts to wait until DOM has loaded
 $(function() {
 
+	// what has been clicked?
+	$('.what1').on('click', function(){
+		if ($(this).attr('class') === 'what1 show'){
+			$(this).css('color', 'rgba(26,13,0,1)').css('fontWeight', '400');
+			$(this).addClass('hide');
+			$(this).removeClass('show');
+			return;
+			
+		}
+		var currentId = $(this).attr('id');
+		console.log(currentId);
+		$(this).css('color', 'orangered').css('fontWeight', '700');
+		$(this).addClass('show');
+		$(this).removeClass('hide');
+		// $(currentId "> ul").css('display', 'inline');
 
-// javascript method
-	const selectReligion = document.getElementById('religion');
-	const selectReligion2 = document.getElementById('religion2');
-	selectReligion.onclick = selectIt;
+	// actually if any one what1 div is showing, 
+	// ALL other divs needs to be have color and fontweight set to normal
+	// should probably have this done by css
 
-	function selectIt(){
-		selectReligion.style.color = "orangered";
-		selectReligion.style.fontWeight = "700";
-
-	//jquery methods
-		$("#religion2").css("display", "inline").delay(800).fadeIn(1200);
-		$(".fa-church").css("color", "orangered");
-
-	}
+	})
 
 });
