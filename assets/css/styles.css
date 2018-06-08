@@ -65,7 +65,7 @@ section.hero {
 	flex-direction: column;
 }
 .logo {
-	padding: 0 20px;
+	padding: 0 60px;
 	max-width: 800px;
 }
 
@@ -112,12 +112,6 @@ i {
 	width: 60%;
 	margin-right: 15%;
 	text-align: left;
-}
-
-
-.interview h5 {
-	font-weight: normal;
-	padding: 10px 0;
 }
 
 /* Footer Styles */
@@ -173,4 +167,19 @@ footer a {
 		margin-right: 30%;
 	}
 
+}
+
+
+
+/* TEST STYLES */
+#religion2 {
+	
+}
+
+.col2 > ul {
+	color: rgba(26,13,0,1);
+	font-weight: normal;
+	font-size: .825em;
+	line-height: 2em;
+	display: none;
 }
