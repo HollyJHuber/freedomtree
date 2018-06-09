@@ -100,8 +100,8 @@ i {
 	font-weight: 400;	
 }
 
-.what1.show {
-	color: orangered;
+.what1.expand {
+	color: rgb(255, 69, 0);
 	font-weight: 700;
 }
 
