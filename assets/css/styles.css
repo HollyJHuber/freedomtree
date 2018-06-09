@@ -76,7 +76,7 @@ section.hero {
 	font-family: "Open Sans", sans-serif;
 	text-align: center;
 	color: rgba(26,13,0,1);
-	cursor: default; /* makes cursor a pointer */
+	cursor: pointer; 
 }
 
 .interview h1 {
