@@ -77,13 +77,23 @@ section.hero {
 	text-align: center;
 	color: rgba(26,13,0,1);
 	cursor: pointer; 
+	/* cursor: pointer is key to getting click to work on mobile */
 }
 
-.interview h1 {
+#question {
 	font-size: 2em; 
  }
+ h4{ 	
+ 	font-size: 1em;
+	line-height: 2em;
+	}
 
-.interview h4 {
+#path {
+	font-style: italic;
+	font-weight: 400;
+}
+
+#instruction {
 	padding-bottom: 10px;
 }
 
@@ -94,14 +104,13 @@ i {
 .what1 {
 	display: flex;
 	flex-wrap: wrap;
-	font-size: 1.5em;
+	font-size: 1.25em;
 	padding-bottom: 10px;
 	color: rgba(26,13,0,1);
 	font-weight: 400;	
 }
 
 .what1.expand {
-	color: rgb(255, 69, 0);
 	font-weight: 700;
 }
 
@@ -123,7 +132,6 @@ i {
 }
 
 .what2 {
-	color: rgba(26,13,0,1);
 	font-weight: normal;
 	font-size: .825em;
 	line-height: 2em;

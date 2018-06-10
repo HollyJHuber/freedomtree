@@ -28,8 +28,12 @@ $(function() {
 
 		currentWhat2 = $(this).attr('id');
 		
-		$('#notation').replaceWith(currentWhat1 + " > " + currentWhat2);
+		// #path is text for now, will be links
+		$('#path').replaceWith(" Issues > " + currentWhat1 + " > " + currentWhat2);
 		$('.what1').remove();
+
+		// insert what3
+		// use replaceWith()??
 
 
 	});
