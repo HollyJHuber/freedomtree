@@ -2,8 +2,9 @@
 // document ready wrapper tells scripts to wait until DOM has loaded
 $(function() {
 
-	var currentWhat1;
-	var currentWhat2;
+	let currentWhat1;
+	let currentWhat2;
+	const choices = [];
 
 
 	// capturing what1 clicks
@@ -27,11 +28,15 @@ $(function() {
 	$('.what2 li').on('click', function(){
 
 		currentWhat2 = $(this).attr('id');
+
+		$('#question').text(currentWhat2);
 		
 		// #path is text for now, will be links
-		$('#path').replaceWith(" Issues > " + currentWhat1 + " > " + currentWhat2);
-		$('.what1').remove();
+		$('#path').replaceWith(" Issues > " + currentWhat1);
+		// write to an array
+		choices.push(currentWhat1, currentWhat2);
 
+		$('.what1').remove();
 		// insert what3
 		// use replaceWith()??
 

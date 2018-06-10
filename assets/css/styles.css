@@ -101,7 +101,7 @@ i {
 	padding-top: 3px;
 }
 
-.what1 {
+.what1, .what3 {
 	display: flex;
 	flex-wrap: wrap;
 	font-size: 1.25em;
@@ -136,6 +136,15 @@ i {
 	font-size: .825em;
 	line-height: 2em;
 	display: none;
+}
+
+.listing{
+	padding: 10px;
+	width: 80%;
+	margin: 0 10%;
+	border-bottom: 1px solid rgba(26,13,0,1);
+	font-size: .825em;
+	text-align: left;
 }
 
 /* Footer Styles */
