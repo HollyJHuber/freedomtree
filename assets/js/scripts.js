@@ -7,7 +7,7 @@ $(function() {
 
 
 	// capturing what1 clicks
-	$(document).on('click', '.what1', function(){
+	$('.what1').on('click', function(){
 
 		currentWhat1 = $(this).attr('id');
 
@@ -24,7 +24,7 @@ $(function() {
 
 
 	// capturing what2 clicks
-	$(document).on('click', '.what2 li', function(){
+	$('.what2 li').on('click', function(){
 
 		currentWhat2 = $(this).attr('id');
 		
