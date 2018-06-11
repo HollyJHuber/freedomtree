@@ -7,7 +7,7 @@ $(function() {
 	const choices = [];
 
 
-	// capturing what1 clicks, display what2 content
+	// capturing what1 click, display what2 content
 	$('.what1').on('click', function(){
 
 		currentWhat1 = $(this).attr('id');
@@ -24,7 +24,7 @@ $(function() {
 	});
 
 
-	// capturing what2 clicks, display what3 content
+	// capturing what2 click, display what3 content
 	$('.what2 li').on('click', function(){
 
 		currentWhat2 = $(this).attr('id');
@@ -41,19 +41,20 @@ $(function() {
 
 		if (currentWhat1=="Religion"){
 			//insert prayer text
-			what3Text = [	'I do not wish to participate in prayer',
-							'I am being forced to pray',
-							'I am being forced listen silently to prayer',
-							'I am required to be present while others pray',
+			what3Text = [	'I do not wish to participate in prayer.',
+							'I am not being allowed to pray.'
+							'I am being forced to pray.',
+							'I am being forced to listen silently to prayer.',
+							'I am required to be present while others pray.',
 							'Other'];
 
 		} else {
 			//insert pledge text
-			what3Text = [	'I do not wish to participate',
-							'I am being forced to recite',
-							'I am being forced to stand',
-							'I am being treated unfairly for not participating',
-							'I do not wish to say "Under God”',
+			what3Text = [	'I do not wish to participate.',
+							'I am being forced to recite.',
+							'I am being forced to stand.',
+							'I am being treated unfairly for not participating.',
+							'I do not wish to say "Under God”.',
 							'Other'];
 		}
 
@@ -61,6 +62,7 @@ $(function() {
 			let newWhat3 = '<div class="what3"><div class="listing">' + value + '</div></div>';
 			$("#instruction").append(newWhat3)
 		});
-
 	});
+
+	// capturing what3 click, display what3 content
 });
