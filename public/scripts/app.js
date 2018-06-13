@@ -8,9 +8,18 @@ $(function () {
 	var choices = [];
 
 	var template = React.createElement(
-		'h4',
+		'div',
 		null,
-		'RISE UP'
+		React.createElement(
+			'h4',
+			null,
+			'RISE UP'
+		),
+		React.createElement(
+			'p',
+			null,
+			'What\'s the buzz? Tell me what\'s happening?'
+		)
 	);
 	var appRoot = document.getElementById('app');
 
@@ -34,6 +43,7 @@ $(function () {
 
 	// capturing what2 click, display what3 content
 	$('.what2 li').on('click', function () {
+		var what3Text = void 0;
 
 		currentWhat2 = $(this).attr('id');
 

@@ -6,8 +6,13 @@ $(function() {
 	let currentWhat2;
 	const choices = [];
 	
-	var template = <h4>RISE UP</h4>;
-	var appRoot=document.getElementById('app');
+	const template = (
+		<div>
+		<h4>RISE UP</h4>
+		<p>What's the buzz? Tell me what's happening?</p>
+		</div>
+	);
+	const appRoot=document.getElementById('app');
 
 	ReactDOM.render(template,appRoot);
 
@@ -30,6 +35,7 @@ $(function() {
 
 	// capturing what2 click, display what3 content
 	$('.what2 li').on('click', function(){
+		let what3Text; 
 
 		currentWhat2 = $(this).attr('id');
 
