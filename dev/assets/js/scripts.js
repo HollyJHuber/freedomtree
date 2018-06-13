@@ -42,7 +42,7 @@ $(function() {
 		if (currentWhat1=="Religion"){
 			//insert prayer text
 			what3Text = [	'I do not wish to participate in prayer.',
-							'I am not being allowed to pray.'
+							'I am not being allowed to pray.',
 							'I am being forced to pray.',
 							'I am being forced to listen silently to prayer.',
 							'I am required to be present while others pray.',
