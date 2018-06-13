@@ -1,0 +1,12 @@
+{
+  "name": "freedomtree",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/HollyJHuber/freedomtree.git",
+  "author": "HollyJHuber <hollyjhuber@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "1.5.2",
+    "babel-preset-react": "6.24.1"
+  }
+}

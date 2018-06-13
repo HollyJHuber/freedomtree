@@ -1,0 +1,221 @@
+
+/* RESET CSS */
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+
+/* GENERAL STYLES */
+
+
+
+/* NAV STYLES */
+
+nav {
+	background-color: rgba(138,117,56,1);
+	font-family: "Quicksand", sans-serif;
+	font-weight: 700;
+	color: rgba(255,255,255,1);
+	padding: 5px;
+}
+
+nav a {
+	color: rgba(255,255,255,1);
+}
+
+.topNav, .navMenu {
+	display: flex;
+	align-items: flex-end;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.navLogo {
+	height: 42px;
+}
+
+.navText {
+	height: 30px;
+	margin: 0 0 0 5;
+}
+
+.navItem {
+	padding: 10px;
+}
+
+.navItemLg {
+	display: none;
+}
+
+/* HERO STYLES */
+
+section.hero {
+	background-color: rgba(26,13,0,1);
+	padding: 30px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.logo {
+	padding: 0 60px;
+	max-width: 800px;
+}
+
+/* INTERVIEW STYLES */
+
+.interview {
+	background-color: rgba(255,192,41,1);
+	font-family: "Open Sans", sans-serif;
+	text-align: center;
+	color: rgba(26,13,0,1);
+	cursor: pointer; 
+	/* cursor: pointer is key to getting click to work on mobile */
+}
+
+#question {
+	font-size: 2em; 
+ }
+ h4{ 	
+ 	font-size: 1em;
+	line-height: 2em;
+	}
+
+#path {
+	font-style: italic;
+	font-weight: 400;
+}
+
+#instruction {
+	padding-bottom: 10px;
+}
+
+i {
+	padding-top: 3px;
+}
+
+.what1, .what3 {
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 1.25em;
+	padding-bottom: 10px;
+	color: rgba(26,13,0,1);
+	font-weight: 400;	
+}
+
+.what1.expand {
+	font-weight: 700;
+}
+
+.col1, .col2{
+	padding: 10px;
+	border-bottom: 1px solid rgba(26,13,0,1);
+}
+
+.col1 {
+	width: 10%;
+	margin-left: 15%;
+	text-align: right;
+}
+
+.col2 {
+	width: 60%;
+	margin-right: 15%;
+	text-align: left;
+}
+
+.what2 {
+	font-weight: normal;
+	font-size: .825em;
+	line-height: 2em;
+	display: none;
+}
+
+.listing{
+	padding: 10px;
+	width: 80%;
+	margin: 0 10%;
+	border-bottom: 1px solid rgba(26,13,0,1);
+	font-size: .825em;
+	text-align: left;
+}
+
+/* Footer Styles */
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgba(26,13,0,1);
+    color: #fff;
+    padding: 20px 0;
+}
+
+footer ul {
+    display: flex;
+} 
+
+footer ul li {
+    margin-left: 16px;
+}
+
+footer a {
+	color: #fff;
+}
+
+/* MEDIA QUERIES */
+
+@media (min-width: 480px){
+
+	.navItemLg {
+		display: inline-block;
+	}
+
+	.navItemSm {
+		display: none;
+	}
+
+	nav a{
+	color: rgba(255,255,255,0.75);
+	}
+
+	nav a:hover{
+		color: rgba(255,255,255,1);
+	}
+
+	.col1 {
+		width: 10%;
+		margin-left: 30%;
+	}
+
+	.col2 {
+		width: 30%;
+		margin-right: 30%;
+	}
+
+}
+
+
+
+/* TEST STYLES */
+#religion2 {
+	
+}
+/*changed to .what2, both worked*/
+/*.col2 > ul {
+	color: rgba(26,13,0,1);
+	font-weight: normal;
+	font-size: .825em;
+	line-height: 2em;
+	display: none;
+}*/
+
+
+
