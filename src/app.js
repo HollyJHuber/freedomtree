@@ -7,6 +7,20 @@ $(function() {
 	const choices = [];
 	
 // start React Code
+
+	class FreedomTreeApp extends React.Component {
+		render(){
+			return (
+				<div>
+					<NavBar />
+					<Hero />
+					<Interview />
+					<Footer />
+				</div>
+			);
+		}
+	}
+
 	class NavBar extends React.Component {
 		render() {
 			return (
@@ -46,7 +60,7 @@ $(function() {
 				<div>
 					<section className="interview">
 					<h4 id="path"></h4>
-					<h1 id="question">What's Happening?</h1>
+					<Question />
 					<h4 id="instruction">Select the issue that best describes your situtation:</h4>
 					<div className="what1" id="Discrimination">
 						<div className="col1"><i className="fas fa-users"></i></div>
@@ -126,6 +140,16 @@ $(function() {
 		}
 	}
 
+	class Question extends React.Component {
+		render(){
+			return(
+				<div>
+					<h1 id="question">What's Happening?</h1>
+				</div>
+			);
+		}
+	}
+
 	class Footer extends React.Component {
 		render(){
 			return(
@@ -142,16 +166,8 @@ $(function() {
 			);
 		}
 	}
-	const jsx = (
-		<div>
-			<NavBar />
-			<Hero />
-			<Interview />
-			<Footer />
-		</div>
-	);
 
-	ReactDOM.render(jsx, document.getElementById('app'));
+	ReactDOM.render(<FreedomTreeApp />, document.getElementById('app'));
 
 // end React Code
 

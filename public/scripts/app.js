@@ -17,8 +17,34 @@ $(function () {
 
 	// start React Code
 
-	var NavBar = function (_React$Component) {
-		_inherits(NavBar, _React$Component);
+	var FreedomTreeApp = function (_React$Component) {
+		_inherits(FreedomTreeApp, _React$Component);
+
+		function FreedomTreeApp() {
+			_classCallCheck(this, FreedomTreeApp);
+
+			return _possibleConstructorReturn(this, (FreedomTreeApp.__proto__ || Object.getPrototypeOf(FreedomTreeApp)).apply(this, arguments));
+		}
+
+		_createClass(FreedomTreeApp, [{
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					null,
+					React.createElement(NavBar, null),
+					React.createElement(Hero, null),
+					React.createElement(Interview, null),
+					React.createElement(Footer, null)
+				);
+			}
+		}]);
+
+		return FreedomTreeApp;
+	}(React.Component);
+
+	var NavBar = function (_React$Component2) {
+		_inherits(NavBar, _React$Component2);
 
 		function NavBar() {
 			_classCallCheck(this, NavBar);
@@ -89,8 +115,8 @@ $(function () {
 		return NavBar;
 	}(React.Component);
 
-	var Hero = function (_React$Component2) {
-		_inherits(Hero, _React$Component2);
+	var Hero = function (_React$Component3) {
+		_inherits(Hero, _React$Component3);
 
 		function Hero() {
 			_classCallCheck(this, Hero);
@@ -116,8 +142,8 @@ $(function () {
 		return Hero;
 	}(React.Component);
 
-	var Interview = function (_React$Component3) {
-		_inherits(Interview, _React$Component3);
+	var Interview = function (_React$Component4) {
+		_inherits(Interview, _React$Component4);
 
 		function Interview() {
 			_classCallCheck(this, Interview);
@@ -135,11 +161,7 @@ $(function () {
 						"section",
 						{ className: "interview" },
 						React.createElement("h4", { id: "path" }),
-						React.createElement(
-							"h1",
-							{ id: "question" },
-							"What's Happening?"
-						),
+						React.createElement(Question, null),
 						React.createElement(
 							"h4",
 							{ id: "instruction" },
@@ -415,8 +437,35 @@ $(function () {
 		return Interview;
 	}(React.Component);
 
-	var Footer = function (_React$Component4) {
-		_inherits(Footer, _React$Component4);
+	var Question = function (_React$Component5) {
+		_inherits(Question, _React$Component5);
+
+		function Question() {
+			_classCallCheck(this, Question);
+
+			return _possibleConstructorReturn(this, (Question.__proto__ || Object.getPrototypeOf(Question)).apply(this, arguments));
+		}
+
+		_createClass(Question, [{
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					null,
+					React.createElement(
+						"h1",
+						{ id: "question" },
+						"What's Happening?"
+					)
+				);
+			}
+		}]);
+
+		return Question;
+	}(React.Component);
+
+	var Footer = function (_React$Component6) {
+		_inherits(Footer, _React$Component6);
 
 		function Footer() {
 			_classCallCheck(this, Footer);
@@ -477,16 +526,7 @@ $(function () {
 		return Footer;
 	}(React.Component);
 
-	var jsx = React.createElement(
-		"div",
-		null,
-		React.createElement(NavBar, null),
-		React.createElement(Hero, null),
-		React.createElement(Interview, null),
-		React.createElement(Footer, null)
-	);
-
-	ReactDOM.render(jsx, document.getElementById('app'));
+	ReactDOM.render(React.createElement(FreedomTreeApp, null), document.getElementById('app'));
 
 	// end React Code
 
