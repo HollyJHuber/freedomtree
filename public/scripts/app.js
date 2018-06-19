@@ -29,12 +29,13 @@ $(function () {
 		_createClass(FreedomTreeApp, [{
 			key: "render",
 			value: function render() {
+				var what1s = [["Discrimination", "fas fa-users", "Discrimination"], ["Bullying", "fas fa-child", "Bullying"], ["Sexual Harassment", "fas fa-hand-rock", "Sexual Harassment"], ["LGBTQ", "fas fa-transgender-alt", "LGBTQ"], ["Religion", "fas fa-church", "Religion"], ["Speech", "fas fa-bullhorn", "Speech"], ["Protest/Assembly", "fas fa-newspaper", "Protest/Assembly"], ["Disability", "fab fa-accessible-icon", "Disability"], ["Health & Safety", "fas fa-medkit", "Health & Safety"], ["Police (Interactions)", "fas fa-exclamation-triangle", "Police (Interactions)"], ["Emergency", "fas fa-ambulance", "Emergency (Call 911)"], ["Other", "fas fa-question", "Other"]];
 				return React.createElement(
 					"div",
 					null,
 					React.createElement(NavBar, null),
 					React.createElement(Hero, null),
-					React.createElement(Interview, null),
+					React.createElement(Interview, { what1s: what1s }),
 					React.createElement(Footer, null)
 				);
 			}
@@ -160,275 +161,10 @@ $(function () {
 					React.createElement(
 						"section",
 						{ className: "interview" },
-						React.createElement("h4", { id: "path" }),
 						React.createElement(Question, null),
-						React.createElement(
-							"h4",
-							{ id: "instruction" },
-							"Select the issue that best describes your situtation:"
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Discrimination" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-users" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Discrimination"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Bullying" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-child" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Bullying"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Sexual Harassment" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-hand-rock" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Sexual Harassment"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "LGBTQ" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-transgender-alt" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"LGBTQ"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Religion" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-church" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Religion",
-								React.createElement(
-									"ul",
-									{ className: "what2" },
-									React.createElement(
-										"li",
-										{ id: "Prayer" },
-										"Prayer"
-									),
-									React.createElement(
-										"li",
-										{ id: "Invocation/Blessing" },
-										"Invocation/Blessing"
-									),
-									React.createElement(
-										"li",
-										{ id: "Bible/Scripture" },
-										"Bible/Scripture"
-									),
-									React.createElement(
-										"li",
-										{ id: "Other Holy Book/Scripture" },
-										"Other Holy Book/Scripture"
-									),
-									React.createElement(
-										"li",
-										{ id: "Creation Science/Intelligent Design" },
-										"Creation Science/Intelligent Design"
-									),
-									React.createElement(
-										"li",
-										{ id: "Holidays/Songs" },
-										"Holidays/Songs"
-									),
-									React.createElement(
-										"li",
-										{ id: "Proselytizing/Witnessing" },
-										"Proselytizing/Witnessing"
-									),
-									React.createElement(
-										"li",
-										{ id: "Attire/Jewelry" },
-										"Attire/Jewelry"
-									),
-									React.createElement(
-										"li",
-										{ id: "Baccalaureate" },
-										"Baccalaureate"
-									),
-									React.createElement(
-										"li",
-										{ id: "Other Religion" },
-										"Other"
-									)
-								)
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Speech" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-bullhorn" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Speech",
-								React.createElement(
-									"ul",
-									{ className: "what2" },
-									React.createElement(
-										"li",
-										{ id: "Censorship" },
-										"Censorship"
-									),
-									React.createElement(
-										"li",
-										{ id: "Press" },
-										"Press"
-									),
-									React.createElement(
-										"li",
-										{ id: "Art/Music" },
-										"Art/Music"
-									),
-									React.createElement(
-										"li",
-										{ id: "Personal Expression/Attire<" },
-										"Personal Expression/Attire"
-									),
-									React.createElement(
-										"li",
-										{ id: "Pledge of Allegiance" },
-										"Pledge of Allegiance"
-									),
-									React.createElement(
-										"li",
-										{ id: "National Anthem" },
-										"National Anthem"
-									),
-									React.createElement(
-										"li",
-										{ id: "Other Speech" },
-										"Other"
-									)
-								)
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Protest/Assembly" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-newspaper" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Protest/Assembly"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Disability" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fab fa-accessible-icon" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Disability"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Health & Safety" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-medkit" }),
-								" "
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Health & Safety"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Police (Interactions)" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-exclamation-triangle" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Police (Interactions)"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Emergency" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-ambulance" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Emergency (Call 911)"
-							)
-						),
-						React.createElement(
-							"div",
-							{ className: "what1", id: "Other" },
-							React.createElement(
-								"div",
-								{ className: "col1" },
-								React.createElement("i", { className: "fas fa-question" })
-							),
-							React.createElement(
-								"div",
-								{ className: "col2" },
-								"Other"
-							)
-						)
+						this.props.what1s.map(function (what1) {
+							return React.createElement(WhatOne, { key: what1[0], what1Id: what1[0], what1Icon: what1[1], what1Text: what1[2], what2s: what1[3] });
+						})
 					)
 				);
 			}
@@ -452,10 +188,16 @@ $(function () {
 				return React.createElement(
 					"div",
 					null,
+					React.createElement("h4", { id: "path" }),
 					React.createElement(
 						"h1",
 						{ id: "question" },
 						"What's Happening?"
+					),
+					React.createElement(
+						"h4",
+						{ id: "instruction" },
+						"Select the issue that best describes your situtation:"
 					)
 				);
 			}
@@ -464,8 +206,40 @@ $(function () {
 		return Question;
 	}(React.Component);
 
-	var Footer = function (_React$Component6) {
-		_inherits(Footer, _React$Component6);
+	var WhatOne = function (_React$Component6) {
+		_inherits(WhatOne, _React$Component6);
+
+		function WhatOne() {
+			_classCallCheck(this, WhatOne);
+
+			return _possibleConstructorReturn(this, (WhatOne.__proto__ || Object.getPrototypeOf(WhatOne)).apply(this, arguments));
+		}
+
+		_createClass(WhatOne, [{
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"div",
+					{ className: "what1", id: this.props.what1Id },
+					React.createElement(
+						"div",
+						{ className: "col1" },
+						React.createElement("i", { className: this.props.what1Icon })
+					),
+					React.createElement(
+						"div",
+						{ className: "col2" },
+						this.props.what1Text
+					)
+				);
+			}
+		}]);
+
+		return WhatOne;
+	}(React.Component);
+
+	var Footer = function (_React$Component7) {
+		_inherits(Footer, _React$Component7);
 
 		function Footer() {
 			_classCallCheck(this, Footer);

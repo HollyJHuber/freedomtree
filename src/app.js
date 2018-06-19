@@ -5,16 +5,29 @@ $(function() {
 	let currentWhat1;
 	let currentWhat2;
 	const choices = [];
+
 	
 // start React Code
 
 	class FreedomTreeApp extends React.Component {
-		render(){
+		render() {
+			const what1s =  [["Discrimination", "fas fa-users", "Discrimination"], 
+											["Bullying", "fas fa-child", "Bullying"], 
+											["Sexual Harassment", "fas fa-hand-rock", "Sexual Harassment"],
+											["LGBTQ", "fas fa-transgender-alt", "LGBTQ"], 
+											["Religion", "fas fa-church", "Religion"],
+											["Speech", "fas fa-bullhorn", "Speech"],
+											["Protest/Assembly", "fas fa-newspaper", "Protest/Assembly"],
+											["Disability", "fab fa-accessible-icon", "Disability"],
+											["Health & Safety", "fas fa-medkit", "Health & Safety"], 
+											["Police (Interactions)", "fas fa-exclamation-triangle", "Police (Interactions)"],
+											["Emergency", "fas fa-ambulance", "Emergency (Call 911)"], 
+											["Other", "fas fa-question", "Other"]];
 			return (
 				<div>
 					<NavBar />
 					<Hero />
-					<Interview />
+					<Interview what1s={what1s}/>
 					<Footer />
 				</div>
 			);
@@ -54,86 +67,20 @@ $(function() {
 		}
 	}
 
+						
+
+
 	class Interview extends React.Component {
 		render(){
 			return(
 				<div>
 					<section className="interview">
-					<h4 id="path"></h4>
-					<Question />
-					<h4 id="instruction">Select the issue that best describes your situtation:</h4>
-					<div className="what1" id="Discrimination">
-						<div className="col1"><i className="fas fa-users"></i></div>
-						<div className="col2">Discrimination</div>
-					</div>
-					<div className="what1" id="Bullying">
-						<div className="col1"><i className="fas fa-child"></i></div>
-						<div className="col2">Bullying</div>
-					</div>
-					<div className="what1" id="Sexual Harassment">
-						<div className="col1"><i className="fas fa-hand-rock"></i></div>
-						<div className="col2">Sexual Harassment</div>
-					</div>
-					<div className="what1" id="LGBTQ">
-						<div className="col1"><i className="fas fa-transgender-alt"></i></div>
-						<div className="col2">LGBTQ</div>
-					</div>
-					<div className="what1" id="Religion">
-						<div className="col1"><i className="fas fa-church"></i></div>
-						<div className="col2">Religion
-							<ul className="what2">
-								<li id="Prayer">Prayer</li>
-								<li id="Invocation/Blessing">Invocation/Blessing</li>
-								<li id="Bible/Scripture">Bible/Scripture</li>
-								<li id="Other Holy Book/Scripture">Other Holy Book/Scripture</li>
-								<li id="Creation Science/Intelligent Design">Creation Science/Intelligent Design</li>
-								<li id="Holidays/Songs">Holidays/Songs</li>
-								<li id="Proselytizing/Witnessing">Proselytizing/Witnessing</li>
-								<li id="Attire/Jewelry">Attire/Jewelry</li>
-								<li id="Baccalaureate">Baccalaureate</li>
-								<li id="Other Religion">Other</li>
-							</ul>
-						</div>
-					</div>
-					<div className="what1" id="Speech">
-						<div className="col1"><i className="fas fa-bullhorn"></i></div>
-						<div className="col2">Speech
-							<ul className="what2">
-								<li id="Censorship">Censorship</li>
-								<li id="Press">Press</li>
-								<li id="Art/Music">Art/Music</li>
-								<li id="Personal Expression/Attire<">Personal Expression/Attire</li>
-								<li id="Pledge of Allegiance">Pledge of Allegiance</li>
-								<li id="National Anthem">National Anthem</li>
-								<li id="Other Speech">Other</li>
-							</ul>
-						</div>
-					</div>
-					<div className="what1" id="Protest/Assembly">
-						<div className="col1"><i className="fas fa-newspaper"></i></div>
-						<div className="col2">Protest/Assembly</div>
-					</div>
-					<div className="what1" id="Disability">
-						<div className="col1"><i className="fab fa-accessible-icon"></i></div>
-						<div className="col2">Disability</div>
-					</div>
-					<div className="what1" id="Health & Safety">
-						<div className="col1"><i className="fas fa-medkit"></i> </div>
-						<div className="col2">Health & Safety</div>
-					</div>
-					<div className="what1" id="Police (Interactions)">
-						<div className="col1"><i className="fas fa-exclamation-triangle"></i></div>
-						<div className="col2">Police (Interactions)</div>
-					</div>
-					<div className="what1" id="Emergency">
-						<div className="col1"><i className="fas fa-ambulance"></i></div>
-						<div className="col2">Emergency (Call 911)</div>
-					</div>
-					<div className="what1" id="Other">
-						<div className="col1"><i className="fas fa-question"></i></div>
-						<div className="col2">Other</div>
-					</div>
-				</section>
+						<Question />
+						{
+							this.props.what1s.map((what1) => <WhatOne key={what1[0]} what1Id={what1[0]} what1Icon={what1[1]} what1Text={what1[2]} what2s={what1[3]} />)
+						}
+
+					</section>
 
 				</div>
 			);
@@ -142,17 +89,31 @@ $(function() {
 
 	class Question extends React.Component {
 		render(){
-			return(
+			return (
 				<div>
+					<h4 id="path"></h4>
 					<h1 id="question">What's Happening?</h1>
+					<h4 id="instruction">Select the issue that best describes your situtation:</h4>
 				</div>
 			);
 		}
 	}
 
+	class WhatOne extends React.Component {
+		render() {
+			return (
+				<div className="what1" id={this.props.what1Id}>
+					<div className="col1"><i className={this.props.what1Icon}></i></div>
+					<div className="col2">{this.props.what1Text}</div>
+				</div>
+			);
+		}
+	}
+
+
 	class Footer extends React.Component {
-		render(){
-			return(
+		render() {
+			return (
 				<div>
 					<footer>
 					<a href="#top"><img className="navText" src="./assets/img/FreedomTreeLogoTextOnly.svg" alt="Freedom Tree"/></a>
