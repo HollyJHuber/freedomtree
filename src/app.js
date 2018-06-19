@@ -15,8 +15,27 @@ $(function() {
 											["Bullying", "fas fa-child", "Bullying"], 
 											["Sexual Harassment", "fas fa-hand-rock", "Sexual Harassment"],
 											["LGBTQ", "fas fa-transgender-alt", "LGBTQ"], 
-											["Religion", "fas fa-church", "Religion"],
-											["Speech", "fas fa-bullhorn", "Speech"],
+											["Religion", "fas fa-church", "Religion",
+												[["Prayer", "Prayer"],
+												["Invocation/Blessing", "Invocation/Blessing"],
+												["Bible/Scripture", "Bible/Scripture"],
+												["Other Holy Book/Scripture", "Other Holy Book/Scripture"],
+												["Creation Science/Intelligent Design", "Creation Science/Intelligent Design"],
+												["Holidays/Songs", "Holidays/Songs"],
+												["Proselytizing/Witnessing", "Proselytizing/Witnessing"],
+												["Attire/Jewelry", "Attire/Jewelry"],
+												["Baccalaureate", "Baccalaureate"],
+												["Other Religion", "Other"]]
+											],
+											["Speech", "fas fa-bullhorn", "Speech", 
+												[["Censorship", "Censorship"],
+												["Press", "Press"],
+												["Art/Music", "Art/Music"],
+												["Personal Expression/Attire<", "Personal Expression/Attire"],
+												["Pledge of Allegiance", "Pledge of Allegiance"],
+												["National Anthem", "National Anthem"],
+												["Other Speech", "Other"]]									
+											],
 											["Protest/Assembly", "fas fa-newspaper", "Protest/Assembly"],
 											["Disability", "fab fa-accessible-icon", "Disability"],
 											["Health & Safety", "fas fa-medkit", "Health & Safety"], 
@@ -67,9 +86,6 @@ $(function() {
 		}
 	}
 
-						
-
-
 	class Interview extends React.Component {
 		render(){
 			return(
@@ -105,7 +121,24 @@ $(function() {
 				<div className="what1" id={this.props.what1Id}>
 					<div className="col1"><i className={this.props.what1Icon}></i></div>
 					<div className="col2">{this.props.what1Text}</div>
+					<ul className="what2">
+						{
+							this.props.what2s && this.props.what2s.map((what2) => <WhatTwo key={what2[0]} what2Id={what2[0]} what2Text={what2[1]} />)
+						}
+					</ul>
 				</div>
+			);
+		}
+	}
+
+	class WhatTwo extends React.Component {
+		render () {
+			return (
+				<li>
+					{
+						this.props.what2Text
+					}
+					</li>
 			);
 		}
 	}

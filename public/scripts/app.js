@@ -29,7 +29,7 @@ $(function () {
 		_createClass(FreedomTreeApp, [{
 			key: "render",
 			value: function render() {
-				var what1s = [["Discrimination", "fas fa-users", "Discrimination"], ["Bullying", "fas fa-child", "Bullying"], ["Sexual Harassment", "fas fa-hand-rock", "Sexual Harassment"], ["LGBTQ", "fas fa-transgender-alt", "LGBTQ"], ["Religion", "fas fa-church", "Religion"], ["Speech", "fas fa-bullhorn", "Speech"], ["Protest/Assembly", "fas fa-newspaper", "Protest/Assembly"], ["Disability", "fab fa-accessible-icon", "Disability"], ["Health & Safety", "fas fa-medkit", "Health & Safety"], ["Police (Interactions)", "fas fa-exclamation-triangle", "Police (Interactions)"], ["Emergency", "fas fa-ambulance", "Emergency (Call 911)"], ["Other", "fas fa-question", "Other"]];
+				var what1s = [["Discrimination", "fas fa-users", "Discrimination"], ["Bullying", "fas fa-child", "Bullying"], ["Sexual Harassment", "fas fa-hand-rock", "Sexual Harassment"], ["LGBTQ", "fas fa-transgender-alt", "LGBTQ"], ["Religion", "fas fa-church", "Religion", [["Prayer", "Prayer"], ["Invocation/Blessing", "Invocation/Blessing"], ["Bible/Scripture", "Bible/Scripture"], ["Other Holy Book/Scripture", "Other Holy Book/Scripture"], ["Creation Science/Intelligent Design", "Creation Science/Intelligent Design"], ["Holidays/Songs", "Holidays/Songs"], ["Proselytizing/Witnessing", "Proselytizing/Witnessing"], ["Attire/Jewelry", "Attire/Jewelry"], ["Baccalaureate", "Baccalaureate"], ["Other Religion", "Other"]]], ["Speech", "fas fa-bullhorn", "Speech", [["Censorship", "Censorship"], ["Press", "Press"], ["Art/Music", "Art/Music"], ["Personal Expression/Attire<", "Personal Expression/Attire"], ["Pledge of Allegiance", "Pledge of Allegiance"], ["National Anthem", "National Anthem"], ["Other Speech", "Other"]]], ["Protest/Assembly", "fas fa-newspaper", "Protest/Assembly"], ["Disability", "fab fa-accessible-icon", "Disability"], ["Health & Safety", "fas fa-medkit", "Health & Safety"], ["Police (Interactions)", "fas fa-exclamation-triangle", "Police (Interactions)"], ["Emergency", "fas fa-ambulance", "Emergency (Call 911)"], ["Other", "fas fa-question", "Other"]];
 				return React.createElement(
 					"div",
 					null,
@@ -230,6 +230,13 @@ $(function () {
 						"div",
 						{ className: "col2" },
 						this.props.what1Text
+					),
+					React.createElement(
+						"ul",
+						{ className: "what2" },
+						this.props.what2s && this.props.what2s.map(function (what2) {
+							return React.createElement(WhatTwo, { key: what2[0], what2Id: what2[0], what2Text: what2[1] });
+						})
 					)
 				);
 			}
@@ -238,8 +245,31 @@ $(function () {
 		return WhatOne;
 	}(React.Component);
 
-	var Footer = function (_React$Component7) {
-		_inherits(Footer, _React$Component7);
+	var WhatTwo = function (_React$Component7) {
+		_inherits(WhatTwo, _React$Component7);
+
+		function WhatTwo() {
+			_classCallCheck(this, WhatTwo);
+
+			return _possibleConstructorReturn(this, (WhatTwo.__proto__ || Object.getPrototypeOf(WhatTwo)).apply(this, arguments));
+		}
+
+		_createClass(WhatTwo, [{
+			key: "render",
+			value: function render() {
+				return React.createElement(
+					"li",
+					null,
+					this.props.what2Text
+				);
+			}
+		}]);
+
+		return WhatTwo;
+	}(React.Component);
+
+	var Footer = function (_React$Component8) {
+		_inherits(Footer, _React$Component8);
 
 		function Footer() {
 			_classCallCheck(this, Footer);
