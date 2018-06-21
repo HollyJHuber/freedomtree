@@ -1,11 +1,12 @@
 
+/*
 // document ready wrapper tells scripts to wait until DOM has loaded
 $(function() {
 
 	let currentWhat1;
 	let currentWhat2;
 	const choices = [];
-
+*/
 	
 // start React Code
 
@@ -116,9 +117,13 @@ $(function() {
 	}
 
 	class WhatOne extends React.Component {
+		displayWhatTwo () {
+	
+			alert('displayWhatTwo');
+		}
 		render() {
 			return (
-				<div className="what1" id={this.props.what1Id}>
+				<div className="what1" id={this.props.what1Id} onClick={this.displayWhatTwo}>
 					<div className="col1"><i className={this.props.what1Icon}></i></div>
 					<div className="col2">{this.props.what1Text}</div>
 					<ul className="what2">
@@ -134,11 +139,9 @@ $(function() {
 	class WhatTwo extends React.Component {
 		render () {
 			return (
-				<li>
-					{
-						this.props.what2Text
-					}
-					</li>
+				<li id={this.props.what2Id}>
+					{this.props.what2Text}
+				</li>
 			);
 		}
 	}
@@ -164,7 +167,7 @@ $(function() {
 	ReactDOM.render(<FreedomTreeApp />, document.getElementById('app'));
 
 // end React Code
-
+/*
 	// capturing what1 click, display what2 content
 
 	$('.what1').on('click', function(){
@@ -226,3 +229,4 @@ $(function() {
 
 	// capturing what3 click, display what3 content
 });
+*/
