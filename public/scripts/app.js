@@ -46,137 +46,92 @@ var FreedomTreeApp = function (_React$Component) {
 	return FreedomTreeApp;
 }(React.Component);
 
-var NavBar = function (_React$Component2) {
-	_inherits(NavBar, _React$Component2);
-
-	function NavBar() {
-		_classCallCheck(this, NavBar);
-
-		return _possibleConstructorReturn(this, (NavBar.__proto__ || Object.getPrototypeOf(NavBar)).apply(this, arguments));
-	}
-
-	_createClass(NavBar, [{
-		key: "render",
-		value: function render() {
-			return React.createElement(
-				"div",
-				null,
+var NavBar = function NavBar() {
+	return React.createElement(
+		"div",
+		null,
+		React.createElement(
+			"nav",
+			{ className: "topNav", id: "top" },
+			React.createElement(
+				"span",
+				{ className: "navItem" },
+				React.createElement("img", { className: "navLogo", src: "./assets/img/FreedomTreeAppIcon.svg", alt: "tree icon" }),
+				React.createElement("img", { className: "navText", src: "./assets/img/FreedomTreeLogoTextOnly.svg", alt: "Freedom Tree" })
+			),
+			React.createElement(
+				"ul",
+				{ className: "navMenu" },
 				React.createElement(
-					"nav",
-					{ className: "topNav", id: "top" },
+					"li",
+					{ className: "navItem navItemLg" },
 					React.createElement(
-						"span",
-						{ className: "navItem" },
-						React.createElement("img", { className: "navLogo", src: "./assets/img/FreedomTreeAppIcon.svg", alt: "tree icon" }),
-						React.createElement("img", { className: "navText", src: "./assets/img/FreedomTreeLogoTextOnly.svg", alt: "Freedom Tree" })
-					),
+						"a",
+						{ href: "#" },
+						"About"
+					)
+				),
+				React.createElement(
+					"li",
+					{ className: "navItem navItemLg" },
 					React.createElement(
-						"ul",
-						{ className: "navMenu" },
-						React.createElement(
-							"li",
-							{ className: "navItem navItemLg" },
-							React.createElement(
-								"a",
-								{ href: "#" },
-								"About"
-							)
-						),
-						React.createElement(
-							"li",
-							{ className: "navItem navItemLg" },
-							React.createElement(
-								"a",
-								{ href: "#" },
-								"Contact"
-							)
-						),
-						React.createElement(
-							"li",
-							{ className: "navItem navItemLg" },
-							React.createElement(
-								"a",
-								{ href: "#" },
-								"Donate"
-							)
-						),
-						React.createElement(
-							"li",
-							{ className: "navItem navItemSm" },
-							React.createElement(
-								"a",
-								{ href: "#" },
-								React.createElement("i", { className: "fas fa-bars fa-2x" })
-							)
-						)
+						"a",
+						{ href: "#" },
+						"Contact"
+					)
+				),
+				React.createElement(
+					"li",
+					{ className: "navItem navItemLg" },
+					React.createElement(
+						"a",
+						{ href: "#" },
+						"Donate"
+					)
+				),
+				React.createElement(
+					"li",
+					{ className: "navItem navItemSm" },
+					React.createElement(
+						"a",
+						{ href: "#" },
+						React.createElement("i", { className: "fas fa-bars fa-2x" })
 					)
 				)
-			);
-		}
-	}]);
+			)
+		)
+	);
+};
 
-	return NavBar;
-}(React.Component);
+var Hero = function Hero() {
+	return React.createElement(
+		"div",
+		null,
+		React.createElement(
+			"section",
+			{ className: "hero" },
+			React.createElement("img", { className: "logo", src: "./assets/img/FreedomTreeLogoTag.svg", alt: "freedom tree: free help defending your civil rights" })
+		)
+	);
+};
 
-var Hero = function (_React$Component3) {
-	_inherits(Hero, _React$Component3);
+var Interview = function Interview(props) {
+	return React.createElement(
+		"div",
+		null,
+		React.createElement(
+			"section",
+			{ className: "interview" },
+			React.createElement(Question, null),
+			props.what1s.map(function (what1) {
+				return React.createElement(WhatOne, { key: what1[0], what1Id: what1[0], what1Icon: what1[1], what1Text: what1[2], what2s: what1[3] });
+			})
+		)
+	);
+};
 
-	function Hero() {
-		_classCallCheck(this, Hero);
-
-		return _possibleConstructorReturn(this, (Hero.__proto__ || Object.getPrototypeOf(Hero)).apply(this, arguments));
-	}
-
-	_createClass(Hero, [{
-		key: "render",
-		value: function render() {
-			return React.createElement(
-				"div",
-				null,
-				React.createElement(
-					"section",
-					{ className: "hero" },
-					React.createElement("img", { className: "logo", src: "./assets/img/FreedomTreeLogoTag.svg", alt: "freedom tree: free help defending your civil rights" })
-				)
-			);
-		}
-	}]);
-
-	return Hero;
-}(React.Component);
-
-var Interview = function (_React$Component4) {
-	_inherits(Interview, _React$Component4);
-
-	function Interview() {
-		_classCallCheck(this, Interview);
-
-		return _possibleConstructorReturn(this, (Interview.__proto__ || Object.getPrototypeOf(Interview)).apply(this, arguments));
-	}
-
-	_createClass(Interview, [{
-		key: "render",
-		value: function render() {
-			return React.createElement(
-				"div",
-				null,
-				React.createElement(
-					"section",
-					{ className: "interview" },
-					React.createElement(Question, null),
-					this.props.what1s.map(function (what1) {
-						return React.createElement(WhatOne, { key: what1[0], what1Id: what1[0], what1Icon: what1[1], what1Text: what1[2], what2s: what1[3] });
-					})
-				)
-			);
-		}
-	}]);
-
-	return Interview;
-}(React.Component);
-
-var Question = function (_React$Component5) {
-	_inherits(Question, _React$Component5);
+var Question = function (_React$Component2) {
+	_inherits(Question, _React$Component2);
 
 	function Question() {
 		_classCallCheck(this, Question);
@@ -208,8 +163,8 @@ var Question = function (_React$Component5) {
 	return Question;
 }(React.Component);
 
-var WhatOne = function (_React$Component6) {
-	_inherits(WhatOne, _React$Component6);
+var WhatOne = function (_React$Component3) {
+	_inherits(WhatOne, _React$Component3);
 
 	function WhatOne() {
 		_classCallCheck(this, WhatOne);
@@ -219,9 +174,9 @@ var WhatOne = function (_React$Component6) {
 
 	_createClass(WhatOne, [{
 		key: "displayWhatTwo",
-		value: function displayWhatTwo() {
+		value: function displayWhatTwo(e) {
 
-			alert('displayWhatTwo');
+			console.log(e.target.className);
 		}
 	}, {
 		key: "render",
@@ -253,8 +208,8 @@ var WhatOne = function (_React$Component6) {
 	return WhatOne;
 }(React.Component);
 
-var WhatTwo = function (_React$Component7) {
-	_inherits(WhatTwo, _React$Component7);
+var WhatTwo = function (_React$Component4) {
+	_inherits(WhatTwo, _React$Component4);
 
 	function WhatTwo() {
 		_classCallCheck(this, WhatTwo);
@@ -276,67 +231,52 @@ var WhatTwo = function (_React$Component7) {
 	return WhatTwo;
 }(React.Component);
 
-var Footer = function (_React$Component8) {
-	_inherits(Footer, _React$Component8);
-
-	function Footer() {
-		_classCallCheck(this, Footer);
-
-		return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
-	}
-
-	_createClass(Footer, [{
-		key: "render",
-		value: function render() {
-			return React.createElement(
-				"div",
+var Footer = function Footer() {
+	return React.createElement(
+		"div",
+		null,
+		React.createElement(
+			"footer",
+			null,
+			React.createElement(
+				"a",
+				{ href: "#top" },
+				React.createElement("img", { className: "navText", src: "./assets/img/FreedomTreeLogoTextOnly.svg", alt: "Freedom Tree" })
+			),
+			React.createElement(
+				"ul",
 				null,
 				React.createElement(
-					"footer",
+					"li",
 					null,
 					React.createElement(
 						"a",
-						{ href: "#top" },
-						React.createElement("img", { className: "navText", src: "./assets/img/FreedomTreeLogoTextOnly.svg", alt: "Freedom Tree" })
-					),
+						{ href: "#" },
+						React.createElement("i", { className: "fab fa-twitter-square fa-2x" })
+					)
+				),
+				React.createElement(
+					"li",
+					null,
 					React.createElement(
-						"ul",
-						null,
-						React.createElement(
-							"li",
-							null,
-							React.createElement(
-								"a",
-								{ href: "#" },
-								React.createElement("i", { className: "fab fa-twitter-square fa-2x" })
-							)
-						),
-						React.createElement(
-							"li",
-							null,
-							React.createElement(
-								"a",
-								{ href: "#" },
-								React.createElement("i", { className: "fab fa-facebook-square fa-2x" })
-							)
-						),
-						React.createElement(
-							"li",
-							null,
-							React.createElement(
-								"a",
-								{ href: "#" },
-								React.createElement("i", { className: "fab fa-snapchat-square fa-2x" })
-							)
-						)
+						"a",
+						{ href: "#" },
+						React.createElement("i", { className: "fab fa-facebook-square fa-2x" })
+					)
+				),
+				React.createElement(
+					"li",
+					null,
+					React.createElement(
+						"a",
+						{ href: "#" },
+						React.createElement("i", { className: "fab fa-snapchat-square fa-2x" })
 					)
 				)
-			);
-		}
-	}]);
-
-	return Footer;
-}(React.Component);
+			)
+		)
+	);
+};
 
 ReactDOM.render(React.createElement(FreedomTreeApp, null), document.getElementById('app'));
 

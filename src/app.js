@@ -54,54 +54,46 @@ $(function() {
 		}
 	}
 
-	class NavBar extends React.Component {
-		render() {
-			return (
-				<div>
-					<nav className="topNav" id="top">
-						<span className="navItem">
-							<img className="navLogo" src="./assets/img/FreedomTreeAppIcon.svg" alt="tree icon"/>
-							<img className="navText" src="./assets/img/FreedomTreeLogoTextOnly.svg" alt="Freedom Tree"/>
-						</span>
-						<ul className="navMenu">
-							<li className="navItem navItemLg"><a href="#">About</a></li>
-							<li className="navItem navItemLg"><a href="#">Contact</a></li>
-							<li className="navItem navItemLg"><a href="#">Donate</a></li>
-							<li className="navItem navItemSm"><a href="#"><i className="fas fa-bars fa-2x"></i></a></li>
-						</ul>
-					</nav>
-				</div>
-			);
-		}
+	const NavBar = () => {
+		return (
+			<div>
+				<nav className="topNav" id="top">
+					<span className="navItem">
+						<img className="navLogo" src="./assets/img/FreedomTreeAppIcon.svg" alt="tree icon"/>
+						<img className="navText" src="./assets/img/FreedomTreeLogoTextOnly.svg" alt="Freedom Tree"/>
+					</span>
+					<ul className="navMenu">
+						<li className="navItem navItemLg"><a href="#">About</a></li>
+						<li className="navItem navItemLg"><a href="#">Contact</a></li>
+						<li className="navItem navItemLg"><a href="#">Donate</a></li>
+						<li className="navItem navItemSm"><a href="#"><i className="fas fa-bars fa-2x"></i></a></li>
+					</ul>
+				</nav>
+			</div>
+		);
 	}
 
-	class Hero extends React.Component {
-		render() {
-			return(
-				<div>
-					<section className="hero">
-						<img className="logo" src= "./assets/img/FreedomTreeLogoTag.svg" alt="freedom tree: free help defending your civil rights"/>
-					</section>
-				</div>
-			);
-		}
+	const Hero = () => {
+		return(
+			<div>
+				<section className="hero">
+					<img className="logo" src= "./assets/img/FreedomTreeLogoTag.svg" alt="freedom tree: free help defending your civil rights"/>
+				</section>
+			</div>
+		);
 	}
 
-	class Interview extends React.Component {
-		render(){
-			return(
-				<div>
-					<section className="interview">
-						<Question />
-						{
-							this.props.what1s.map((what1) => <WhatOne key={what1[0]} what1Id={what1[0]} what1Icon={what1[1]} what1Text={what1[2]} what2s={what1[3]} />)
-						}
-
-					</section>
-
-				</div>
-			);
-		}
+	const Interview =(props) => {
+		return(
+			<div>
+				<section className="interview">
+					<Question />
+					{
+						props.what1s.map((what1) => <WhatOne key={what1[0]} what1Id={what1[0]} what1Icon={what1[1]} what1Text={what1[2]} what2s={what1[3]} />)
+					}
+				</section>
+			</div>
+		);
 	}
 
 	class Question extends React.Component {
@@ -117,9 +109,10 @@ $(function() {
 	}
 
 	class WhatOne extends React.Component {
-		displayWhatTwo () {
-	
-			alert('displayWhatTwo');
+		displayWhatTwo (e) {
+
+			console.log(e.target.className);
+			
 		}
 		render() {
 			return (
@@ -146,23 +139,20 @@ $(function() {
 		}
 	}
 
-
-	class Footer extends React.Component {
-		render() {
-			return (
-				<div>
-					<footer>
-					<a href="#top"><img className="navText" src="./assets/img/FreedomTreeLogoTextOnly.svg" alt="Freedom Tree"/></a>
-						<ul>
-							<li><a href="#"><i className="fab fa-twitter-square fa-2x"></i></a></li>
-							<li><a href="#"><i className="fab fa-facebook-square fa-2x"></i></a></li>
-							<li><a href="#"><i className="fab fa-snapchat-square fa-2x"></i></a></li>
-						</ul>
-					</footer>
-				</div>
-			);
-		}
-	}
+const Footer = () => {
+	return (
+		<div>
+			<footer>
+			<a href="#top"><img className="navText" src="./assets/img/FreedomTreeLogoTextOnly.svg" alt="Freedom Tree"/></a>
+				<ul>
+					<li><a href="#"><i className="fab fa-twitter-square fa-2x"></i></a></li>
+					<li><a href="#"><i className="fab fa-facebook-square fa-2x"></i></a></li>
+					<li><a href="#"><i className="fab fa-snapchat-square fa-2x"></i></a></li>
+				</ul>
+			</footer>
+		</div>
+	);
+}
 
 	ReactDOM.render(<FreedomTreeApp />, document.getElementById('app'));
 
