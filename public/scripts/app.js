@@ -8,36 +8,44 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-/*
-// document ready wrapper tells scripts to wait until DOM has loaded
-$(function() {
-
-	let currentWhat1;
-	let currentWhat2;
-	const choices = [];
-*/
-
-// start React Code
-
 var FreedomTreeApp = function (_React$Component) {
 	_inherits(FreedomTreeApp, _React$Component);
 
-	function FreedomTreeApp() {
+	function FreedomTreeApp(props) {
 		_classCallCheck(this, FreedomTreeApp);
 
-		return _possibleConstructorReturn(this, (FreedomTreeApp.__proto__ || Object.getPrototypeOf(FreedomTreeApp)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (FreedomTreeApp.__proto__ || Object.getPrototypeOf(FreedomTreeApp)).call(this, props));
+
+		_this.handleSelectWhatOne = _this.handleSelectWhatOne.bind(_this);
+		_this.state = {
+			what1s: props.what1s,
+			selected: undefined
+		};
+		return _this;
 	}
 
 	_createClass(FreedomTreeApp, [{
+		key: "handleSelectWhatOne",
+		value: function handleSelectWhatOne(what1) {
+			console.log('handleSelectWhatOne', what1);
+			this.setState(function (prevState) {
+				return {
+					selected: what1
+				};
+			});
+		}
+	}, {
 		key: "render",
 		value: function render() {
-			var what1s = [["Discrimination", "fas fa-users", "Discrimination"], ["Bullying", "fas fa-child", "Bullying"], ["Sexual Harassment", "fas fa-hand-rock", "Sexual Harassment"], ["LGBTQ", "fas fa-transgender-alt", "LGBTQ"], ["Religion", "fas fa-church", "Religion", [["Prayer", "Prayer"], ["Invocation/Blessing", "Invocation/Blessing"], ["Bible/Scripture", "Bible/Scripture"], ["Other Holy Book/Scripture", "Other Holy Book/Scripture"], ["Creation Science/Intelligent Design", "Creation Science/Intelligent Design"], ["Holidays/Songs", "Holidays/Songs"], ["Proselytizing/Witnessing", "Proselytizing/Witnessing"], ["Attire/Jewelry", "Attire/Jewelry"], ["Baccalaureate", "Baccalaureate"], ["Other Religion", "Other"]]], ["Speech", "fas fa-bullhorn", "Speech", [["Censorship", "Censorship"], ["Press", "Press"], ["Art/Music", "Art/Music"], ["Personal Expression/Attire<", "Personal Expression/Attire"], ["Pledge of Allegiance", "Pledge of Allegiance"], ["National Anthem", "National Anthem"], ["Other Speech", "Other"]]], ["Protest/Assembly", "fas fa-newspaper", "Protest/Assembly"], ["Disability", "fab fa-accessible-icon", "Disability"], ["Health & Safety", "fas fa-medkit", "Health & Safety"], ["Police (Interactions)", "fas fa-exclamation-triangle", "Police (Interactions)"], ["Emergency", "fas fa-ambulance", "Emergency (Call 911)"], ["Other", "fas fa-question", "Other"]];
 			return React.createElement(
 				"div",
 				null,
 				React.createElement(NavBar, null),
 				React.createElement(Hero, null),
-				React.createElement(Interview, { what1s: what1s }),
+				React.createElement(Interview, {
+					what1s: this.state.what1s,
+					handleSelectWhatOne: this.handleSelectWhatOne
+				}),
 				React.createElement(Footer, null)
 			);
 		}
@@ -45,6 +53,10 @@ var FreedomTreeApp = function (_React$Component) {
 
 	return FreedomTreeApp;
 }(React.Component);
+
+FreedomTreeApp.defaultProps = {
+	what1s: [["Discrimination", "fas fa-users", "Discrimination"], ["Bullying", "fas fa-child", "Bullying"], ["Sexual Harassment", "fas fa-hand-rock", "Sexual Harassment"], ["LGBTQ", "fas fa-transgender-alt", "LGBTQ"], ["Religion", "fas fa-church", "Religion", [["Prayer", "Prayer"], ["Invocation/Blessing", "Invocation/Blessing"], ["Bible/Scripture", "Bible/Scripture"], ["Other Holy Book/Scripture", "Other Holy Book/Scripture"], ["Creation Science/Intelligent Design", "Creation Science/Intelligent Design"], ["Holidays/Songs", "Holidays/Songs"], ["Proselytizing/Witnessing", "Proselytizing/Witnessing"], ["Attire/Jewelry", "Attire/Jewelry"], ["Baccalaureate", "Baccalaureate"], ["Other Religion", "Other"]]], ["Speech", "fas fa-bullhorn", "Speech", [["Censorship", "Censorship"], ["Press", "Press"], ["Art/Music", "Art/Music"], ["Personal Expression/Attire<", "Personal Expression/Attire"], ["Pledge of Allegiance", "Pledge of Allegiance"], ["National Anthem", "National Anthem"], ["Other Speech", "Other"]]], ["Protest/Assembly", "fas fa-newspaper", "Protest/Assembly"], ["Disability", "fab fa-accessible-icon", "Disability"], ["Health & Safety", "fas fa-medkit", "Health & Safety"], ["Police (Interactions)", "fas fa-exclamation-triangle", "Police (Interactions)"], ["Emergency", "fas fa-ambulance", "Emergency (Call 911)"], ["Other", "fas fa-question", "Other"]]
+};
 
 var NavBar = function NavBar() {
 	return React.createElement(
@@ -124,7 +136,14 @@ var Interview = function Interview(props) {
 			{ className: "interview" },
 			React.createElement(Question, null),
 			props.what1s.map(function (what1) {
-				return React.createElement(WhatOne, { key: what1[0], what1Id: what1[0], what1Icon: what1[1], what1Text: what1[2], what2s: what1[3] });
+				return React.createElement(WhatOne, {
+					key: what1[0],
+					what1Id: what1[0],
+					what1Icon: what1[1],
+					what1Text: what1[2],
+					what2s: what1[3],
+					handleSelectWhatOne: props.handleSelectWhatOne
+				});
 			})
 		)
 	);
@@ -163,53 +182,31 @@ var Question = function (_React$Component2) {
 	return Question;
 }(React.Component);
 
-var WhatOne = function (_React$Component3) {
-	_inherits(WhatOne, _React$Component3);
+var WhatOne = function WhatOne(props) {
+	return React.createElement(
+		"div",
+		{
+			className: "what1",
+			id: props.what1Id,
+			onClick: function onClick(e) {
+				props.handleSelectWhatOne(props.what1Id);
+			}
+		},
+		React.createElement(
+			"div",
+			{ className: "col1" },
+			React.createElement("i", { className: props.what1Icon })
+		),
+		React.createElement(
+			"div",
+			{ className: "col2" },
+			props.what1Text
+		)
+	);
+};
 
-	function WhatOne() {
-		_classCallCheck(this, WhatOne);
-
-		return _possibleConstructorReturn(this, (WhatOne.__proto__ || Object.getPrototypeOf(WhatOne)).apply(this, arguments));
-	}
-
-	_createClass(WhatOne, [{
-		key: "displayWhatTwo",
-		value: function displayWhatTwo(e) {
-
-			console.log(e.target.className);
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			return React.createElement(
-				"div",
-				{ className: "what1", id: this.props.what1Id, onClick: this.displayWhatTwo },
-				React.createElement(
-					"div",
-					{ className: "col1" },
-					React.createElement("i", { className: this.props.what1Icon })
-				),
-				React.createElement(
-					"div",
-					{ className: "col2" },
-					this.props.what1Text
-				),
-				React.createElement(
-					"ul",
-					{ className: "what2" },
-					this.props.what2s && this.props.what2s.map(function (what2) {
-						return React.createElement(WhatTwo, { key: what2[0], what2Id: what2[0], what2Text: what2[1] });
-					})
-				)
-			);
-		}
-	}]);
-
-	return WhatOne;
-}(React.Component);
-
-var WhatTwo = function (_React$Component4) {
-	_inherits(WhatTwo, _React$Component4);
+var WhatTwo = function (_React$Component3) {
+	_inherits(WhatTwo, _React$Component3);
 
 	function WhatTwo() {
 		_classCallCheck(this, WhatTwo);
@@ -280,7 +277,7 @@ var Footer = function Footer() {
 
 ReactDOM.render(React.createElement(FreedomTreeApp, null), document.getElementById('app'));
 
-// end React Code
+// old code
 /*
 	// capturing what1 click, display what2 content
 
