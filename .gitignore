@@ -6,3 +6,4 @@ testing
 tempSite
 node_modules/
 src/playground
+/data
