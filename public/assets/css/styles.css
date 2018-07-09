@@ -29,6 +29,7 @@ nav {
 
 nav a {
 	color: rgba(255,255,255,1);
+	cursor: pointer; 
 }
 
 .topNav, .navMenu {
