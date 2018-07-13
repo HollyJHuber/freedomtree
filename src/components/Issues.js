@@ -2,6 +2,21 @@ import React from 'react';
 import Issue from './Issue';
 
 class Issues extends React.Component {
+  constructor(props) {
+		super(props);
+		this.state = {
+			selectedIssueId: 0
+    };
+    this.selectIssue = this.selectIssue.bind(this);
+  }
+  selectIssue(id) {
+    this.setState((prevState) => {
+      return {
+        selectedIssueId: id
+      };
+    });
+  } 
+
   render() {
 
       return (
@@ -16,6 +31,8 @@ class Issues extends React.Component {
               issueNotation={issue.notation}
               issueIcon={issue.icon} 
               issueText={issue.text}
+              selectedIssueId={this.state.selectedIssueId}
+              onSelectIssue={this.selectIssue}
             />)
         }
       </div>

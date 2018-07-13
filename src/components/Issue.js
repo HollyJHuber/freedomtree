@@ -4,31 +4,37 @@ import Item from './Item';
 class Issue extends React.Component {
 	constructor(props) {
 		super(props);
-		this.displayItems = this.displayItems.bind(this);
-		this.state = {
-			selectedIssueId: 0
+		this.state ={
+			selectedItemId: 0
 		}
+		this.selectIssue = this.selectIssue.bind(this);
+		this.selectItem = this.selectItem.bind(this);
 	}
-	displayItems(e){
+	selectIssue(e) {
+		this.props.onSelectIssue(this.props.issueId);
+	}
+	selectItem(id) {
 		this.setState((prevState) => {
 			return {
-				selectedIssueId: this.props.issueId
+				selectedItemId: id
 			};
 		});
+		// and do something else like display what3?
+		console.log("change Issues to display What3");
 	}
 	render() {
 		return(
 			<div 
-				className ={this.state.selectedIssueId ===this.props.issueId ? "what1 expand" : "what1"}
+				className ={this.props.selectedIssueId ===this.props.issueId ? "what1 expand" : "what1"}
 				id={this.props.issueId} 
-				onClick={this.displayItems}
+				onClick={this.selectIssue}
 			>
 				<div className="col1">
 					<i className={this.props.issueIcon}></i>
 				</div>
 				<div className="col2">
 					{this.props.issueText}
-					{ (this.props.issueId === this.state.selectedIssueId) && (
+					{ (this.props.issueId === this.props.selectedIssueId) && (
 						<ul className="what2" id={this.props.itemId}>
 						{
 							items.filter(item => item.issueId === this.props.issueId).map(item => 	(
@@ -37,6 +43,8 @@ class Issue extends React.Component {
 									itemId={item.id}
 									itemNotation={item.notation}
 									itemText={item.text}
+									selectedItemId={this.state.selectedItemId}
+									onSelectItem={this.selectItem}
 								/>
 							))
 						}
