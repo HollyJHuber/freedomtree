@@ -35,7 +35,7 @@ const issues = [
   { id: 108, notation: "Health & Safety", icon: "fas fa-medkit", text: "Health & Safety"},
   { id: 109, notation: "Police", icon: "fas fa-exclamation-triangle", text: "Police"},
   { id: 110, notation: "Emergency", icon: "fas fa-ambulance", text: "Emergency (Call 911)" },
-  { id: 111, notation: "Other", icon: "fas fa-question", text: "Other"}
+  { id: 111, notation: "Other Issue", icon: "fas fa-question", text: "Other"}
   ];
 
 export default Issues;

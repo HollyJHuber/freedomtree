@@ -4,24 +4,31 @@ import Item from './Item';
 class Issue extends React.Component {
 	constructor(props) {
 		super(props);
-		this.handleClick = this.handleClick.bind(this);
+		this.displayItems = this.displayItems.bind(this);
+		this.state = {
+			selectedIssueId: 0
+		}
 	}
-	handleClick(e){
-		console.log(`clicked: ${this.props.issueId} ${this.props.issueText}`);
-		
+	displayItems(e){
+		this.setState((prevState) => {
+			return {
+				selectedIssueId: this.props.issueId
+			};
+		});
 	}
 	render() {
 		return(
 			<div 
-			className ="what1" 
-			id={this.props.issueId} 
-			onClick={this.handleClick}>
+				className ={this.state.selectedIssueId ===this.props.issueId ? "what1 expand" : "what1"}
+				id={this.props.issueId} 
+				onClick={this.displayItems}
+			>
 				<div className="col1">
 					<i className={this.props.issueIcon}></i>
 				</div>
 				<div className="col2">
 					{this.props.issueText}
-					{ (this.props.issueId === selectedId) &&
+					{ (this.props.issueId === this.state.selectedIssueId) && (
 						<ul className="what2" id={this.props.itemId}>
 						{
 							items.filter(item => item.issueId === this.props.issueId).map(item => 	(
@@ -34,13 +41,13 @@ class Issue extends React.Component {
 							))
 						}
 						</ul>
-					}
+					)}
 				</div>
 			</div>
 		);
 	}
 }
-const selectedId = 0; // testing display of Item
+
 const items = [
 	{ id: 201, notation: "Prayer", text: "Prayer", issueId: 104},
 	{ id: 202, notation: "Invocation/Blessing", text: "Invocation/Blessing", issueId: 104},
