@@ -19,7 +19,7 @@ class Issue extends React.Component {
 				selectedItemId: id
 			};
 		});
-		// and do something else like display what3?
+		// go up to Issues and make some changes!
 		console.log("change Issues to display What3");
 	}
 	render() {

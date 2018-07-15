@@ -3,7 +3,7 @@ import Issue from './Issue';
 
 class Issues extends React.Component {
   constructor(props) {
-		super(props);
+    super(props);
 		this.state = {
 			selectedIssueId: 0
     };
@@ -18,12 +18,11 @@ class Issues extends React.Component {
   } 
 
   render() {
-
       return (
       <div>
-        <h1 id="question">What's Happening?</h1>
-        <h4 id="instruction">Select the issue that best describes your situtation:</h4>
-        {
+        <h1 id="question">{this.props.question}</h1>
+        <h4 id="instruction">{this.props.instruction}</h4>
+        {this.props.landingPage &&
           issues.map((issue) => 
             <Issue 
               key={issue.id} 
@@ -35,11 +34,16 @@ class Issues extends React.Component {
               onSelectIssue={this.selectIssue}
             />)
         }
+        {!this.props.landingPage && <h1>testing landingPage</h1>}
       </div>
     );
   }
 }
 
+Issues.defaultProps = {
+  question: "What's Happening?",
+  instruction: "Select the issue that best describes your situtation:"
+};
 const issues = [
   { id: 100, notation: "Discrimination", icon: "fas fa-users", text: "Discrimination"},
   { id: 101, notation: "Bullying", icon: "fas fa-child", text: "Bullying"},

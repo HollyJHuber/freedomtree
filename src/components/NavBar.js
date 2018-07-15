@@ -2,7 +2,7 @@ import React from 'react';
 
 const NavBar = (props) => (
 	<div>
-		<nav className="topNav" id="top">
+		<nav id="top" className={props.landingPage ? "topNav" : "topNavColor"}>
 			<span className="navItem">
 				<img className="navLogo" src="./assets/img/FreedomTreeAppIcon.svg" alt="tree icon"/>
 				<img className="navText" src="./assets/img/FreedomTreeLogoTextOnly.svg" alt="Freedom Tree"/>

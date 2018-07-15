@@ -22,17 +22,24 @@ class FreedomTreeApp extends React.Component {
 	render() {
 		return (
 			<div>
-				<NavBar handleMenuModal={this.handleMenuModal}/>
+				<NavBar 
+					landingPage = {this.props.landingPage}
+					handleMenuModal={this.handleMenuModal}
+				/>
 				<MenuModal 
 				menuOption = {this.state.menuOption}
 				handleCloseMenuModal = {this.handleCloseMenuModal}
 				/>
-				<Hero />
-				<Interview />
+				{this.props.landingPage && <Hero />}
+				<Interview 
+					landingPage = {this.props.landingPage}
+				/>
 				<Footer />
 			</div>
 		);
 	}
 }
-
+FreedomTreeApp.defaultProps = {
+	landingPage: true
+};
 export default FreedomTreeApp;

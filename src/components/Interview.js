@@ -2,11 +2,13 @@ import React from 'react';
 import History from './History';
 import Issues from './Issues';
 
-const Interview = () => (
+const Interview = (props) => (
 	<div>
 		<section className="interview">
-			<History />
-			<Issues/>
+			{!props.landingPage && <History />}
+			<Issues 
+				landingPage = {props.landingPage}
+			/>
 		</section>
 	</div>
 );
