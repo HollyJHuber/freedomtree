@@ -20,38 +20,54 @@ class Issue extends React.Component {
 			};
 		});
 		// go up to Issues and make some changes!
-		console.log("change Issues to display What3");
+		// check state? if landingPage, change 
+		//console.log("change Issues to display What3");
+		this.props.onSelectItem(id);
 	}
 	render() {
 		return(
-			<div 
-				className ={this.props.selectedIssueId ===this.props.issueId ? "what1 expand" : "what1"}
-				id={this.props.issueId} 
-				onClick={this.selectIssue}
-			>
-				<div className="col1">
-					<i className={this.props.issueIcon}></i>
-				</div>
-				<div className="col2">
-					{this.props.issueText}
-					{ (this.props.issueId === this.props.selectedIssueId) && (
-						<ul className="what2" id={this.props.itemId}>
-						{
-							items.filter(item => item.issueId === this.props.issueId).map(item => 	(
-								<Item 
-									key={item.id} 
-									itemId={item.id}
-									itemNotation={item.notation}
-									itemText={item.text}
-									selectedItemId={this.state.selectedItemId}
-									onSelectItem={this.selectItem}
-								/>
-							))
-						}
-						</ul>
-					)}
-				</div>
-			</div>
+			<section>
+				{this.props.landingPage && 
+					<div 
+					className ={this.props.selectedIssueId ===this.props.issueId ? "what1 expand" : "what1"}
+					id={this.props.issueId} 
+					onClick={this.selectIssue}
+					>
+						<div className="col1">
+							<i className={this.props.issueIcon}></i>
+						</div>
+						<div className="col2">
+							{this.props.issueText}
+							{ (this.props.issueId === this.props.selectedIssueId) && (
+								<ul className="what2" id={this.props.itemId}>
+								{
+									items.filter(item => item.issueId === this.props.issueId).map(item => 	(
+										<Item 
+											key={item.id} 
+											itemId={item.id}
+											itemNotation={item.notation}
+											itemText={item.text}
+											selectedItemId={this.state.selectedItemId}
+											onSelectItem={this.selectItem}
+										/>
+									))
+								}
+								</ul>
+							)}
+						</div>
+					</div>
+				}
+				{!this.props.landingPage &&
+					<div className="what3">
+							<div 
+								className="listing"
+								id={this.props.what3Id}
+							>
+							{this.props.what3Text}
+							</div>
+					</div>
+				}
+			</section>
 		);
 	}
 }

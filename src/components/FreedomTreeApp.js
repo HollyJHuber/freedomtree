@@ -9,6 +9,7 @@ class FreedomTreeApp extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
+			landingPage: true,
 			menuOption: undefined
 		};
 	}
@@ -19,27 +20,30 @@ class FreedomTreeApp extends React.Component {
 	handleCloseMenuModal = () => {
 		this.setState(() => ({menuOption: undefined}))
 	};
+	handleChangeLandingPage = () => {
+		this.setState((prevState) => ({landingPage: !prevState}))
+		console.log("hooked up to App");
+	};
 	render() {
 		return (
 			<div>
 				<NavBar 
-					landingPage = {this.props.landingPage}
+					landingPage = {this.state.landingPage}
 					handleMenuModal={this.handleMenuModal}
 				/>
 				<MenuModal 
 				menuOption = {this.state.menuOption}
 				handleCloseMenuModal = {this.handleCloseMenuModal}
 				/>
-				{this.props.landingPage && <Hero />}
+				{this.state.landingPage && <Hero />}
 				<Interview 
-					landingPage = {this.props.landingPage}
+					landingPage = {this.state.landingPage}
+					handleChangeLandingPage ={this.handleChangeLandingPage}
 				/>
 				<Footer />
 			</div>
 		);
 	}
 }
-FreedomTreeApp.defaultProps = {
-	landingPage: true
-};
+
 export default FreedomTreeApp;
