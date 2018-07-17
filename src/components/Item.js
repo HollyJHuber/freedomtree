@@ -1,11 +1,7 @@
 import React from 'react';
 
 class Item extends React.Component {
-	constructor(props){
-		super(props);
-		this.selectItem=this.selectItem.bind(this);
-	}
-	selectItem(e) {
+	selectItem= (e) => {
 		this.props.onSelectItem(this.props.itemId, this.props.itemNotation);
 	}
 	render(){

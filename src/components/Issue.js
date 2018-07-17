@@ -2,23 +2,14 @@ import React from 'react';
 import Item from './Item';
 
 class Issue extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state ={
-			selectedItemId: 0
-		}
-		this.selectIssue = this.selectIssue.bind(this);
-		this.selectItem = this.selectItem.bind(this);
+	state = {
+		selectedItemId: 0
 	}
-	selectIssue(e) {
+	selectIssue = (e) => {
 		this.props.onSelectIssue(this.props.issueId, this.props.issueNotation);
 	}
-	selectItem(id, text) {
-		this.setState((prevState) => {
-			return {
-				selectedItemId: id
-			};
-		});
+	selectItem = (id, text) => {
+		this.setState((prevState) => {{selectedItemId: id}});
 		this.props.onSelectItem(id, text);
 	}
 	render() {

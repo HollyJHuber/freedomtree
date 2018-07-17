@@ -6,13 +6,11 @@ import Interview from './Interview';
 import Footer from './Footer';
 
 class FreedomTreeApp extends React.Component {
-	constructor(props){
-		super(props);
-		this.state = {
+	state = {
 			landingPage: true,
 			menuOption: undefined
-		};
-	}
+	};
+	
 	handleMenuModal = () => {
 		const menuSelected = "about";
 		this.setState(() => ({menuOption: menuSelected}));

@@ -3,19 +3,14 @@ import History from './History';
 import Issue from './Issue';
 
 class Interview extends React.Component {
-  constructor(props) {
-    super(props);
-		this.state = {
-      history: "Issues ",
-      selectedIssueId: 0,
-      selectedItemId: 0,
-      question: "What's Happening?"
-    };
-    this.selectIssue = this.selectIssue.bind(this);
-    this.selectItem = this.selectItem.bind(this);
-  }
-  selectIssue(id, text) {
-    console.log(text);
+  state = {
+    history: "Issues ",
+    selectedIssueId: 0,
+    selectedItemId: 0,
+    question: "What's Happening?"
+  };
+
+  selectIssue= (id, text) => {
     if (this.state.selectedIssueId != id){
       this.setState((prevState) => {
         return {
@@ -25,7 +20,7 @@ class Interview extends React.Component {
       });
     }
   } 
-  selectItem(id, text) {
+  selectItem= (id, text) => {
     this.setState((prevState) => {
       return {
         selectedItemId: id,
