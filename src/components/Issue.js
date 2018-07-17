@@ -11,18 +11,15 @@ class Issue extends React.Component {
 		this.selectItem = this.selectItem.bind(this);
 	}
 	selectIssue(e) {
-		this.props.onSelectIssue(this.props.issueId);
+		this.props.onSelectIssue(this.props.issueId, this.props.issueNotation);
 	}
-	selectItem(id) {
+	selectItem(id, text) {
 		this.setState((prevState) => {
 			return {
 				selectedItemId: id
 			};
 		});
-		// go up to Issues and make some changes!
-		// check state? if landingPage, change 
-		//console.log("change Issues to display What3");
-		this.props.onSelectItem(id);
+		this.props.onSelectItem(id, text);
 	}
 	render() {
 		return(

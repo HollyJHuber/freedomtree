@@ -6,34 +6,43 @@ class Interview extends React.Component {
   constructor(props) {
     super(props);
 		this.state = {
+      history: "Issues ",
       selectedIssueId: 0,
-      selectedItemId: 0
+      selectedItemId: 0,
+      question: "What's Happening?"
     };
     this.selectIssue = this.selectIssue.bind(this);
     this.selectItem = this.selectItem.bind(this);
   }
-  selectIssue(id) {
-    this.setState((prevState) => {
-      return {
-        selectedIssueId: id
-      };
-    });
+  selectIssue(id, text) {
+    console.log(text);
+    if (this.state.selectedIssueId != id){
+      this.setState((prevState) => {
+        return {
+          history: prevState.history + " > " + text,
+          selectedIssueId: id
+        };
+      });
+    }
   } 
-  selectItem(id) {
+  selectItem(id, text) {
     this.setState((prevState) => {
       return {
-        selectedItemId: id
+        selectedItemId: id,
+        question: text
       };
     });
-    console.log('hooked up to Interview');
     this.props.handleChangeLandingPage();
   }
 
   render() {
       return (
       <div  className="interview">
-        {!this.props.landingPage && <History />}
-        <h1 id="question">{this.props.question}</h1>
+        {!this.props.landingPage && 
+          <History 
+            text={this.state.history}
+          />}
+        <h1 id="question">{this.state.question}</h1>
         <h4 id="instruction">{this.props.instruction}</h4>
         {this.props.landingPage &&
           issues.map((issue) => 
@@ -65,7 +74,6 @@ class Interview extends React.Component {
 }
 
 Interview.defaultProps = {
-  question: "What's Happening?",
   instruction: "Select the issue that best describes your situtation:"
 };
 const issues = [

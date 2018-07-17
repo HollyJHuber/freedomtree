@@ -22,7 +22,6 @@ class FreedomTreeApp extends React.Component {
 	};
 	handleChangeLandingPage = () => {
 		this.setState((prevState) => ({landingPage: !prevState}))
-		console.log("hooked up to App");
 	};
 	render() {
 		return (

@@ -6,7 +6,7 @@ class Item extends React.Component {
 		this.selectItem=this.selectItem.bind(this);
 	}
 	selectItem(e) {
-		this.props.onSelectItem(this.props.itemId);
+		this.props.onSelectItem(this.props.itemId, this.props.itemNotation);
 	}
 	render(){
 		return(

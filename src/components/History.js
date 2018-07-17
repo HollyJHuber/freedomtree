@@ -1,8 +1,8 @@
 import React from 'react';
 
-const History =() => (
+const History =(props) => (
 	<div>
-		<h4 id="path">testing History</h4>
+		<h4 id="path">{props.text}</h4>
 	</div>
 );
 
