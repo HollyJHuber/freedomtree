@@ -1,0 +1,26 @@
+footer {
+  align-items: center;
+  background: $ft-green;
+  color: $white;
+  display: flex;
+  justify-content: space-around;
+  padding: $m-size 0;
+}
+
+footer ul {
+  display: flex
+}
+
+footer ul li {
+  margin-left: $m-size;
+  text-decoration: none;
+}
+
+footer a{
+  color: $white;
+}
+
+.footer__logoText {
+	height: 3rem;
+	margin: 0 0 0 $s-size;
+}

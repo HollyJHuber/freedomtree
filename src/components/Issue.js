@@ -14,20 +14,20 @@ class Issue extends React.Component {
 	}
 	render() {
 		return(
-			<section>
+			<div>
 				{this.props.landingPage && 
 					<div 
-					className ={this.props.selectedIssueId ===this.props.issueId ? "what1 expand" : "what1"}
+					className ={this.props.selectedIssueId ===this.props.issueId ? "issue__listing issue__listingSelected" : "issue__listing"}
 					id={this.props.issueId} 
 					onClick={this.selectIssue}
 					>
-						<div className="col1">
+						<div className="issue__col1">
 							<i className={this.props.issueIcon}></i>
 						</div>
-						<div className="col2">
+						<div className="issue__col2">
 							{this.props.issueText}
 							{ (this.props.issueId === this.props.selectedIssueId) && (
-								<ul className="what2" id={this.props.itemId}>
+								<ul className="issue__dropDownItem" id={this.props.itemId}>
 								{
 									items.filter(item => item.issueId === this.props.issueId).map(item => 	(
 										<Item 
@@ -46,16 +46,16 @@ class Issue extends React.Component {
 					</div>
 				}
 				{!this.props.landingPage &&
-					<div className="what3">
+					<div className="issue__queryContainer">
 							<div 
-								className="listing"
+								className="issue__queryListing"
 								id={this.props.what3Id}
 							>
 							{this.props.what3Text}
 							</div>
 					</div>
 				}
-			</section>
+			</div>
 		);
 	}
 }

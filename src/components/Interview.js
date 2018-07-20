@@ -32,13 +32,13 @@ class Interview extends React.Component {
 
   render() {
       return (
-      <div  className="interview">
+      <div  className="interview__container">
         {!this.props.landingPage && 
           <History 
             text={this.state.history}
           />}
-        <h1 id="question">{this.state.question}</h1>
-        <h4 id="instruction">{this.props.instruction}</h4>
+        <h1 className="interview__question">{this.state.question}</h1>
+        <h4 className="interview__instruction">{this.props.instruction}</h4>
         {this.props.landingPage &&
           issues.map((issue) => 
             <Issue 
@@ -69,7 +69,7 @@ class Interview extends React.Component {
 }
 
 Interview.defaultProps = {
-  instruction: "Select the issue that best describes your situtation:"
+  instruction: "Select the issue that best describes your situation:"
 };
 const issues = [
   { id: 100, notation: "Discrimination", icon: "fas fa-users", text: "Discrimination"},

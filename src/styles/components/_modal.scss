@@ -1,0 +1,43 @@
+
+.modal {
+  background: $ft-orange;
+  border-right: 2px solid darken($ft-orange, 20%);
+  border-bottom: 2px solid darken($ft-orange, 20%);
+  line-height: 2.4rem;
+  max-width: 80%;
+  outline: none;
+  padding: $l-size;
+}
+
+.modal__button {
+  background: $ft-brown;
+  border-right: 2px solid darken($ft-orange, 20%);
+  border-bottom: 2px solid darken($ft-orange, 20%);
+  border-top: none;
+  border-left: none;
+  color: $white;
+  font-size: $m-size;
+  font-weight: 700;
+  padding: $m-size;
+}
+
+// built-in styles from third party
+
+.ReactModalPortal > div {
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModalPortal .ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModalPortal .ReactModal__Overlay--before-close{
+  opacity: 0;
+}

@@ -1,0 +1,12 @@
+
+.hero__container {
+	align-items: center;
+	background: $ft-brown;
+	display: flex;
+	flex-direction: column;
+	padding: $m-size;
+}
+
+.hero__logo {
+	max-width: 80rem;
+}

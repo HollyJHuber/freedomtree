@@ -1,0 +1,59 @@
+nav {
+	color: $white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.6rem;
+	font-weight: 700;
+	padding: $s-size;
+}
+
+nav a {
+	color: $white-75;
+	cursor: pointer; 
+}
+
+nav a:hover{
+	color: $white;
+}
+
+.nav__barLandingPage {
+	background: $ft-green;
+}
+.nav__bar{
+	background: $ft-brown;
+}
+
+.nav__bar, .nav__barLandingPage, .nav__menu {
+	align-items: flex-end;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0;
+}
+.nav__item {
+	list-style: none;
+	padding: $m-size;
+}
+
+.nav__itemLg {
+	display: none;
+}
+
+.nav__logo {
+	height: 4rem;
+}
+
+.nav__logoText {
+	height: 3rem;
+	margin: 0 0 0 $s-size;
+}
+
+@media (min-width: $desktop-breakpoint){
+
+	.nav__itemLg {
+		display: inline-block;
+	}
+
+	.nav__itemSm {
+		display: none;
+	}
+}
