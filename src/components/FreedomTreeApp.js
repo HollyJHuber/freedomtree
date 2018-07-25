@@ -30,7 +30,6 @@ class FreedomTreeApp extends React.Component {
 					landingPage = {this.state.landingPage}
 					handleChangeLandingPage ={this.handleChangeLandingPage}
 				/>
-				<Footer />
 			</div>
 		);
 	}
