@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import MenuModal from './MenuModal';
 
 class NavBar extends React.Component {
@@ -17,10 +19,12 @@ render() {
 	return (
 		<div>
 			<nav id="top" className={this.props.landingPage ? "nav__barLandingPage" : "nav__bar"}>
-				<span className="nav__item">
-					<img className="nav__logo" src="./assets/img/FreedomTreeAppIcon.svg" alt="tree icon"/>
-					<img className="nav__logoText" src="./assets/img/FreedomTreeLogoTextOnly.svg" alt="Freedom Tree"/>
-				</span>
+				<Link to="/">
+					<span className="nav__item">
+						<img className="nav__logo" src="./assets/img/FreedomTreeAppIcon.svg" alt="tree icon"/>
+						<img className="nav__logoText" src="./assets/img/FreedomTreeLogoTextOnly.svg" alt="Freedom Tree"/>
+					</span>
+				</Link>
 				<ul className="nav__menu">
 					<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("about")}>About</a></li>
 					<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("contact")}>Contact</a></li>

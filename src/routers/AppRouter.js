@@ -1,17 +1,21 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
-import FreedomTreeApp from '../components/FreedomTreeApp'
+
+import NavBar from '../components/NavBar';
+import LandingPage from '../components/LandingPage';
+import Interview from '../components/Interview';
 import Footer from '../components/Footer';
 import NotFoundPage from '../components/NotFound';
 
 const AppRouter = () => (
   <BrowserRouter> 
   <div>
+    <NavBar />
     <Switch>
-      <Route path="/" component={FreedomTreeApp} exact={true} />
+      <Route path="/" component={LandingPage} exact={true} />
+      <Route path="/issues" component={Interview} />
       <Route component={NotFoundPage}/>
     </Switch>
-    <Footer />
   </div>
 </BrowserRouter>
 );

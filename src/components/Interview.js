@@ -1,6 +1,8 @@
 import React from 'react';
+
 import History from './History';
 import Issue from './Issue';
+import Footer from './Footer';
 
 class Interview extends React.Component {
   state = {
@@ -32,37 +34,40 @@ class Interview extends React.Component {
 
   render() {
       return (
-      <div  className="interview__container">
-        {!this.props.landingPage && 
-          <History 
-            text={this.state.history}
-          />}
-        <h1 className="interview__question">{this.state.question}</h1>
-        <h4 className="interview__instruction">{this.props.instruction}</h4>
-        {this.props.landingPage &&
-          issues.map((issue) => 
-            <Issue 
-              key={issue.id} 
-              issueId={issue.id} 
-              issueNotation={issue.notation}
-              issueIcon={issue.icon} 
-              issueText={issue.text}
-              selectedIssueId={this.state.selectedIssueId}
-              onSelectIssue={this.selectIssue}
-              onSelectItem={this.selectItem}
-              landingPage={this.props.landingPage}
-            />)
-        }
-        {!this.props.landingPage && 
-          what3s.filter(what3 => what3.itemId === this.state.selectedItemId).map(what3 =>   (
-            <Issue
-              key={what3.id}
-              what3Id={what3.id}
-              what3Notation={what3.notation}
-              what3Text={what3.text}
-              landingPage={this.props.landingPage}
-            />))
+      <div>
+        <div  className="interview__container">
+          {!this.props.landingPage && 
+            <History 
+              text={this.state.history}
+            />}
+          <h1 className="interview__question">{this.state.question}</h1>
+          <h4 className="interview__instruction">{this.props.instruction}</h4>
+          {this.props.landingPage &&
+            issues.map((issue) => 
+              <Issue 
+                key={issue.id} 
+                issueId={issue.id} 
+                issueNotation={issue.notation}
+                issueIcon={issue.icon} 
+                issueText={issue.text}
+                selectedIssueId={this.state.selectedIssueId}
+                onSelectIssue={this.selectIssue}
+                onSelectItem={this.selectItem}
+                landingPage={this.props.landingPage}
+              />)
           }
+          {!this.props.landingPage && 
+            what3s.filter(what3 => what3.itemId === this.state.selectedItemId).map(what3 =>   (
+              <Issue
+                key={what3.id}
+                what3Id={what3.id}
+                what3Notation={what3.notation}
+                what3Text={what3.text}
+                landingPage={this.props.landingPage}
+              />))
+            }
+        </div>
+      <Footer />
       </div>
     );
   }
