@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
 
 import NavBar from '../components/NavBar';
 import LandingPage from '../components/LandingPage';
-import Interview from '../components/Interview';
+import InterviewPage from '../components/Interview';
 import Footer from '../components/Footer';
 import NotFoundPage from '../components/NotFound';
 
@@ -13,7 +13,7 @@ const AppRouter = () => (
     <NavBar />
     <Switch>
       <Route path="/" component={LandingPage} exact={true} />
-      <Route path="/issues" component={Interview} />
+      <Route path="/issues" component={InterviewPage} />
       <Route component={NotFoundPage}/>
     </Switch>
   </div>
