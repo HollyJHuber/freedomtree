@@ -1,18 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { startInterview } from '../actions/interviews';
 
 import Hero from './Hero';
-import Footer from './Footer';
 
-const LandingPage = () => (
+const LandingPage = ( { startInterview }) => (
   <div>
     <Hero />
-    <Link to="/issues">
-      <button>Start Here</button>
-    </Link>
-    <button>Watch Video</button>
-    <Footer />
+      <div>
+        <button onClick = {startInterview} >Start Here</button>
+        <button>Watch Video</button>
+      </div>
   </div>
 );
 
-export default LandingPage;
+const mapDispatchToProps = (dispatch) => ({
+  startInterview: () => dispatch(startInterview())
+});
+
+export default connect (undefined, mapDispatchToProps)(LandingPage);

@@ -1,36 +1,39 @@
-import uuid from 'uuid';
+//import uuid from 'uuid';
 
-// NEW_ISSUE
-export const newIssue = (
+// SELECT ISSUE
+// this would be instead of START INTERVIEW?
+// issue selected, creates an ID
+// stores category & issue info
+// writes a history with category
+// displays issue on 
+
+
+// START INTERVIEW
+export const startInterview = (
   {
+    userId = 0,
     history = '',
-    currentCategory = '',
-    nextCategory = '',
-    issueId = 0,
-    issueText = '',
-    itemId = 0,
-    itemText = '',
-    whatId = 0,
-    whatText = '',
-    where1Id = 0,
-    where1Text = ''
+    current = 'categories',
+    currentType='list',
+    next = 'issues',
+    selectedId = 0,
   } ={}
 ) => ({
-  type: 'NEW_ISSUE',
+  type: 'START_INTERVIEW',
   interview: {
-    id: uuid(),
+    userId,
     history,
-    currentCategory,
-    nextCategory,
-    issueId,
-    issueText,
-    itemId,
-    itemText,
-    whatId,
-    whatText,
-    where1Id,
-    where1Text
+    current,
+    currentType,
+    next,
+    selectedId,
   }
+});
+
+// SELECT LIST ITEM
+export const selectList = (interview) => ({
+  type: 'SELECT_LIST',
+  interview
 });
 
 // MAKE_SELECTION
