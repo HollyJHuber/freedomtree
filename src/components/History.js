@@ -2,7 +2,7 @@ import React from 'react';
 
 const History =(props) => (
 	<div>
-		<h4 className="history__path">{props.text}</h4>
+		<h4 className="history__path">{props.text}Testing History</h4>
 	</div>
 );
 

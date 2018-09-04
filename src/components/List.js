@@ -1,20 +1,37 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Dropdown from './Dropdown';
-import { selectList } from '../actions/interviews';
 
-class List extends React.Component {
-  // methods
-  displayDropdown = () => {
-    this.props.selectList({ selectedId: this.props.listId  });
-    console.log(this.props.listId, this.props.listNotation, this.props.selectedId);
+export default class List extends React.Component {
+  constructor(props){
+    super(props);
+    this.displayDropdown = this.displayDropdown.bind(this);
+    this.state = {
+      selectedId: 0,
+      selectedText: ''
+    }
   }
+  // methods
+  // selectList = (e) => {
+  //   this.props.onSelectList(this.props.listId, this.props.listNotation);
+  // }
+  displayDropdown = () => {
+    // redux leftover
+  //   this.props.selectList({ selectedId: this.props.listId  });
+    this.setState((prevState) => {
+      return {
+        selectedId: this.props.listId, 
+        selectedText: this.props.listText
+      }
+    });
+    // * debug *
+    console.log(this.props.listId, this.props.listNotation);
+   }
   render() {
     return (
       <div>
         <div 
-          className={this.props.selectedId===this.props.listId ? "list__items list__itemsSelecte" :"list__items"}
+          className={this.state.selectedId===this.props.listId ? "list__listingSelected " : "list__listing"}
           id={this.props.listId}
           onClick={this.displayDropdown}
         >
@@ -25,12 +42,12 @@ class List extends React.Component {
             {this.props.listText}
             <ul className="list__dropDownItem">
             {
-              issues.filter(issue => issue.categoryid === this.props.listId).map(issue => (
+              dropItems.filter(dropItem => dropItem.categoryid === this.props.listId).map(dropItem => (
                 <Dropdown 
-                  key={issue.id}
-                  dropdownId={issue.id}
-                  dropdownNotation={issue.notation}
-                  dropdownText={issue.text}
+                  key={dropItem.id}
+                  dropdownId={dropItem.id}
+                  dropdownNotation={dropItem.notation}
+                  dropdownText={dropItem.text}
                 />
               ))
             }
@@ -41,11 +58,12 @@ class List extends React.Component {
     );
   }
 }
-const mapDispatchToProps = (dispatch) => ({
-  selectList: (data) => dispatch(selectList(data))
-});
 
-export default connect(undefined, mapDispatchToProps)(List);
+// const mapDispatchToProps = (dispatch) => ({
+//   selectList: (data) => dispatch(selectList(data))
+// });
+
+// export default connect(undefined, mapDispatchToProps)(List);
 
 const issues = [
   { id: 201, notation: "Prayer", text: "Prayer", categoryId: 104},
@@ -66,3 +84,5 @@ const issues = [
   { id: 216, notation: "National Anthem", text: "National Anthem", categoryId: 105},
   { id: 217, notation: "Other Speech", text: "Other", categoryId: 105}
 ];
+
+const dropItems = issues;

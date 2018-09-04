@@ -22,7 +22,7 @@
   padding: 0;
 }
 
-.list__items, .list__queryContainer {
+.list__listing, .list__queryContainer {
   color: $ft-brown;
   display: flex;
   flex-wrap: wrap;
@@ -32,6 +32,10 @@
 }
 
 .list__listingSelected {
+  color: $ft-brown;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2rem;
   font-weight: 700;
   padding-bottom: 0.1rem;
 }
