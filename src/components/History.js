@@ -1,7 +1,7 @@
 import React from 'react';
 
 const History =(props) => (
-	<div>
+	<div className="interview__container">
 		<h4 className="history__path">{props.text}Testing History</h4>
 	</div>
 );

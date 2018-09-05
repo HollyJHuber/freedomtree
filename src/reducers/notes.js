@@ -12,6 +12,5 @@ export default (state = notesReducerDefaultState, action) => {
       return state;
     default: 
       return state;
-      console.log('notes reducer is called', state);
   }
 };
