@@ -1,5 +1,10 @@
 const dataReducerDefaultState = {
-  type: "List", 
+  currentData: 'categories',
+  currentType: "list", 
+  nextData: 'issues',
+  nextType: 'dropdown',
+  selectedId: 0,
+  selectedText: '',
   question: "What's Happening?", 
   instruction: "Select the issue that best describes your situation:",
   list:
