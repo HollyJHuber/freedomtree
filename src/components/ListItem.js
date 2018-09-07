@@ -1,14 +1,42 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const ListItem = ({id, notation, icon, text }) => (
-  <div className= "list__listing">
+import Dropdown from './Dropdown';
+import { selecttListId } from '../actions/filters';
+
+const ListItem = (props) => (
+  <div 
+    className={
+      props.filters.selectedId === props.id ? 
+        "list__listing list__listingSelected": "list__listing"
+    }
+    onClick= {(e) => {
+      props.dispatch(selecttListId(props.id));
+    }}
+  >
     <div className="list__col1">
-      <i className={icon}></i>
+      <i className={props.icon}></i>
     </div>
     <div className="list__col2">
-      {text}
+      {props.text}
+      {
+        (props.filters.selectedId === props.id) && (
+          <ul className="list__dropDownItem">
+          {
+            props.data.dropdown.filter(item => item.categoryId === props.id).map(item => (
+              <Dropdown key={item.id} {...item}/>
+            ))
+          }
+          </ul>
+        )
+      }
     </div>
   </div>
 );
-
-export default ListItem;
+const mapStateToProps = (state) => {
+  return {
+    data: (state.data),
+    filters: (state.filters)
+  }
+}
+export default connect(mapStateToProps)(ListItem);

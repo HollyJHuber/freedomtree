@@ -1,15 +1,10 @@
 import React from 'react';
 
-class Dropdown extends React.Component {
-  render() {
-    return (
-      <li
-        id={this.props.dropdownId}
-      >
-        {this.props.dropdownText}
-      </li>
-    );
-  }
-}
+const Dropdown = ({id, notation, text, parentId}) => (
+  <li>
+    {text}
+  </li>
+
+);
 
 export default Dropdown;
