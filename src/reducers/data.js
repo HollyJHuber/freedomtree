@@ -42,7 +42,8 @@ const dataReducerDefaultState = {
     { id: 216, notation: "National Anthem", text: "National Anthem", categoryId: 105},
     { id: 217, notation: "Other Speech", text: "Other", categoryId: 105}
   ],
-  query: [
+  query: 
+  [
     {id: 301, notation: "don't want to participate", text: "I do not want to participate.", itemId: 215},
     {id: 302, notation: "forced to recite", text: "I am being forced to recite.", itemId: 215},
     {id: 303, notation: "forced to stand", text: "I am being forced to stand.", itemId: 215},
@@ -55,7 +56,7 @@ const dataReducerDefaultState = {
     {id: 310, notation: " forced to listen to prayers", text: "I am being forced to listen silently to prayer.", itemId: 201},
     {id: 311, notation: "required to be present", text: "I am required to be present while others pray.", itemId: 201},
     {id: 312, notation: "other prayer", text: "Other", itemId: 201}
-    ],
+  ],
 };
 
 export default (state = dataReducerDefaultState, action) => {
