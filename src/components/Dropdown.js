@@ -1,10 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Dropdown = ({id, notation, text, parentId}) => (
-  <li>
-    {text}
+import { selectDropdownId } from '../actions/filters';
+
+const Dropdown = (props) => (
+  <li
+    onClick = {(e) => {
+      console.log(props.id);
+      props.dispatch(selectDropdownId(props.id));
+    }}
+  >
+    {props.text}
   </li>
-
 );
-
-export default Dropdown;
+const mapStateToProps = (state) => {
+  return {
+    data: state.data
+  }
+}
+export default connect(mapStateToProps)(Dropdown);

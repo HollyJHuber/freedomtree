@@ -3,7 +3,7 @@ const dataReducerDefaultState = {
   currentType: "list", 
   nextData: 'issues',
   nextType: 'dropdown',
-  selectedId: 0,
+  selectedId: 215,
   selectedText: '',
   question: "What's Happening?", 
   instruction: "Select the issue that best describes your situation:",

@@ -1,5 +1,5 @@
 const filtersReducerDefaultState = {
-  selectedId: 0,
+  selectedId: 201,
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -8,6 +8,11 @@ export default (state = filtersReducerDefaultState, action) => {
       console.log('from the filters reducer:', action.filters);
       return state;
     case 'SELECT_LIST_ID':
+      return {
+        ...state,
+        selectedId: action.selectedId
+      };
+    case 'SELECT_DROPDOWN_ID':
       return {
         ...state,
         selectedId: action.selectedId

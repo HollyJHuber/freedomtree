@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Query = ({id, notation, text, parentId }) => (
-  <div className= "issue__queryContainer">
-    <div className="issue__queryListing">
+  <div className= "list__queryContainer">
+    <div className="list__queryListing">
       {text}
     </div>
   </div>
