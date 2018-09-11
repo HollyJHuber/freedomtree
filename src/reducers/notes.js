@@ -22,13 +22,13 @@ export default (state = notesReducerDefaultState, action) => {
         listId: action.selectedId,
         listNotation: action.listNotation,
       };
-    case 'SELECT_DROPDOWN':
+    case 'SELECT_DROPDOWN_ID':
       return {
         dropdownId: action.dropdownId,
         dropdownNotation: action.dropdownNotation,
-        kind: 'dropdown',
+        kind: 'query',
       };
-      case 'SELECT_QUERY':
+      case 'SELECT_QUERY_ID':
       return {
         selectedId: action.selectedId,
         queryId: action.selectedId,

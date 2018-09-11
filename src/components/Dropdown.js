@@ -5,8 +5,7 @@ import { selectDropdownId } from '../actions/notes';
 
 const Dropdown = (props) => (
   <li
-    onClick = {(e) => {
-      console.log(props.id, props.notation)
+    onClick = {() => {
       props.dispatch(selectDropdownId(props.id, props.notation));
     }}
   >
@@ -15,8 +14,8 @@ const Dropdown = (props) => (
 );
 const mapStateToProps = (state) => {
   return {
-    data: (state.data),
-    notes: (state.notes)
+    data: state.data,
+    notes: state.notes
   }
 }
 export default connect(mapStateToProps)(Dropdown);
