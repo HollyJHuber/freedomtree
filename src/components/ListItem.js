@@ -2,16 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Dropdown from './Dropdown';
-import { selecttListId } from '../actions/filters';
+import { selectListId } from '../actions/notes';
 
 const ListItem = (props) => (
   <div 
     className={
-      props.filters.selectedId === props.id ? 
+      props.notes.selectedId === props.id ? 
         "list__listing list__listingSelected": "list__listing"
     }
     onClick= {(e) => {
-      props.dispatch(selecttListId(props.id));
+      console.log(props.id, props.notation);
+      props.dispatch(selectListId(props.id, props.notation));
     }}
   >
     <div className="list__col1">
@@ -20,7 +21,7 @@ const ListItem = (props) => (
     <div className="list__col2">
       {props.text}
       {
-        (props.filters.selectedId === props.id) && (
+        (props.notes.selectedId === props.id) && (
           <ul className="list__dropDownItem">
           {
             props.data.dropdown.filter(item => item.categoryId === props.id).map(item => (
@@ -36,7 +37,7 @@ const ListItem = (props) => (
 const mapStateToProps = (state) => {
   return {
     data: (state.data),
-    filters: (state.filters)
+    notes: (state.notes)
   }
 }
 export default connect(mapStateToProps)(ListItem);
