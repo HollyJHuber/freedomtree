@@ -7,7 +7,7 @@ import { selectListId } from '../actions/notes';
   const ListItem = (props) => (
   <div 
     className={
-      props.notes.selectedId === props.id ? 
+      props.notes.listId === props.id ? 
         "list__listing list__listingSelected": "list__listing"
     }
     onClick= {() => {
@@ -20,10 +20,10 @@ import { selectListId } from '../actions/notes';
     <div className="list__col2">
       {props.text}
       {
-        (props.notes.selectedId === props.id) && (
+        (props.notes.listId === props.id) && (
           <ul className="list__dropDownItem">
           {
-            props.data.dropdown.filter(item => item.categoryId === props.id).map(item => (
+            props.data.dropdown.filter(item => item.parentId === props.id).map(item => (
               <Dropdown key={item.id} {...item}/>
             ))
           }

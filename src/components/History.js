@@ -1,9 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const History =(props) => (
+const History = (props) => (
+
 	<div className="interview__container">
-		<h4 className="history__path">{props.text}Testing History</h4>
+	{props.notes.data !== 'categories' && 
+		<h4 className="history__path">{props.notes.history}</h4>
+	}
 	</div>
+
 );
 
-export default History;
+const mapStateToProps = (state) => {
+	return {
+		notes: state.notes
+	}
+};
+
+export default connect(mapStateToProps)(History);

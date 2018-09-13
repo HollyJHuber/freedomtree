@@ -1,13 +1,15 @@
 const notesReducerDefaultState = {
-  selectedId: 0,
   data: 'categories',
-  kind: "list",
+  kind: 'list',
   listId: 0,
   listNotation: '',
   dropdownId: 0,
   dropdownNotation: '',
   queryId: 0,
   queryNotation: '',
+  question: "What's Happening?",
+  instruction: "Select the issue that best describes your situation:",
+  history: '',
 };
 
 export default (state = notesReducerDefaultState, action) => {
@@ -18,22 +20,28 @@ export default (state = notesReducerDefaultState, action) => {
     case 'SELECT_LIST_ID':
       return {
         ...state,
-        selectedId: action.selectedId,
-        listId: action.selectedId,
+        listId: action.listId,
         listNotation: action.listNotation,
+        history: action.listNotation,
       };
     case 'SELECT_DROPDOWN_ID':
       return {
+        data: '',
+        kind: 'query',
         dropdownId: action.dropdownId,
         dropdownNotation: action.dropdownNotation,
-        kind: 'query',
+        instruction: "Select the statement that best describes your situation:",
+        question: action.dropdownNotation,
       };
       case 'SELECT_QUERY_ID':
       return {
-        selectedId: action.selectedId,
+        data: 'where',
+        kind: 'list',
         queryId: action.selectedId,
         queryNotation: action.notation,
-        kind: 'query',
+        question: "Where's It Happening?", 
+        instruction: "Select the appropriate location:",
+        history: history + " > "
       }
     default: 
       return state;
