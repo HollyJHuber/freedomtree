@@ -1,15 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import History from './History';
 import List from './List';
+import Query from './Query';
 
-const InterviewPage = () => (
-  <div>
-    <History />
-    <List />
+const InterviewPage = (props) => (
+  <div className="interview__container">
+    {props.notes.data !== 'what' && <History {...props.notes}/> }
+    <h1 className="interview__question">{props.notes.question}</h1>
+    <h4 className="interview__instruction">{props.notes.instruction}</h4>
+    {props.notes.kind === "list" ?
+      props.data.list.map((item) => {
+        return <List key={item.id} {...item}/>
+      }) :
+      props.data.query.filter(item => item.parentId === props.notes.dropdownId).map(item => (
+        <Query key={item.id} {...item}/>
+      ))
+    }
   </div>
-);
+  );
 
-export default InterviewPage;
+  const mapStateToProps = (state) => {
+    return {
+      data: state.data,
+      notes: state.notes
+    }
+  };
 
-
+export default connect(mapStateToProps)(InterviewPage);

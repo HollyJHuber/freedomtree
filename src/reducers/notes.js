@@ -1,5 +1,5 @@
 const notesReducerDefaultState = {
-  data: 'categories',
+  data: 'what',
   kind: 'list',
   listId: 0,
   listNotation: '',
@@ -37,11 +37,11 @@ export default (state = notesReducerDefaultState, action) => {
       return {
         data: 'where',
         kind: 'list',
-        queryId: action.selectedId,
-        queryNotation: action.notation,
+        queryId: action.queryId,
+        queryNotation: action.queryNotation,
         question: "Where's It Happening?", 
         instruction: "Select the appropriate location:",
-        history: history + " > "
+        history: action.queryNotation,
       }
     default: 
       return state;
