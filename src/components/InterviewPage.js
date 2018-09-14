@@ -11,21 +11,21 @@ const InterviewPage = (props) => (
     <h1 className="interview__question">{props.notes.question}</h1>
     <h4 className="interview__instruction">{props.notes.instruction}</h4>
     {props.notes.kind === "list" ?
-      props.data.list.map((item) => {
-        return <List key={item.id} {...item}/>
-      }) :
+      props.data.list.map((item) => ( 
+        <List key={item.id} {...item}/> 
+      )) :
       props.data.query.filter(item => item.parentId === props.notes.dropdownId).map(item => (
         <Query key={item.id} {...item}/>
       ))
     }
   </div>
-  );
+);
 
-  const mapStateToProps = (state) => {
-    return {
-      data: state.data,
-      notes: state.notes
-    }
-  };
+const mapStateToProps = (state) => {
+  return {
+    data: state.data,
+    notes: state.notes
+  }
+};
 
 export default connect(mapStateToProps)(InterviewPage);

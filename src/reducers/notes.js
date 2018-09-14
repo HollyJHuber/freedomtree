@@ -10,6 +10,7 @@ const notesReducerDefaultState = {
   question: "What's Happening?",
   instruction: "Select the issue that best describes your situation:",
   history: '',
+  answers: '',
 };
 
 export default (state = notesReducerDefaultState, action) => {
