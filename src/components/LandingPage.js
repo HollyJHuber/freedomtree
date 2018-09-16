@@ -1,21 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startInterview } from '../actions/interviews';
 
 import Hero from './Hero';
 
-const LandingPage = ( { startInterview }) => (
+const LandingPage = (props) => (
   <div>
     <Hero />
       <div>
-        <button onClick = {startInterview} >Start Here</button>
+        <button 
+          onClick= {() => {
+            props.history.push('/interview');
+          }}
+        >
+          Start Here
+        </button>
         <button>Watch Video</button>
       </div>
   </div>
 );
 
-const mapDispatchToProps = (dispatch) => ({
-  startInterview: () => dispatch(startInterview())
-});
-
-export default connect (undefined, mapDispatchToProps)(LandingPage);
+export default connect ()(LandingPage);
