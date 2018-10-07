@@ -7,11 +7,6 @@ tempSite
 node_modules/
 src/playground
 data
-public/bundle.js
-public/bundle.js.map
-public/styles.css
-public/styles.css.map
-
 
 public/dist/
 .env.test
