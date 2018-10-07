@@ -6,4 +6,7 @@ testing
 tempSite
 node_modules/
 src/playground
-/data
+data
+public/dist/
+.env.test
+.env.development
