@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+
 import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore';
 // import { newIssue } from './actions/interviews';
 // import getStatus from './selectors/interviews';
-import { testNotes } from './actions/notes';
+//import { testNotes } from './actions/notes';
+import './firebase/firebase';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
