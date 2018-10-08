@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-
 import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore';
 // import { newIssue } from './actions/interviews';
 // import getStatus from './selectors/interviews';
 //import { testNotes } from './actions/notes';
+import { startSetData } from './actions/data';
 import './firebase/firebase';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -34,4 +34,9 @@ const store = configureStore();
     </Provider>
   );
 
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<p>Loading ...</p>, document.getElementById('app'));
+
+store.dispatch(startSetData()).then(() => {
+  ReactDOM.render(jsx, document.getElementById('app'));
+});
+
