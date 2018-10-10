@@ -18,7 +18,7 @@ import { selectListId } from '../actions/notes';
       <i className={props.icon}></i>
     </div>
     <div className="list__col2">
-      {props.text}
+      {props.content}
       {
         (props.notes.listId === props.id) && (
           <ul className="list__dropDownItem">

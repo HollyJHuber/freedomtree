@@ -6,24 +6,42 @@ export const selectDropdownId = (currentType) => ({
   currentType
 });
 
-// SET_DATA sets the array values
-export const setData = (list) => ({
+// SET_DATA_LIST sets the list value
+export const setData = (list, dropdown, query) => ({
   type: 'SET_DATA',
-  list
+  list,
+  dropdown,
+  query
 });
 
 
+// change database references from hardcoded to variables
 // asynchonous action that retrieves the data from Firebase
 export const startSetData = () => {
   return (dispatch, getState) => {
-    return database.ref('categories').once('value').then((snapshot) => {
-      const list = [];
+    return database.ref('whats').once('value').then((snapshot) => {
+      const items = [];
+      let list = [];
+      let dropdown = [];
+      let query = [];
       snapshot.forEach((childSnapshot) => {
-        list.push({
+        items.push({
+          id:childSnapshot.key,
           ...childSnapshot.val()
         });
       });
-      dispatch(setData(list));
+      items.map((item) => {
+        let type = item.id;
+        delete item.id;
+        if (type === "list"){
+          list = Object.keys(item).map(key => item[key]);
+        } else if (type === "dropdown"){
+          dropdown =  Object.keys(item).map(key => item[key]);
+        } else {
+          query = Object.keys(item).map(key => item[key]);
+        }
+      });
+      dispatch(setData(list, dropdown, query));
     });
   };
 };

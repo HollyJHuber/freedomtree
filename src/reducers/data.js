@@ -18,7 +18,9 @@ export default (state = dataReducerDefaultState, action) => {
     case 'SET_DATA':
       return {
         ...state,
-        list: action.list
+        list: action.list,
+        dropdown: action.dropdown,
+        query: action.query
       };
     case 'SELECT_DROPDOWN':
       return {
