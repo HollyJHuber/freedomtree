@@ -9,7 +9,7 @@ const Query = ({ dispatch, id, notation, content, parentId }) => (
       className="list__queryListing"
       onClick= {() => { dispatch(selectQueryId(id, notation)) }}
     >
-      {text}
+      {content}
     </div>
   </div>
 );

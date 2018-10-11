@@ -9,7 +9,7 @@ const Dropdown = (props) => (
       props.dispatch(selectDropdownId(props.id, props.notation));
     }}
   >
-    {props.text}
+    {props.content}
   </li>
 );
 const mapStateToProps = (state) => {
