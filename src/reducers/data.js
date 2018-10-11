@@ -1,7 +1,7 @@
 const dataReducerDefaultState = {
-  currentData: 'categories',
+  currentData: 'whats',
   currentType: "list", 
-  nextData: 'issues',
+  nextData: 'wheres',
   nextType: 'dropdown',
   selectedId: 215,
   selectedText: '',
@@ -22,12 +22,12 @@ export default (state = dataReducerDefaultState, action) => {
         dropdown: action.dropdown,
         query: action.query
       };
-    case 'SELECT_DROPDOWN':
-      return {
-        ...state,
-        currentType: "query",
-        question: "childNotation",
-      }
+    // case 'SELECT_DROPDOWN':
+    //   return {
+    //     ...state,
+    //     currentType: "query",
+    //     question: "childNotation",
+    //   }
     default: 
       return state;
   }
