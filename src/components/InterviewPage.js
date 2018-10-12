@@ -7,14 +7,14 @@ import Query from './Query';
 
 const InterviewPage = (props) => (
   <div className="interview__container">
-    {props.notes.data !== 'what' && <History {...props.notes}/> }
+    {props.data.data !== 'what' && <History {...props.data}/> }
     <h1 className="interview__question">{props.data.question}</h1>
     <h4 className="interview__instruction">{props.data.instruction}</h4>
-    {props.notes.kind === "list" ?
+    {props.data.kind === "list" ?
       props.data.list.map((item) => ( 
         <List key={item.id} {...item}/> 
       )) :
-      props.data.query.filter(item => item.parentId === props.notes.dropdownId).map(item => (
+      props.data.query.filter(item => item.parentId === props.data.dropdownId).map(item => (
         <Query key={item.id} {...item}/>
       ))
     }
@@ -23,8 +23,7 @@ const InterviewPage = (props) => (
 
 const mapStateToProps = (state) => {
   return {
-    data: state.data,
-    notes: state.notes
+    data: state.data
   }
 };
 

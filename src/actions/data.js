@@ -1,12 +1,5 @@
 import database from "../firebase/firebase";
 
-// display Query
-// export const selectDropdownId = (currentType) => ({
-//   type: 'SELECT_DROPDOWN_ID',
-//   currentType
-// });
-
-// SET_DATA_LIST sets the list value
 export const setData = (list, dropdown, query, question, instruction) => ({
   type: 'SET_DATA',
   list,
@@ -16,7 +9,7 @@ export const setData = (list, dropdown, query, question, instruction) => ({
   instruction
 });
 
-// asynchonous action that retrieves the data from Firebase
+// asynchonous action that retrieves & parases the data from Firebase
 export const startSetData = () => {
   return (dispatch, getState) => {
     const currentData = getState().data.currentData;
@@ -36,7 +29,7 @@ export const startSetData = () => {
       //console.log(items, items.count);
       items.map((item) => {
         let type = item.id;
-       // console.log(type);
+        // console.log(type);
         delete item.id; // removes last item 
         let newItem = Object.keys(item).map(key => item[key]);
         // switch doesn't work here!
@@ -56,11 +49,23 @@ export const startSetData = () => {
   };
 };
 
+// List to display Dropdown
+export const selectListId = (listId, listNotation) => ({
+  type: 'SELECT_LIST_ID',
+  listId,
+  listNotation,
+});
 
-// updates currentData/nextData then SELECT_QUERY_ID then
-// retrieves updated data from firebase
-export const startSelectQuery = (queryId, queryNotation) => {
-  return (dispatch, getState) => {
-    const nextData = getState().data.nextData;
-  }
-};
+// Dropdown to display Query
+export const selectDropdownId = (dropdownId, dropdownNotation) => ({
+  type: 'SELECT_DROPDOWN_ID',
+  dropdownId,
+  dropdownNotation
+});
+
+// Query to display next
+export const selectQueryId = (queryId, queryNotation) => ({
+  type: 'SELECT_QUERY_ID',
+  queryId,
+  queryNotation
+});

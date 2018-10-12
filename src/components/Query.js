@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { selectQueryId } from '../actions/notes';
+import { selectQueryId } from '../actions/data';
 
 const Query = ({ dispatch, id, notation, content, parentId }) => (
   <div className= "list__queryContainer">
