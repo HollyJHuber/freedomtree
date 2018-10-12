@@ -7,17 +7,12 @@ const notesReducerDefaultState = {
   dropdownNotation: '',
   queryId: 0,
   queryNotation: '',
-  question: "What's Happening?",
-  instruction: "Select the issue that best describes your situation:",
   history: '',
   answers: '',
 };
 
 export default (state = notesReducerDefaultState, action) => {
   switch (action.type) {
-    case 'FILTER_BY_ID':
-      console.log('from the filters reducer:', action.notes);
-      return state;
     case 'SELECT_LIST_ID':
       return {
         ...state,
@@ -31,8 +26,6 @@ export default (state = notesReducerDefaultState, action) => {
         kind: 'query',
         dropdownId: action.dropdownId,
         dropdownNotation: action.dropdownNotation,
-        instruction: "Select the statement that best describes your situation:",
-        question: action.dropdownNotation,
       };
       case 'SELECT_QUERY_ID':
       return {
@@ -40,8 +33,6 @@ export default (state = notesReducerDefaultState, action) => {
         kind: 'list',
         queryId: action.queryId,
         queryNotation: action.queryNotation,
-        question: "Where's It Happening?", 
-        instruction: "Select the appropriate location:",
         history: action.queryNotation,
       }
     default: 

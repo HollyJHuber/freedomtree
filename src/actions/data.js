@@ -7,11 +7,13 @@ import database from "../firebase/firebase";
 // });
 
 // SET_DATA_LIST sets the list value
-export const setData = (list, dropdown, query) => ({
+export const setData = (list, dropdown, query, question, instruction) => ({
   type: 'SET_DATA',
   list,
   dropdown,
-  query
+  query,
+  question,
+  instruction
 });
 
 // asynchonous action that retrieves the data from Firebase
@@ -23,24 +25,33 @@ export const startSetData = () => {
       let list = [];
       let dropdown = [];
       let query = [];
+      let question ='';
+      let instruction = '';
       snapshot.forEach((childSnapshot) => {
         items.push({
           id:childSnapshot.key,
           ...childSnapshot.val()
         });
       });
+      //console.log(items, items.count);
       items.map((item) => {
         let type = item.id;
-        delete item.id;
+       // console.log(type);
+        delete item.id; // removes last item 
+        let newItem = Object.keys(item).map(key => item[key]);
+        // switch doesn't work here!
         if (type === "list"){
-          list = Object.keys(item).map(key => item[key]);
+          list = newItem;
         } else if (type === "dropdown"){
-          dropdown =  Object.keys(item).map(key => item[key]);
+          dropdown = newItem;
+        } else if (type === "query"){
+          query = newItem;
         } else {
-          query = Object.keys(item).map(key => item[key]);
+          question = item.question;
+          instruction = item.instruction;
         }
       });
-      dispatch(setData(list, dropdown, query));
+      dispatch(setData(list, dropdown, query, question, instruction));
     });
   };
 };
