@@ -1,5 +1,6 @@
 const dataReducerDefaultState = {
-  data: 'what',
+  database: ["whats", "wheres", "whos"],
+  counter: 0,
   kind: 'list',
   listId: 0,
   listNotation: '',
@@ -8,13 +9,7 @@ const dataReducerDefaultState = {
   queryId: 0,
   queryNotation: '',
   history: '',
-  answers: '',
-  currentData: 'wheres',
-  currentType: "list", 
-  nextData: 'wheres',
-  nextType: 'dropdown',
-  selectedId: 215,
-  selectedText: '',
+  currentData: 'whats',
   question: '', 
   instruction: '',
   list:[],
@@ -38,8 +33,7 @@ export default (state = dataReducerDefaultState, action) => {
       return {
         ...state,
         listId: action.listId,
-        listNotation: action.listNotation,
-        history: action.listNotation,
+        listNotation: action.listNotation
       };
     case 'SELECT_DROPDOWN_ID':
       return {
@@ -48,16 +42,26 @@ export default (state = dataReducerDefaultState, action) => {
         kind: 'query',
         dropdownId: action.dropdownId,
         dropdownNotation: action.dropdownNotation,
+        history: action.history,
+        question: action.dropdownNotation,
+        instruction: "Select the statement that best describes your situation:"
       };
       case 'SELECT_QUERY_ID':
       return {
         ...state,
         listId: 0,
-        data: 'where',
+        dropdownId: 0,
         kind: 'list',
         queryId: action.queryId,
         queryNotation: action.queryNotation,
-        history: action.queryNotation,
+        history: action.history,
+        counter: action.counter,
+        currentData: action.currentData,
+        list: action.list,
+        dropdown: action.dropdown,
+        query: action.query,
+        question: action.question,
+        instruction: action.instruction
       };
     default: 
       return state;

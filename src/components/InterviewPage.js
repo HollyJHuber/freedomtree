@@ -7,7 +7,7 @@ import Query from './Query';
 
 const InterviewPage = (props) => (
   <div className="interview__container">
-    {props.data.data !== 'what' && <History {...props.data}/> }
+    {(props.data.currentData !== 'whats' || props.data.kind !== 'list') && <History {...props.data}/> }
     <h1 className="interview__question">{props.data.question}</h1>
     <h4 className="interview__instruction">{props.data.instruction}</h4>
     {props.data.kind === "list" ?

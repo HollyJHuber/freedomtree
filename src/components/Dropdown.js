@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { selectDropdownId } from '../actions/data';
+import { startSelectDropdown } from '../actions/data';
 
 const Dropdown = (props) => (
   <li
     onClick = {() => {
-      props.dispatch(selectDropdownId(props.id, props.notation));
+      props.dispatch(startSelectDropdown(props.id, props.notation));
     }}
   >
     {props.content}

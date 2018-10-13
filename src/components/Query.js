@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { selectQueryId } from '../actions/data';
+import { startSelectQuery } from '../actions/data';
 
-const Query = ({ dispatch, id, notation, content, parentId }) => (
+const Query = ({ dispatch, id, notation, content }) => (
   <div className= "list__queryContainer">
     <div 
       className="list__queryListing"
-      onClick= {() => { dispatch(selectQueryId(id, notation)) }}
+      onClick= {() => { dispatch(startSelectQuery(id, notation)) }}
     >
       {content}
     </div>
