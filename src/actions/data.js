@@ -62,19 +62,24 @@ export const selectListId = (listId, listNotation) => ({
 // action to set data for query display
 export const startSelectDropdown = (dropdownId, dropdownNotation) => {
   return (dispatch, getState) => {
-    let history = getState().data.history;
     const listNotation = getState().data.listNotation;
-    history = updateHistory(history, listNotation)();
-    dispatch(selectDropdownId(dropdownId, dropdownNotation, history));
+    const history = updateHistory(getState().data.history, listNotation)();
+    const currentData = getState().data.currentData;
+    let instruction = getState().data.instruction;
+    if (currentData === "whats"){
+      instruction = "Select the statement that best describes your situation:";
+    }
+    dispatch(selectDropdownId(dropdownId, dropdownNotation, history, instruction));
   };
 };
 
 // Dropdown to display Query
-export const selectDropdownId = (dropdownId, dropdownNotation, history) => ({
+export const selectDropdownId = (dropdownId, dropdownNotation, history, instruction) => ({
   type: 'SELECT_DROPDOWN_ID',
   dropdownId,
   dropdownNotation,
-  history
+  history,
+  instruction
 });
 
 // action to set data for next list display w/ counter callback and history
@@ -83,8 +88,9 @@ export const startSelectQuery = (queryId, queryNotation) => {
     const counter = increment(getState().data.counter)();
     const currentData = getState().data.database[counter];
     const dropdownNotation = getState().data.dropdownNotation;
-    const history = updateHistory(getState().data.history, dropdownNotation)();
-    // I need to use a setData callback here to load the data from the new database
+    const history = updateHistory(getState().data.history, dropdownNotation, queryNotation)();
+
+    // I need to replace this duplicate code with a setData callback
     let list = [];
     let dropdown = [];
     let query = [];
@@ -136,6 +142,34 @@ export const selectQueryId = (queryId, queryNotation, history, counter, currentD
   instruction
 });
 
+
+//callback function for getting currentData?? or add it to counter?
+// you can only return one value from a function but that value can be an array 
+// might be nice to update counter and currentData separately
+// counter callback function
+const increment = (counter) => {
+  return function incrementCounter(){
+    counter++;
+    return counter;
+  };
+};
+
+// history callback function
+const updateHistory = (history, notation, queryNotation) => {
+  return function update(){
+    if (!!history.trim()){
+      history += ` > ${notation}`;
+      if (queryNotation){
+        history += ` > ${queryNotation}`;
+      }
+    } else {
+      history = `${notation}`;  
+    }
+  return history;
+  };
+};
+
+
 // get data callback function 
 const getData = (currentData) => {
   let list = [];
@@ -169,24 +203,4 @@ const getData = (currentData) => {
     console.log(list, dropdown, query, question, instruction);
     return list;
   });
-};
-
-// counter callback function
-const increment = (counter) => {
-  return function incrementCounter(){
-    counter++;
-    return counter;
-  };
-};
-
-// history callback function
-const updateHistory = (history, notation) => {
-  return function update(){
-    if (!history.trim()){
-      history = `Issues > ${notation}`;  
-    } else {
-      history += ` > ${notation}`;
-    }
-  return history;
-  };
 };

@@ -27,7 +27,7 @@ export default (state = dataReducerDefaultState, action) => {
         dropdown: action.dropdown,
         query: action.query,
         question: action.question,
-        instruction: action.instruction
+        instruction: action.instruction,
       };
       case 'SELECT_LIST_ID':
       return {
@@ -44,7 +44,7 @@ export default (state = dataReducerDefaultState, action) => {
         dropdownNotation: action.dropdownNotation,
         history: action.history,
         question: action.dropdownNotation,
-        instruction: "Select the statement that best describes your situation:"
+        instruction: action.instruction
       };
       case 'SELECT_QUERY_ID':
       return {
