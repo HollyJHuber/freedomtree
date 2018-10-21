@@ -7,7 +7,7 @@ const Query = ({ dispatch, id, notation, content }) => (
   <div className= "list__queryContainer">
     <div 
       className="list__queryListing"
-      onClick= {() => { dispatch(startSelectQuery(id, notation)) }}
+      onClick= {() => { dispatch(startSelectQuery(id, notation, content)) }}
     >
       {content}
     </div>

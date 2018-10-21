@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Dropdown from './Dropdown';
-import { selectListId } from '../actions/data';
+import { startSelectList } from '../actions/data';
 
   const List = (props) => (
   <div 
@@ -11,7 +11,7 @@ import { selectListId } from '../actions/data';
         "list__listing list__listingSelected": "list__listing"
     }
     onClick= {() => {
-      props.dispatch(selectListId(props.id, props.notation));
+      props.dispatch(startSelectList(props.id, props.notation, props.content));
       }}
   >
     <div className="list__col1">

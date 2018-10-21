@@ -59,9 +59,17 @@ export const selectListId = (listId, listNotation) => ({
   listNotation
 });
 
+export const startSelectList = (listId, listNotation, listContent) => {
+  return (dispatch) => {
+    !listNotation && (listNotation = listContent);
+    dispatch(selectListId(listId, listNotation));
+  }
+};
+
 // action to set data for query display
-export const startSelectDropdown = (dropdownId, dropdownNotation) => {
+export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownContent) => {
   return (dispatch, getState) => {
+    !dropdownNotation && (dropdownNotation = dropdownContent);
     const listNotation = getState().data.listNotation;
     const history = updateHistory(getState().data.history, listNotation)();
     const currentData = getState().data.currentData;
@@ -83,8 +91,9 @@ export const selectDropdownId = (dropdownId, dropdownNotation, history, instruct
 });
 
 // action to set data for next list display w/ counter callback and history
-export const startSelectQuery = (queryId, queryNotation) => {
+export const startSelectQuery = (queryId, queryNotation, queryContent) => {
   return (dispatch, getState) => {
+    !queryNotation && (queryNotation = queryContent);
     const counter = increment(getState().data.counter)();
     const currentData = getState().data.database[counter];
     const dropdownNotation = getState().data.dropdownNotation;
@@ -158,7 +167,9 @@ const increment = (counter) => {
 const updateHistory = (history, notation, queryNotation) => {
   return function update(){
     if (!!history.trim()){
-      history += ` > ${notation}`;
+      history += ` > 
+      
+      ${notation}`;
       if (queryNotation){
         history += ` > ${queryNotation}`;
       }
