@@ -11,7 +11,7 @@ import { startSelectList } from '../actions/data';
         "list__listing list__listingSelected": "list__listing"
     }
     onClick= {() => {
-      props.dispatch(startSelectList(props.id, props.notation, props.content));
+      props.currentData=="whos" ? console.log('go to determination') : props.dispatch(startSelectList(props.id, props.notation, props.content));
       }}
   >
     <div className="list__col1">

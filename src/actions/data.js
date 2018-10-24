@@ -66,7 +66,7 @@ export const startSelectList = (listId, listNotation, listContent) => {
   }
 };
 
-// action to set data for query display
+// action to set data for query display <-- I don't think we're using this
 export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownContent) => {
   return (dispatch, getState) => {
     !dropdownNotation && (dropdownNotation = dropdownContent);
@@ -98,6 +98,7 @@ export const startSelectQuery = (queryId, queryNotation, queryContent) => {
     const currentData = getState().data.database[counter];
     const dropdownNotation = getState().data.dropdownNotation;
     const history = updateHistory(getState().data.history, dropdownNotation, queryNotation)();
+    const listId = getState().data.listId;
 
     // I need to replace this duplicate code with a setData callback
     let list = [];
@@ -131,6 +132,10 @@ export const startSelectQuery = (queryId, queryNotation, queryContent) => {
           instruction = item.instruction;
         }
       });
+      if (currentData === 'whos'){
+        const newList = list.filter(item => item.parentId === listId);
+        list = newList;
+      }
       dispatch(selectQueryId(queryId, queryNotation, history, counter, currentData, list, dropdown, query, question, instruction));
     });
   };

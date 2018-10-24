@@ -12,7 +12,7 @@ const InterviewPage = (props) => (
     <h4 className="interview__instruction">{props.data.instruction}</h4>
     {props.data.kind === "list" ?
       props.data.list.map((item) => ( 
-        <List key={item.id} {...item}/> 
+        <List key={item.id} {...item} currentData={props.data.currentData}/> 
       )) :
       props.data.query.filter(item => item.parentId === props.data.dropdownId).map(item => (
         <Query key={item.id} {...item}/>
