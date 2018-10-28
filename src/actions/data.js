@@ -53,45 +53,48 @@ export const setData = (list, dropdown, query, question, instruction) => ({
 
 
 // List to display Dropdown
-export const selectListId = (listId, listNotation) => ({
+export const selectListId = (listId, listNotation, flag) => ({
   type: 'SELECT_LIST_ID',
   listId,
-  listNotation
+  listNotation,
+  flag
 });
 
-export const startSelectList = (listId, listNotation, listContent) => {
-  return (dispatch) => {
+export const startSelectList = (listId, listNotation, listContent, listFlag) => {
+  return (dispatch, getState) => {
     !listNotation && (listNotation = listContent);
-    dispatch(selectListId(listId, listNotation));
-  }
+    listFlag && (listFlag = flagged(getState().data.flag, listFlag)());
+    dispatch(selectListId(listId, listNotation, listFlag));
+  };
 };
 
-// action to set data for query display <-- I don't think we're using this
-export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownContent) => {
+// action to set data for query display 
+export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownContent, dropdownFlag) => {
   return (dispatch, getState) => {
     !dropdownNotation && (dropdownNotation = dropdownContent);
+    dropdownFlag && (dropdownFlag = flagged(getState().data.flag, dropdownFlag)());
     const listNotation = getState().data.listNotation;
     const history = updateHistory(getState().data.history, listNotation)();
-    const currentData = getState().data.currentData;
-    let instruction = getState().data.instruction;
-    if (currentData === "whats"){
-      instruction = "Select the statement that best describes your situation:";
+    let instruction = getState().data.instruction; // seems like there should be a better way
+    if (getState().data.currentData === "whats") {
+      let instruction = "Select the statement that best describes your situation:";
     }
-    dispatch(selectDropdownId(dropdownId, dropdownNotation, history, instruction));
+    dispatch(selectDropdownId(dropdownId, dropdownNotation, history, dropdownFlag, instruction));
   };
 };
 
 // Dropdown to display Query
-export const selectDropdownId = (dropdownId, dropdownNotation, history, instruction) => ({
+export const selectDropdownId = (dropdownId, dropdownNotation, history, flag, instruction) => ({
   type: 'SELECT_DROPDOWN_ID',
   dropdownId,
   dropdownNotation,
   history,
-  instruction
+  instruction,
+  flag
 });
 
 // action to set data for next list display w/ counter callback and history
-export const startSelectQuery = (queryId, queryNotation, queryContent) => {
+export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag) => {
   return (dispatch, getState) => {
     !queryNotation && (queryNotation = queryContent);
     const counter = increment(getState().data.counter)();
@@ -99,6 +102,7 @@ export const startSelectQuery = (queryId, queryNotation, queryContent) => {
     const dropdownNotation = getState().data.dropdownNotation;
     const history = updateHistory(getState().data.history, dropdownNotation, queryNotation)();
     const listId = getState().data.listId;
+    queryFlag && (queryFlag = flagged(getState().data.flag, queryFlag)());
 
     // I need to replace this duplicate code with a setData callback
     let list = [];
@@ -136,13 +140,13 @@ export const startSelectQuery = (queryId, queryNotation, queryContent) => {
         const newList = list.filter(item => item.parentId === listId);
         list = newList;
       }
-      dispatch(selectQueryId(queryId, queryNotation, history, counter, currentData, list, dropdown, query, question, instruction));
+      dispatch(selectQueryId(queryId, queryNotation, history, counter, currentData, list, dropdown, query, question, instruction, queryFlag));
     });
   };
 };
 
 // Query to display next
-export const selectQueryId = (queryId, queryNotation, history, counter, currentData, list, dropdown, query, question, instruction) => ({
+export const selectQueryId = (queryId, queryNotation, history, counter, currentData, list, dropdown, query, question, instruction, flag) => ({
   type: 'SELECT_QUERY_ID',
   queryId,
   queryNotation,
@@ -153,7 +157,8 @@ export const selectQueryId = (queryId, queryNotation, history, counter, currentD
   dropdown, 
   query,
   question,
-  instruction
+  instruction,
+  flag
 });
 
 
@@ -185,8 +190,17 @@ const updateHistory = (history, notation, queryNotation) => {
   };
 };
 
+// update flag callback
+const flagged = (flag, newFlag) => {
+  return function updateFlag(){
+    flag = flag + newFlag;
+    console.log('flag: ', flag);
+    return flag;
+  };
+};
 
-// get data callback function 
+
+// get data callback function  <-- unable to implement this yet
 const getData = (currentData) => {
   let list = [];
   let dropdown = [];

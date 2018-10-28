@@ -1,20 +1,21 @@
 const dataReducerDefaultState = {
-  database: ["whats", "wheres", "whos"],
   counter: 0,
-  kind: 'list',
-  listId: 0,
-  listNotation: '',
+  currentData: 'whats',
+  database: ["whats", "wheres", "whos"],
+  dropdown:[],
   dropdownId: 0,
   dropdownNotation: '',
+  flag: 0,
+  history: '',
+  instruction: '',
+  kind: 'list',
+  list:[],
+  listId: 0,
+  listNotation: '',
+  query:[],
   queryId: 0,
   queryNotation: '',
-  history: '',
-  currentData: 'whats',
-  question: '', 
-  instruction: '',
-  list:[],
-  dropdown:[],
-  query:[]
+  question: '',
 };
 
 
@@ -33,7 +34,8 @@ export default (state = dataReducerDefaultState, action) => {
       return {
         ...state,
         listId: action.listId,
-        listNotation: action.listNotation
+        listNotation: action.listNotation,
+        flag: action.flag
       };
     case 'SELECT_DROPDOWN_ID':
       return {
@@ -44,7 +46,8 @@ export default (state = dataReducerDefaultState, action) => {
         dropdownNotation: action.dropdownNotation,
         history: action.history,
         question: action.dropdownNotation,
-        instruction: action.instruction
+        instruction: action.instruction,
+        flag: action.flag
       };
       case 'SELECT_QUERY_ID':
       return {
@@ -61,7 +64,8 @@ export default (state = dataReducerDefaultState, action) => {
         dropdown: action.dropdown,
         query: action.query,
         question: action.question,
-        instruction: action.instruction
+        instruction: action.instruction,
+        flag: action.flag
       };
     default: 
       return state;

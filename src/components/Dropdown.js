@@ -6,7 +6,7 @@ import { startSelectDropdown } from '../actions/data';
 const Dropdown = (props) => (
   <li
     onClick = {() => {
-      props.dispatch(startSelectDropdown(props.id, props.notation, props.content));
+      props.dispatch(startSelectDropdown(props.id, props.notation, props.content, props.flag));
     }}
   >
     {props.content}
