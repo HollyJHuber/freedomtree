@@ -2,6 +2,7 @@ const dataReducerDefaultState = {
   counter: 0,
   currentData: 'whats',
   database: ["whats", "wheres", "whos"],
+  determination: '',
   dropdown:[],
   dropdownId: 0,
   dropdownNotation: '',
@@ -67,6 +68,17 @@ export default (state = dataReducerDefaultState, action) => {
         instruction: action.instruction,
         flag: action.flag
       };
+      case 'SET_DETERMINATION':
+      return {
+        ...state,
+        listId: action.listId,
+        listNotation: action.listNotation,
+        history: action.history,
+        flag: action.flag,
+        determination: action.determination,
+        question: action.question,
+        instruction: action.instruction
+      }
     default: 
       return state;
   }

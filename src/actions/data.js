@@ -161,6 +161,43 @@ export const selectQueryId = (queryId, queryNotation, history, counter, currentD
   flag
 });
 
+// action to set determination data for display 
+export const startDetermination = (listId, listNotation, listContent, listFlag) => {
+  return (dispatch, getState) => {
+    !listNotation && (listNotation = listContent);
+    const history = updateHistory(getState().data.history, listNotation)();
+    listFlag ? (listFlag = flagged(getState().data.flag, listFlag)()) : listFlag = getState().data.flag;
+    let determination = '';
+    let question = '';
+    let instruction = '';
+    if (listFlag = 0){
+      determination = 'Y';
+      question = "Violation Confirmed";
+      instruction = "Based on the information you’ve provided, it appears your rights have been violated.";
+    } else if (listFlag >= 100) {
+      determination = "N";
+      question = "No Violation Found";
+      instruction = "Based on the information you’ve provided, it does not appear that your rights have been violated.";
+    } else {
+      determination = "U";
+      question = "Violation Unknown";
+      instruction = "We are unable to make a determination based on the information you’ve provided.";
+    }
+    dispatch(setDetermination(listId, listNotation, listFlag, history, determination, question, instruction));
+  };
+};
+
+// display Determination
+export const setDetermination = (listId, listNotation, flag, history, determination, question, instruction) => ({
+  type: 'SET_DETERMINATION',
+  listId,
+  listNotation,
+  flag,
+  history,
+  determination,
+  question,
+  instruction
+});
 
 //callback function for getting currentData?? or add it to counter?
 // you can only return one value from a function but that value can be an array 
