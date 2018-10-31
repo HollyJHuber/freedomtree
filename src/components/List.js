@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Dropdown from './Dropdown';
-import { startSelectList, startDetermination } from '../actions/data';
+import { selectListId, startDetermination } from '../actions/data';
 
   const List = (props) => (
   <div 
@@ -11,7 +11,9 @@ import { startSelectList, startDetermination } from '../actions/data';
         "list__listing list__listingSelected": "list__listing"
     }
     onClick= {() => {
-      props.currentData=="whos" ? props.dispatch(startDetermination(props.id, props.notation, props.content, props.flag)) : props.dispatch(startSelectList(props.id, props.notation, props.content, props.flag));
+      props.currentData=="whos" ? 
+        props.dispatch(startDetermination(props.id, props.notation, props.content, props.flag)) : 
+        props.dispatch(selectListId(props.id, props.notation, props.content, props.flag));
       }}
   >
     <div className="list__col1">

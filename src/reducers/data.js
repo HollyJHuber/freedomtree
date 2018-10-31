@@ -7,12 +7,15 @@ const dataReducerDefaultState = {
   dropdownId: 0,
   dropdownNotation: '',
   flag: 0,
-  history: '',
+  history: [],
   instruction: '',
   kind: 'list',
   list:[],
+  listContent: '',
+  listFlag: 0,
   listId: 0,
   listNotation: '',
+  myData: [],
   query:[],
   queryId: 0,
   queryNotation: '',
@@ -31,12 +34,13 @@ export default (state = dataReducerDefaultState, action) => {
         question: action.question,
         instruction: action.instruction,
       };
-      case 'SELECT_LIST_ID':
+    case 'SELECT_LIST_ID':
       return {
         ...state,
         listId: action.listId,
         listNotation: action.listNotation,
-        flag: action.flag
+        listContent: action.listContent,
+        listFlag: action.listFlag
       };
     case 'SELECT_DROPDOWN_ID':
       return {
@@ -45,9 +49,9 @@ export default (state = dataReducerDefaultState, action) => {
         kind: 'query',
         dropdownId: action.dropdownId,
         dropdownNotation: action.dropdownNotation,
-        history: action.history,
         question: action.dropdownNotation,
         instruction: action.instruction,
+        myData: action.myData,
         flag: action.flag
       };
       case 'SELECT_QUERY_ID':
@@ -57,8 +61,6 @@ export default (state = dataReducerDefaultState, action) => {
         dropdownId: 0,
         kind: 'list',
         queryId: action.queryId,
-        queryNotation: action.queryNotation,
-        history: action.history,
         counter: action.counter,
         currentData: action.currentData,
         list: action.list,
@@ -66,18 +68,17 @@ export default (state = dataReducerDefaultState, action) => {
         query: action.query,
         question: action.question,
         instruction: action.instruction,
-        flag: action.flag
+        flag: action.flag,
+        myData: action.myData
       };
       case 'SET_DETERMINATION':
       return {
         ...state,
-        listId: action.listId,
-        listNotation: action.listNotation,
-        history: action.history,
         flag: action.flag,
         determination: action.determination,
         question: action.question,
-        instruction: action.instruction
+        instruction: action.instruction,
+        myData: action.myData
       }
     default: 
       return state;
