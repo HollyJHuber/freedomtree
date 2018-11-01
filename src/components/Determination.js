@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Determination = ({ history }) => (
-  <div className="list__queryListing">
-    {history}
+const Determination = (props) => (
+  <div className="determination__data"> 
+    {(props.kind === "dropdown" || props.kind === "query") && ` > `}
+    {props.content}
+    {(props.kind === "query" ) && <br />}
   </div>
 );
 

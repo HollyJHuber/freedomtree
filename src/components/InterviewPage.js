@@ -10,14 +10,8 @@ const InterviewPage = (props) => (
   <div className="interview__container">
     { (!props.data.determination && (props.data.currentData !== 'whats' || props.data.kind !== 'list'))
       && props.data.myData.map((myDataItem, index) => (
-        (props.data.kind === "query" && (index === props.data.counter)) ? 
-        // when query, omit last notation of last array
-        myDataItem.map((item, index, myDataItem) => (
-          (index != myDataItem.length-1) && <History key={item.id} {...item} counter={props.data.counter} kind={props.data.kind}/>
-        ))
-        : // map all notations
         myDataItem.map((item) => (
-          <History key={item.id} {...item} counter={props.data.counter} kind={props.data.kind}/>
+          <History key={item.id} {...item} counter={props.data.counter}/>
         ))
       ))
     }
@@ -31,7 +25,20 @@ const InterviewPage = (props) => (
         <Query key={item.id} {...item}/>
       ))
     )}
-    {props.data.determination && <Determination {...props.data}/>}
+
+    {(props.data.determination 
+      && props.data.myData.map((myDataItem, index) => (
+        myDataItem.map((item) => (
+          <Determination key={item.id} {...item} />
+        ))
+      ))
+    )}
+    {props.data.determination && <div>
+        <h4 className="interview__instruction">Does this information accurately represent your complaint?</h4>
+          <button onClick= {() => alert("yo!")}>Yes<br />Sign Up</button>&nbsp;
+          <button onClick= {() => location.reload()}>No<br />Start Over</button>
+      </div>
+    }
   </div>
 );
 

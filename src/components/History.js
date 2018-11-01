@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 const History = (props) => (
 
 	<div className='history__path'>
-	{props.notation}&nbsp;>&nbsp; 
+		{(props.kind === "dropdown" || props.kind === "query") && ` > `}
+		{props.notation}
+		{(props.kind === "query" && props.counter > 0 ) && <br />}
 	</div>
 );
 
