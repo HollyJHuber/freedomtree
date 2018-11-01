@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const History = ({ history }) => (
+const History = (props) => (
 
-	<div>
-		<h4 className='history__path'>{history}</h4>
+	<div className='history__path'>
+	{props.notation}&nbsp;>&nbsp; 
 	</div>
 );
 
