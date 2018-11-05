@@ -35,8 +35,8 @@ const InterviewPage = (props) => (
     )}
     {props.data.determination && <div>
         <h4 className="interview__instruction">Does this information accurately represent your complaint?</h4>
-          <button onClick= {() => alert("Coming Soon!")}>Yes<br />Sign Up</button>&nbsp;
-          <button onClick= {() => location.reload()}>No<br />Start Over</button>
+          <button onClick= {() => alert("Coming Soon!")}>YES<br />Sign Up</button>&nbsp;
+          <button onClick= {() => location.reload()}>NO<br />Start Over</button>
       </div>
     }
   </div>

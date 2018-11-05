@@ -68,6 +68,7 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
     const listContent = getState().data.listContent;
     let listNotation = getState().data.listNotation;
     const listFlag = getState().data.listFlag;
+    const currentData = getState().data.currentData;
     !listNotation && (listNotation = listContent);
     !dropdownNotation && (dropdownNotation = dropdownContent);
     const newData = [
@@ -89,8 +90,10 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
     const flag = flagged(getState().data.flag, listFlag, dropdownFlag)();
     const myData = setArrayImmutable(getState().data.myData, getState().data.counter, newData);
     let instruction = getState().data.instruction; // seems like there should be a better way
-    if (getState().data.currentData === "whats") {
-      instruction = "Select the statement that best describes your situation:";
+    if (currentData === "whats") {
+      instruction = "Select what best describes your situation:";
+    } else if (currentData === "wheres"){
+      instruction = "Identify where and when this is happening:";
     }
     dispatch(selectDropdownId(dropdownId, dropdownNotation, flag, myData, instruction));
   };
