@@ -7,7 +7,7 @@ tempSite
 node_modules/
 src/playground
 data
-
+/dev
 public/dist/
 .env.test
 .env.development

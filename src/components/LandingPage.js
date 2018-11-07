@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Hero from './Hero';
 
 const LandingPage = (props) => (
-  <div className="landingPage__container"
+  <main
     onClick= {() => {
     props.history.push('/interview');
   }}> 
@@ -12,7 +12,7 @@ const LandingPage = (props) => (
       <div className="landingPage__buttonBox">
         <button className="landingPage__button"> Get Started </button>
       </div>
-  </div>
+  </main>
 );
 
 export default connect ()(LandingPage);

@@ -1,10 +1,11 @@
+
 footer {
   align-items: center;
   background: $ft-green;
   color: $white;
   display: flex;
   justify-content: space-around;
-  padding: $m-size 0;
+  padding: $s-size 0;
 }
 
 footer ul {
@@ -19,6 +20,11 @@ footer ul li {
 footer a{
   color: $white;
 }
+
+.footer__container {
+  flex-shrink: 0;
+}
+  
 
 .footer__logoText {
 	height: 3rem;

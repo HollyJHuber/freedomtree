@@ -17,7 +17,7 @@ handleCloseMenuModal = () => {
 
 render() {
 	return (
-		<div>
+		<header>
 			<nav id="top" className={this.props.landingPage ? "nav__barLandingPage" : "nav__bar"}>
 				<Link to="/">
 					<span className="nav__item">
@@ -37,7 +37,7 @@ render() {
 				menuOption = {this.state.menuOption}
 				handleCloseMenuModal = {this.handleCloseMenuModal}
 			/>
-		</div>
+		</header>
 	)
 }
 }

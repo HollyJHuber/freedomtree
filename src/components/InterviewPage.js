@@ -8,7 +8,7 @@ import Determination from './Determination';
 
 const InterviewPage = (props) => (
 
-  <div>
+  <main>
     {!props.data.determination &&
       <div className="interview__container">
       { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
@@ -52,7 +52,7 @@ const InterviewPage = (props) => (
       </div>
     </div>
     }
-  </div>
+  </main>
 );
 
 const mapStateToProps = (state) => {
