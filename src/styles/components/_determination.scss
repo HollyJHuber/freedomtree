@@ -1,7 +1,66 @@
+.determination__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.determination__box{
+  background-color: $white-50;
+  border-bottom: 2px solid $ft-green-75;
+  border-right: 2px solid $ft-green-75;
+  border-radius: 3px;
+  color: $ft-brown;
+  font-family: "Open Sans", sans-serif;
+  padding: $l-size;
+  margin: 5% 0;
+  width: 75%;
+}
+
+.determination__question {
+  font-size: 2.4rem; 
+  margin: 0;
+ }
+
+.determination__instruction {
+  font-size: 1.4rem;
+  line-height: 1.8rem; 
+}
+
 .determination__data {	
   display: inline;
   font-size: 1.6rem;
   font-weight: 400;
-  line-height: 3.2rem;
-  margin-bottom: 1rem;
+  line-height: 2.6rem;
   }
+
+.determination__inline {	
+  display: inline;
+  margin: 0 0 $s-size 0;
+}
+
+.determination__block {	
+  display: block;
+  margin: 0 0 $m-size 0;
+  }
+    
+.determination__buttonBox {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.determination__button {
+  align-content: space-around;
+  background-color: $ft-orange;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 800;
+  margin: auto;
+  padding: $s-size;
+  width: 120px;
+}
+
+.determination__notation {
+  font-size: 1.4rem;
+  margin: $l-size 0 $s-size 0;
+}

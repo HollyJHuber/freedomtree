@@ -11,7 +11,8 @@ export const startSetData = () => {
       let dropdown = [];
       let query = [];
       let question ='';
-      let instruction = '';
+      let instructionA = '';
+      let instructionB = '';
       snapshot.forEach((childSnapshot) => {
         items.push({
           id:childSnapshot.key,
@@ -33,22 +34,24 @@ export const startSetData = () => {
           query = newItem;
         } else {
           question = item.question;
-          instruction = item.instruction;
+          instructionA = item.instructionA;
+          instructionB = item.instructionB;
         }
       });
-      dispatch(setData(list, dropdown, query, question, instruction));
+      dispatch(setData(list, dropdown, query, question, instructionA, instructionB));
     });
   };
 };
 
 // set data from firebase (from startSetData)
-export const setData = (list, dropdown, query, question, instruction) => ({
+export const setData = (list, dropdown, query, question, instructionA, instructionB) => ({
   type: 'SET_DATA',
   list,
   dropdown,
   query,
   question,
-  instruction
+  instructionA,
+  instructionB
 });
 
 // select list to display dropdown
@@ -89,24 +92,17 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
     ];
     const flag = flagged(getState().data.flag, listFlag, dropdownFlag)();
     const myData = setArrayImmutable(getState().data.myData, getState().data.counter, newData);
-    let instruction = getState().data.instruction; // seems like there should be a better way
-    if (currentData === "whats") {
-      instruction = "Select what best describes your situation:";
-    } else if (currentData === "wheres"){
-      instruction = "Identify where and when this is happening:";
-    }
-    dispatch(selectDropdownId(dropdownId, dropdownNotation, flag, myData, instruction));
+    dispatch(selectDropdownId(dropdownId, dropdownNotation, flag, myData));
   };
 };
 
 // Dropdown to display Query
-export const selectDropdownId = (dropdownId, dropdownNotation, flag, myData, instruction) => ({
+export const selectDropdownId = (dropdownId, dropdownNotation, flag, myData) => ({
   type: 'SELECT_DROPDOWN_ID',
   dropdownId,
   dropdownNotation,
   flag, 
   myData,
-  instruction
 });
 
 // select query, set data for next list display, update counter 
@@ -132,7 +128,8 @@ export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag
     let dropdown = [];
     let query = [];
     let question ='';
-    let instruction = '';
+    let instructionA = '';
+    let instructionB = '';
     return database.ref(currentData).once('value').then((snapshot) => {
       const items = [];
       snapshot.forEach((childSnapshot) => {
@@ -156,19 +153,20 @@ export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag
           query = newItem;
         } else {
           question = item.question;
-          instruction = item.instruction;
+          instructionA = item.instructionA;
+          instructionB = item.instructionB;
         }
       });
       if (currentData === 'whos'){
         list = list.filter(item => item.parentId === getState().data.listId);
       }
-      dispatch(selectQueryId(queryId, counter, currentData, list, dropdown, query, question, instruction, flag, myData));
+      dispatch(selectQueryId(queryId, counter, currentData, list, dropdown, query, question, instructionA, instructionB, flag, myData));
     });
   };
 };
 
 // Query to display next
-export const selectQueryId = (queryId, counter, currentData, list, dropdown, query, question, instruction, flag, myData) => ({
+export const selectQueryId = (queryId, counter, currentData, list, dropdown, query, question, instructionA, instructionB, flag, myData) => ({
   type: 'SELECT_QUERY_ID',
   queryId,
   counter,
@@ -177,7 +175,8 @@ export const selectQueryId = (queryId, counter, currentData, list, dropdown, que
   dropdown, 
   query,
   question,
-  instruction,
+  instructionA,
+  instructionB,
   flag,
   myData
 });
@@ -199,31 +198,33 @@ export const startDetermination = (listId, listNotation, listContent, listFlag) 
     const flag = flagged(getState().data.flag, listFlag)();
     let determination = '';
     let question = '';
-    let instruction = '';
+    let instructionA = '';
+    let instructionB = '';
     if (flag == 0){
       determination = 'Y';
       question = "Violation Confirmed";
-      instruction = "Based on the information you’ve provided, it appears your rights have been violated.";
+      instructionA = "Based on the information you’ve provided, it appears your rights have been violated.";
     } else if (flag >= 100) {
       determination = "N";
       question = "No Violation Found";
-      instruction = "Based on the information you’ve provided, it does not appear that your rights have been violated.";
+      instructionA = "Based on the information you’ve provided, it does not appear that your rights have been violated.";
     } else {
       determination = "U";
       question = "Violation Unknown";
-      instruction = "We are unable to make a determination based on the information you’ve provided.";
+      instructionA = "We are unable to make a determination based on the information you’ve provided.";
     }
-    dispatch(setDetermination(flag, determination, question, instruction, myData));
+    dispatch(setDetermination(flag, determination, question, instructionA, instructionB, myData));
   };
 };
 
 // display Determination
-export const setDetermination = (flag, determination, question, instruction, myData) => ({
+export const setDetermination = (flag, determination, question, instructionA, instructionB, myData) => ({
   type: 'SET_DETERMINATION',
   flag,
   determination,
   question,
-  instruction,
+  instructionA,
+  instructionB,
   myData
 });
 
@@ -235,19 +236,6 @@ const increment = (counter) => {
   return function incrementCounter(){
     counter++;
     return counter;
-  };
-};
-
-// history callback function
-const updateHistory = (history, newHistory, queryNotation) => {
-  return function update(){
-    history.push(newHistory);
-    // fix queryNotation next
-      if (queryNotation){
-        history += ` > ${queryNotation}`;
-      }
-      console.log('history', history);
-  return history;
   };
 };
 
@@ -273,39 +261,4 @@ const appendArrayItem = (arr, index, value) => { // pass the entire myData array
   newArrayItem.push(value);
   //console.log('newArrayItem: ', newArrayItem);
   return setArrayImmutable(arr, index, newArrayItem);
-};
-
-// get data callback function  <-- NOT IN USE! unable to implement this yet
-const getData = (currentData) => {
-  let list = [];
-  let dropdown = [];
-  let query = [];
-  let question ='';
-  let instruction = '';
-  return database.ref(currentData).once('value').then((snapshot) => {
-    const items = [];
-    snapshot.forEach((childSnapshot) => {
-      items.push({
-        id:childSnapshot.key,
-        ...childSnapshot.val()
-      });
-    });
-    items.map((item) => {
-      let type = item.id;
-      delete item.id; // removes last item from data
-      let newItem = Object.keys(item).map(key => item[key]);
-      if (type === "list"){
-        list = newItem;
-      } else if (type === "dropdown"){
-        dropdown = newItem;
-      } else if (type === "query"){
-        query = newItem;
-      } else {
-        question = item.question;
-        instruction = item.instruction;
-      }
-    });
-    console.log(list, dropdown, query, question, instruction);
-    return list;
-  });
 };

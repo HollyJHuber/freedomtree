@@ -8,7 +8,8 @@ const dataReducerDefaultState = {
   dropdownNotation: '',
   flag: 0,
   history: [],
-  instruction: '',
+  instructionA: '',
+  instructionB: '',
   kind: 'list',
   list:[],
   listContent: '',
@@ -32,7 +33,9 @@ export default (state = dataReducerDefaultState, action) => {
         dropdown: action.dropdown,
         query: action.query,
         question: action.question,
-        instruction: action.instruction,
+        instructionA: action.instructionA,
+        instructionB: action.instructionB,
+
       };
     case 'SELECT_LIST_ID':
       return {
@@ -50,9 +53,8 @@ export default (state = dataReducerDefaultState, action) => {
         dropdownId: action.dropdownId,
         dropdownNotation: action.dropdownNotation,
         question: action.dropdownNotation,
-        instruction: action.instruction,
         myData: action.myData,
-        flag: action.flag
+        flag: action.flag,      
       };
       case 'SELECT_QUERY_ID':
       return {
@@ -67,7 +69,8 @@ export default (state = dataReducerDefaultState, action) => {
         dropdown: action.dropdown,
         query: action.query,
         question: action.question,
-        instruction: action.instruction,
+        instructionA: action.instructionA,
+        instructionB: action.instructionB,
         flag: action.flag,
         myData: action.myData
       };
@@ -77,7 +80,8 @@ export default (state = dataReducerDefaultState, action) => {
         flag: action.flag,
         determination: action.determination,
         question: action.question,
-        instruction: action.instruction,
+        instructionA: action.instructionA,
+        instructionB: action.instructionB,
         myData: action.myData
       }
     default: 

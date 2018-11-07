@@ -1,0 +1,21 @@
+.landingPage__container{
+  background-color: $ft-brown;
+}
+
+.landingPage__buttonBox {
+  display: flex;
+  margin: 0;
+  padding: $l-size;
+}
+.landingPage__button {
+  align-content: center;
+  background-color: $ft-orange;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: auto;
+  padding: $s-size;
+  width: 240px;
+}
