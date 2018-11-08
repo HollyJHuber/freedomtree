@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Hero from './Hero';
 
 const LandingPage = (props) => (
-  <main
+  <main className="landingPage__background"
     onClick= {() => {
     props.history.push('/interview');
   }}> 
