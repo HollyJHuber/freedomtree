@@ -9,11 +9,12 @@
 
 .interview__instruction {
   font-size: 1.4rem;
-  padding-bottom: $s-size;
+  margin: $s-size 0;
 }
 
 .interview__question {
-	font-size: 2.4rem; 
+  font-size: 2.4rem; 
+  margin: $m-size 0 $s-size 0;
  }
 
 @media (min-width: $desktop-breakpoint){

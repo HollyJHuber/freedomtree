@@ -1,18 +1,18 @@
 
 .list__col1 {
   border-bottom: 1px solid $ft-brown;
-  margin-left: 10%;
+  margin-left: 5%;
   padding: $s-size;
   text-align: right;
-  width: 10%;
+  width: 15%;
 }
 
 .list__col2{
   border-bottom: 1px solid $ft-brown;
-  margin-right: 10%;
+  margin-right: 5%;
   padding: $s-size;
   text-align: left;
-  width: 60%;
+  width: 65%;
 }
 
 .list__dropDownItem {
@@ -42,7 +42,7 @@ li {
 .list__queryListing {
   border-bottom: 1px solid $ft-brown;
   color: $ft-brown;
-  font-size: 1.4rem;
+  font-size: $m-size;
   margin: 0 5%;
   padding: $m-size;
   text-align: left;

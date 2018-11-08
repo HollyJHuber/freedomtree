@@ -27,7 +27,7 @@ nav a:hover{
 }
 
 .nav__bar, .nav__barLandingPage, .nav__menu {
-	align-items: flex-end;
+	align-items: baseline;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -35,7 +35,7 @@ nav a:hover{
 }
 .nav__item {
 	list-style: none;
-	padding: $m-size;
+	padding: $s-size;
 }
 
 .nav__itemLg {
