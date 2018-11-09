@@ -12,6 +12,7 @@ const LandingPage = (props) => (
       <div className="landingPage__buttonBox">
         <button className="landingPage__button"> Get Started </button>
       </div>
+
   </main>
 );
 

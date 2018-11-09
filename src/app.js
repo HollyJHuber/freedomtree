@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import AppRouter from './routers/AppRouter'
+import AppRouter from './routers/AppRouter';
+import Loading from './components/Loading';
 import configureStore from './store/configureStore';
 import { startSetData } from './actions/data';
 import './firebase/firebase';
@@ -17,7 +18,7 @@ const store = configureStore();
     </Provider>
   );
 
-ReactDOM.render(<p>Loading ...</p>, document.getElementById('app'));
+ReactDOM.render(<Loading />, document.getElementById('app'));
 
 store.dispatch(startSetData()).then(() => {
   ReactDOM.render(jsx, document.getElementById('app'));
