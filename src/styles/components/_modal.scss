@@ -30,6 +30,7 @@
 .modal__frame {
   max-height: 80%;
   overflow-y: scroll;
+  margin: $s-size;
 }
 
 .modal__scroll {
@@ -38,6 +39,10 @@
 
 .modal__list >li {
   list-style-type: disc;
+}
+
+.modal__center {
+  text-align: center;
 }
 // built-in styles from third party
 

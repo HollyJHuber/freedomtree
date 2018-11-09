@@ -30,7 +30,8 @@ const MenuModal = (props) => (
           <li>studying and tracking civil rights cases; and </li>
           <li>developing technology to assist and educate the public. </li>
         </ul>
-
+        <p>Freedom Tree is also the developer of <a href="www.civilrightswiki.org">Civil Rights Wiki</a>, a new website exclusively for civil rights.</p>
+        <h5>Disclaimer</h5>
         <p>Freedom Tree provides general information that is intended, but not guaranteed, to be correct and up-to-date. The information is not presented as a source of legal advice. You should not rely, for legal advice, on statements or representations made by Freedom Tree.</p>
         <p>If you need legal advice upon which you intend to rely in the course of your legal affairs, consult a competent, independent attorney.</p>
         <p>Freedom Tree does not assume any responsibility for actions or non-actions taken by people who have used this information, and no one shall be entitled to a claim for detrimental reliance on any information provided or expressed.</p>
@@ -39,8 +40,41 @@ const MenuModal = (props) => (
     </div>
     }
 
-    {props.menuOption === "Contact" && <h1>Contact info goes here</h1>}
-    {props.menuOption === "Donate" && <h1>Donate form goes here</h1>}
+    {props.menuOption === "Contact" && 
+      <div className="modal__frame">
+        <div className="modal__scroll">
+          <h4>Freedom Tree</h4>
+          <p>6090 Ridgeview Drive 
+          <br/> Norton Shores, MI 49441
+          <br/>Phone: 231-855-6271
+          <br/>Email: <a href="mailto:info@freedomtreeusa.org?subject=Email%20From%20FreedomTreeUSA">info@freedomtreeusa.org</a>
+          <br/>App: freedomtreeusa.org</p>
+          <p>Holly J. Huber, Executive Director</p>
+          <p className="modal__center"><i className="fab fa-facebook-square fa-2x"></i>&nbsp;&nbsp;<i className="fab fa-twitter-square fa-2x"></i></p>
+        </div>
+      </div>
+    }
+
+    {props.menuOption === "Donate" && 
+      <div className="modal__frame">
+        <div className="modal__scroll">
+          <h4>Thank You!</h4>
+          <p>Your generous donation will help sustain our mission: “To help people defend their civil rights without charge.”</p>
+          <p>Please select or enter the amount of your donation:</p>
+          <ul className="modal__list">
+            <li>$5-24: Facebook group invite. </li>
+            <li>$25: button, magnet, or sticker.</li>
+            <li>$35: mug plus button, magnet, or sticker </li>
+            <li>$50: t-shirt and mug, plus button, magnet, or sticker.</li>
+            <li>$100 or more: all of the above plus membership in the 
+            Friends of Freedom Tree*.</li>
+            <li>Other [enter amount]: optional merchandise premiums depending on amount. </li>
+          </ul>
+          <p>Freedom Tree is a 501(c)3 tax-exempt organization, so your donations are tax deductible to the fullest extent of the law.</p>
+        </div>
+      </div>
+    }
+
     {props.menuOption === "FAQ" && <h1>FAQ goes here</h1>}
 
   </Modal>
