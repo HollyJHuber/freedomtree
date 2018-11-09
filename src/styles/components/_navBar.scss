@@ -51,6 +51,26 @@ nav a:hover{
 	margin: 0 0 0 $s-size;
 }
 
+.nav__dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.nav__dropdown__content {
+	background-color: $ft-brown;
+	display: none;
+	padding: $s-size $m-size;
+	position: fixed;
+	right: 0;
+	width: 8rem;
+	z-index: 1;
+}
+
+.show {
+  display:block;
+}
+
+
 @media (min-width: $desktop-breakpoint){
 
 	.nav__itemLg {
