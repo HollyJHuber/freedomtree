@@ -181,6 +181,11 @@ export const selectQueryId = (queryId, counter, currentData, list, dropdown, que
   myData
 });
 
+// action to display loading
+export const showLoading = () => ({
+  type: 'SHOW_LOADING'
+});
+
 // action to set determination data for display 
 export const startDetermination = (listId, listNotation, listContent, listFlag) => {
   return (dispatch, getState) => {

@@ -31,26 +31,27 @@ const InterviewPage = (props) => (
           <Query key={item.id} {...item}/>
         ))
       )}
-      </div>}
+      </div>
+    }
 
-      {props.data.determination 
-    && <div className="determination__container">
-      <div className="determination__box">
-        <h1 className="determination__question">{props.data.question}</h1>
-        <h4 className="determination__instruction">{props.data.instructionA}</h4>
-        { props.data.myData.map((myDataItem, index) => (
-            myDataItem.map((item) => (
-            <Determination key={item.id} {...item} />
+    {props.data.determination && 
+      <div className="determination__container">
+        <div className="determination__box">
+          <h1 className="determination__question">{props.data.question}</h1>
+          <h4 className="determination__instruction">{props.data.instructionA}</h4>
+          { props.data.myData.map((myDataItem, index) => (
+              myDataItem.map((item) => (
+              <Determination key={item.id} {...item} />
+              ))
             ))
-          ))
-        }
-        <h4 className="determination__notation">Does this information accurately represent your complaint?</h4>
-        <div className="determination__buttonBox">
-          <button className="determination__button" onClick= {() => alert("Coming Soon!")}>YES<br />Sign Up</button> &nbsp;
-          <button className="determination__button"onClick= {() => location.reload()}>NO<br />Start Over</button>
+          }
+          <h4 className="determination__notation">Does this information accurately represent your complaint?</h4>
+          <div className="determination__buttonBox">
+            <button className="determination__button" onClick= {() => alert("Coming Soon!")}>YES<br />Sign Up</button> &nbsp;
+            <button className="determination__button"onClick= {() => location.reload()}>NO<br />Start Over</button>
+          </div>
         </div>
       </div>
-    </div>
     }
   </main>
 );

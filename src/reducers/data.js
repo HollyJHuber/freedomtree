@@ -16,6 +16,7 @@ const dataReducerDefaultState = {
   listFlag: 0,
   listId: 0,
   listNotation: '',
+  loading: false,
   myData: [],
   query:[],
   queryId: 0,
@@ -82,8 +83,14 @@ export default (state = dataReducerDefaultState, action) => {
         question: action.question,
         instructionA: action.instructionA,
         instructionB: action.instructionB,
-        myData: action.myData
+        myData: action.myData,
+        loading: false
       }
+      case 'SHOW_LOADING':
+      return {
+        ...state,
+        loading: true
+      };
     default: 
       return state;
   }

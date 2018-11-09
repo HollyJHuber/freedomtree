@@ -2,20 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Dropdown from './Dropdown';
-import { selectListId, startDetermination } from '../actions/data';
+import Loading from './Loading';
+import { selectListId, startDetermination, showLoading } from '../actions/data';
 
   const List = (props) => (
-  <div 
-    className={
-      props.data.listId === props.id ? 
-        "list__listing list__listingSelected": "list__listing"
-    }
-    onClick= {() => {
-      props.currentData=="whos" ? 
-        props.dispatch(startDetermination(props.id, props.notation, props.content, props.flag)) : 
-        props.dispatch(selectListId(props.id, props.notation, props.content, props.flag));
+    props.data.loading ? <Loading /> : 
+    <div 
+      className={
+        props.data.listId === props.id ? 
+          "list__listing list__listingSelected": "list__listing"
+      }
+      onClick= {() => {
+        if (props.currentData=="whos") {
+          props.dispatch(showLoading());
+          setTimeout(() => {
+            props.dispatch(startDetermination(props.id, props.notation, props.content, props.flag)) 
+          }, 3000);
+        } else {
+          props.dispatch(selectListId(props.id, props.notation, props.content, props.flag))
+        }
       }}
-  >
+    >
     <div className="list__col1">
       <i className={props.icon}></i>
     </div>
