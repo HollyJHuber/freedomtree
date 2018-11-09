@@ -1,6 +1,7 @@
 
 .modal {
   background: $ft-orange;
+  border-radius: 3px;
   border-right: 2px solid darken($ft-orange, 20%);
   border-bottom: 2px solid darken($ft-orange, 20%);
   line-height: 2.4rem;
@@ -10,17 +11,34 @@
 }
 
 .modal__button {
+  align-items: center;
   background: $ft-brown;
-  border-right: 2px solid darken($ft-orange, 20%);
-  border-bottom: 2px solid darken($ft-orange, 20%);
+  border-radius: 3px;
+  border-right: 2px solid lighten($ft-brown, 20%);
+  border-bottom: 2px solid lighten($ft-brown, 20%);
   border-top: none;
   border-left: none;
   color: $white;
+  display: flex;
+  flex-direction: row;
   font-size: $m-size;
   font-weight: 700;
-  padding: $m-size;
+  justify-content: space-between;
+  padding: $s-size;
 }
 
+.modal__frame {
+  max-height: 80%;
+  overflow-y: scroll;
+}
+
+.modal__scroll {
+  overflow: scroll;
+}
+
+.modal__list >li {
+  list-style-type: disc;
+}
 // built-in styles from third party
 
 .ReactModalPortal > div {

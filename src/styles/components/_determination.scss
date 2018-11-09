@@ -6,8 +6,8 @@
 
 .determination__box{
   background-color: $white-50;
-  border-bottom: 2px solid $ft-green-75;
-  border-right: 2px solid $ft-green-75;
+  border-bottom: 2px solid lighten($ft-green, 25%);
+  border-right: 2px solid lighten($ft-green, 25%);
   border-radius: 3px;
   color: $ft-brown;
   font-family: "Open Sans", sans-serif;

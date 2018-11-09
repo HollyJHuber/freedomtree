@@ -31,15 +31,15 @@ class NavBar extends React.Component {
 						</span>
 					</Link>
 					<ul className="nav__menu">
-						<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("about")}>About</a></li>
-						<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("contact")}>Contact</a></li>
-						<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("donate")}>Donate</a></li>
+						<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("About")}>About</a></li>
+						<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("Contact")}>Contact</a></li>
+						<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("Donate")}>Donate</a></li>
 						<div className="nav__dropdown">
 							<li className="nav__item nav__itemSm"><a onClick = {() => this.dropDownMenu()}><i className="fas fa-bars fa-2x"></i></a></li>
 							<div id="menuDropdown" className="nav__dropdown__content">
-							<li className="nav__item nav__itemSm"><a onClick = {() => this.handleMenuModal("about")}>About</a></li>
-							<li className="nav__item nav__itemSm"><a onClick = {() => this.handleMenuModal("contact")}>Contact</a></li>
-							<li className="nav__item nav__itemSm"><a onClick = {() => this.handleMenuModal("donate")}>Donate</a></li>
+							<li className="nav__item nav__itemSm"><a onClick = {() => this.handleMenuModal("About")}>About</a></li>
+							<li className="nav__item nav__itemSm"><a onClick = {() => this.handleMenuModal("Contact")}>Contact</a></li>
+							<li className="nav__item nav__itemSm"><a onClick = {() => this.handleMenuModal("Donate")}>Donate</a></li>
 							</div>
 						</div>
 					</ul>
