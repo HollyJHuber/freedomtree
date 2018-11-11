@@ -6,6 +6,7 @@
 }
 .landingPage__button {
   align-content: center;
+  animation: 5s fadein 0.5s forwards;
   background-color: $ft-orange;
   border: none;
   border-radius: 3px;
@@ -13,10 +14,22 @@
   font-size: 2rem;
   font-weight: 800;
   margin: auto;
+  opacity: 0;
   padding: $s-size;
   width: 160px;
 }
 
 .landingPage__background{
+  align-items: center;
   background-color: $ft-brown;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+@keyframes fadein{
+	100%{
+			opacity: 1;
+	}
+}
+

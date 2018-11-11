@@ -1,18 +1,17 @@
 
 .hero__container {
-	align-items: center;
 	background: $ft-brown;
-	display: flex;
-	flex-direction: column;
+	max-width: 80rem;
 	padding: $m-size;
+	width: 80%;
 }
 
 .hero__logo {
-	width: 80%;
-	max-width: 80rem;
-	animation: 2s fadein 0.5s forwards;
+	animation: 5s fadein 0.5s forwards;
+
 	opacity: 0;
 }
+
 @keyframes fadein{
 	100%{
 			opacity: 1;

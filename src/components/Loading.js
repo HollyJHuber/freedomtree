@@ -4,7 +4,7 @@ class Loading extends Component {
   render() {
     return (
       <div className="loading__container">
-        <div className="lds-spinner">
+        <div className="loading__spinner">
           <div></div>
           <div></div>
           <div></div>
