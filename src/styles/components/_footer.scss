@@ -4,16 +4,17 @@ footer {
   background: $ft-green;
   color: $white;
   display: flex;
-  justify-content: space-around;
-  padding: $s-size 0;
+  justify-content: space-between;
+  padding: $s-size $m-size;
 }
 
 footer ul {
-  display: flex
+  display: flex;
+  margin: 0;
 }
 
 footer ul li {
-  margin-left: $m-size;
+  margin: 0 0 0 $m-size;
   text-decoration: none;
 }
 
@@ -24,9 +25,7 @@ footer a{
 .footer__container {
   flex-shrink: 0;
 }
-  
 
 .footer__logoText {
-	height: 3rem;
-	margin: 0 0 0 $s-size;
+	height: 2.5rem;
 }

@@ -9,7 +9,6 @@ class NavBar extends React.Component {
 	};
 
 	handleMenuModal = (displayMenu) => {
-		document.getElementById("menuDropdown").classList.toggle("show");
 		this.setState(() => ({menuOption: displayMenu}));
 	};
 	handleCloseMenuModal = () => {
@@ -35,7 +34,7 @@ class NavBar extends React.Component {
 						<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("Contact")}>Contact</a></li>
 						<li className="nav__item nav__itemLg"><a onClick = {() => this.handleMenuModal("Donate")}>Donate</a></li>
 						<div className="nav__dropdown">
-							<li className="nav__item nav__itemSm"><a onClick = {() => this.dropDownMenu()}><i className="fas fa-bars fa-2x"></i></a></li>
+							<li className="nav__hamburger"><a onClick = {() => this.dropDownMenu()}><i className="fas fa-bars fa-lg"></i></a></li>
 							<div id="menuDropdown" className="nav__itemSm nav__dropdown__content">
 							<li className="nav__item nav__itemSm"><a onClick = {() => this.handleMenuModal("About")}>About</a></li>
 							<li className="nav__item nav__itemSm"><a onClick = {() => this.handleMenuModal("Contact")}>Contact</a></li>

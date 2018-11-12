@@ -1,9 +1,9 @@
 
 .modal {
-  background: $ft-orange;
+  background: $white;
   border-radius: 3px;
-  border-right: 2px solid darken($ft-orange, 20%);
-  border-bottom: 2px solid darken($ft-orange, 20%);
+  border-right: 2px solid $grey;
+  border-bottom: 2px solid $grey;
   line-height: 2.4rem;
   max-width: 80%;
   outline: none;
@@ -14,8 +14,8 @@
   align-items: center;
   background: $ft-brown;
   border-radius: 3px;
-  border-right: 2px solid lighten($ft-brown, 20%);
-  border-bottom: 2px solid lighten($ft-brown, 20%);
+  border-right: 2px solid $grey;
+  border-bottom: 2px solid $grey;
   border-top: none;
   border-left: none;
   color: $white;
@@ -28,15 +28,10 @@
 }
 
 .modal__frame {
-  -webkit-scrollbar: $ft-orange;
   margin: $s-size;
   max-height: 80%;
   overflow-y: auto;
 }
-
-// .modal__scroll {
-//   overflow: scroll;
-// }
 
 .modal__list >li {
   list-style-type: disc;
@@ -46,6 +41,8 @@
   text-align: center;
 }
 // built-in styles from third party
+// see MenuModal.js for default color which overrides most of these styles
+
 
 .ReactModalPortal > div {
   opacity: 0;
@@ -56,6 +53,7 @@
   display: flex;
   justify-content: center;
   transition: opacity 200ms ease-in-out;
+
 }
 
 .ReactModalPortal .ReactModal__Overlay--after-open{

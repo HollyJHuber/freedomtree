@@ -5,9 +5,7 @@ header {
 nav {
 	color: $white;
   font-family: "Quicksand", sans-serif;
-  font-size: 1.6rem;
-	font-weight: 700;
-	padding: $s-size;
+	//padding: $s-size $m-size;
 }
 
 nav a {
@@ -27,28 +25,16 @@ nav a:hover{
 }
 
 .nav__bar, .nav__barLandingPage, .nav__menu {
-	align-items: baseline;
+	align-items: center;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	padding: $s-size 0;
+}
+
+ul.nav__menu {
 	margin: 0;
-}
-.nav__item {
-	list-style: none;
-	padding: $s-size;
-}
-
-.nav__itemLg {
-	display: none;
-}
-
-.nav__logo {
-	height: 4rem;
-}
-
-.nav__logoText {
-	height: 3rem;
-	margin: 0 0 0 $s-size;
+	padding: 0;
 }
 
 .nav__dropdown {
@@ -59,25 +45,70 @@ nav a:hover{
 .nav__dropdown__content {
 	background-color: $ft-brown;
 	display: none;
-	padding: $s-size $m-size;
+	line-height: 4rem;
+	padding: $m-size;
 	position: fixed;
 	right: 0;
-	width: 8rem;
+	width: 10rem;
 	z-index: 1;
+}
+
+.nav__hamburger {
+	margin: 0 $m-size 0 0;
+}
+.nav__item {
+	font-size: 2rem;
+	font-weight: 700;
+	list-style: none;
+}
+
+.nav__itemLg {
+	display: none;
+}
+
+.nav__logo {
+	height: 3rem;
+	margin: 0 $s-size 0 $m-size;
+}
+
+.nav__logoText {
+	height: 2.5rem;
 }
 
 .show {
   display:block;
 }
 
+@media (max-width: $small-breakpoint){
+
+}
 
 @media (min-width: $desktop-breakpoint){
 
+	.nav__bar{
+		padding: $m-size 0;
+	}
+
+	.nav__dropdown {
+		display: none;
+	}
+	
 	.nav__itemLg {
+		font-size: 2.4rem;
+		padding: 0 $m-size;
 		display: inline-block;
 	}
 
 	.nav__itemSm {
 		display: none;
+	}
+
+	.nav__logo {
+		height: 4rem;
+	//	margin: $s-size;
+	}
+	
+	.nav__logoText {
+		height: 3.5rem;
 	}
 }

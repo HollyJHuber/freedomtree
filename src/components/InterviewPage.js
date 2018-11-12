@@ -14,7 +14,7 @@ const InterviewPage = (props) => (
       { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
         && props.data.myData.map((myDataItem, index) => (
           myDataItem.map((item) => (
-            <History key={item.id} {...item} counter={props.data.counter}/>
+              <History key={item.id} {...item} counter={props.data.counter}/>
           ))
         ))
       }
