@@ -17,6 +17,16 @@
   margin: $m-size 0 $s-size 0;
  }
 
+ @media (max-width: $small-breakpoint){
+  .interview__question {
+    font-size: 2rem; 
+    margin: $m-size 0 $s-size 0;
+   }
+   .interview__instruction {
+    font-size: 1.2rem;
+   }
+ }
+
 @media (min-width: $desktop-breakpoint){
   .interview__instruction {
     font-size: $m-size;

@@ -48,6 +48,17 @@ li {
   text-align: left;
   width: 90%;
 }
+@media (max-width: $small-breakpoint){
+  .list__col1 {
+    margin-left: 2%;
+    width: 15%;
+  }
+  .list__col2{
+    font-size: $m-size;
+    margin-right: 0;
+    width: 70%;
+  }
+}
 
 @media (min-width: $desktop-breakpoint){
   .list__col1 {
