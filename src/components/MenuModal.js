@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-Modal.defaultStyles.overlay.backgroundColor = "grey";
+Modal.defaultStyles.overlay.backgroundColor = "rgba(128,128,128,0.8)";
 
 const MenuModal = (props) => (
   <Modal

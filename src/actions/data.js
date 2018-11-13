@@ -208,15 +208,15 @@ export const startDetermination = (listId, listNotation, listContent, listFlag) 
     if (flag == 0){
       determination = 'Y';
       question = "Violation Confirmed";
-      instructionA = "Based on the information you’ve provided, it appears your rights have been violated.";
+      instructionA = "Based on the following information provided, it appears your rights have been violated.";
     } else if (flag >= 100) {
       determination = "N";
       question = "No Violation Found";
-      instructionA = "Based on the information you’ve provided, it does not appear that your rights have been violated.";
+      instructionA = "Based on the following information provided, it does not appear that your rights have been violated.";
     } else {
       determination = "U";
       question = "Violation Unknown";
-      instructionA = "We are unable to make a determination based on the information you’ve provided.";
+      instructionA = "We are unable to make a determination based on the following information provided.";
     }
     dispatch(setDetermination(flag, determination, question, instructionA, instructionB, myData));
   };

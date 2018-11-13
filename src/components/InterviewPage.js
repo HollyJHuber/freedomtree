@@ -11,6 +11,7 @@ const InterviewPage = (props) => (
   <main>
     {!props.data.determination &&
       <div className="interview__container">
+        <div className = "history__container">
       { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
         && props.data.myData.map((myDataItem, index) => (
           myDataItem.map((item) => (
@@ -18,6 +19,7 @@ const InterviewPage = (props) => (
           ))
         ))
       }
+      </div>
       <h1 className="interview__question">{props.data.question}</h1>
       {(props.data.currentData !== "wheres" || props.data.kind !== "query") 
         && <h4 className="interview__instruction">{props.data.instructionA}</h4>}
@@ -39,12 +41,14 @@ const InterviewPage = (props) => (
         <div className="determination__box">
           <h1 className="determination__question">{props.data.question}</h1>
           <h4 className="determination__instruction">{props.data.instructionA}</h4>
+          <hr></hr>
           { props.data.myData.map((myDataItem, index) => (
               myDataItem.map((item) => (
               <Determination key={item.id} {...item} />
               ))
             ))
           }
+          <hr></hr>
           <h4 className="determination__notation">Does this information accurately represent your complaint?</h4>
           <div className="determination__buttonBox">
             <button className="determination__button" onClick= {() => alert("Coming Soon!")}>YES<br />Sign Up</button> &nbsp;

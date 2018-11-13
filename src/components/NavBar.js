@@ -10,6 +10,7 @@ class NavBar extends React.Component {
 
 	handleMenuModal = (displayMenu) => {
 		this.setState(() => ({menuOption: displayMenu}));
+		document.getElementById("menuDropdown").classList.toggle("show");
 	};
 	handleCloseMenuModal = () => {
 		this.setState(() => ({menuOption: undefined}))

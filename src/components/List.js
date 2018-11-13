@@ -17,7 +17,7 @@ import { selectListId, startDetermination, showLoading } from '../actions/data';
           props.dispatch(showLoading());
           setTimeout(() => {
             props.dispatch(startDetermination(props.id, props.notation, props.content, props.flag)) 
-          }, 3000);
+          }, 2000);
         } else {
           props.dispatch(selectListId(props.id, props.notation, props.content, props.flag))
         }
