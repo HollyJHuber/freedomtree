@@ -7,7 +7,6 @@ import Query from './Query';
 import Determination from './Determination';
 
 const InterviewPage = (props) => (
-
   <main>
     {!props.data.determination &&
       <div className="interview__container">
