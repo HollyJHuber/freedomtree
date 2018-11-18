@@ -6,9 +6,7 @@ import List from './List';
 import Query from './Query';
 import Determination from './Determination';
 
-const InterviewPage = (props) => {
-  console.log(props);
-  return (
+const InterviewPage = (props) => (
   <main>
     {!props.data.determination &&
       <div className="interview__container">
@@ -59,7 +57,7 @@ const InterviewPage = (props) => {
       </div>
     }
   </main>
-)};
+);
 
 const mapStateToProps = (state) => {
   return {
