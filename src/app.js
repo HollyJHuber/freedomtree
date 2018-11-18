@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import AppRouter, { history } from './routers/AppRouter';
+import AppRouter from './routers/AppRouter';
 import Loading from './components/Loading';
 import configureStore from './store/configureStore';
 import { startSetData } from './actions/data';
