@@ -17,7 +17,7 @@ const AppRouter = () => (
       <NavBar />
       <Switch>
         <Route path="/" component={LandingPage} exact={true} />
-        <Route path="/interview/" component={InterviewPage} />
+        <Route path="/interview" component={InterviewPage} />
         <Route path="/loading" component={Loading} />
         <Route path="/test" component={TestPage} />
         <Route component={NotFoundPage}/>
