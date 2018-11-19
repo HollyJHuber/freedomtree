@@ -1,15 +1,18 @@
 import React from 'react';
-import { history } from '../routers/AppRouter';
-import Loading from "./Loading";
+import { connect } from 'react-redux';
 
-const TestPage = (props) => {
-  console.log(props);
-  return(
-    <main>
-      <button onClick = {() => history.push('/interview')}>Testing</button>
-      <Loading />
-    </main>
-  );
-};
+const TestPage = (props) => (
+  <main>
+    <button onClick = {() => {
+      console.log('test-->interview');
+      props.history.push('/interview');
+    }}>interview</button>
+    <button onClick = {() => {
+      console.log('test-->home');
+      props.history.push('/');
+    }}>there's no place like home</button>
+  </main>
 
-export default TestPage;
+);
+
+export default connect () (TestPage);
