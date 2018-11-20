@@ -10,6 +10,7 @@ import Loading from '../components/Loading';
 import TestPage from '../components/Test';
 import Footer from '../components/Footer';
 import NotFoundPage from '../components/NotFound';
+import Consultation from '../components/Consultation';
 
 const AppRouter = () => (
   <ConnectedRouter history={history}> 
@@ -18,6 +19,7 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" component={LandingPage} exact={true} />
         <Route path="/interview" component={InterviewPage} />
+        <Route path="/consult/:id" component={Consultation} />
         <Route path="/loading" component={Loading} />
         <Route path="/test" component={TestPage} />
         <Route component={NotFoundPage}/>

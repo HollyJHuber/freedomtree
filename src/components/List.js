@@ -39,7 +39,8 @@ import { selectListId, startDetermination, showLoading } from '../actions/data';
           </ul>
         )
       }
-    </div>
+      </div>
+
   </div>
 );
 const mapStateToProps = (state) => {

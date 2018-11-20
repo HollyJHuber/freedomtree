@@ -6,7 +6,7 @@ import Hero from './Hero';
 const LandingPage = (props) => (
   <main className="landingPage__background"
     onClick= {() => {
-    props.history.push('/interview');
+    props.history.push('/consult/0');
   }}> 
     <Hero />
       <div className="landingPage__buttonBox">

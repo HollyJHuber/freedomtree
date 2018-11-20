@@ -6,35 +6,33 @@ import List from './List';
 import Query from './Query';
 import Determination from './Determination';
 
-const InterviewPage = (props) => (
+const Consultation = (props) => (
   <main>
-    {!props.data.determination &&
-      <div className="interview__container">
-        <div className = "history__container">
-          { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
-            && props.data.myData.map((myDataItem, index) => (
-              myDataItem.map((item) => (
-                  <History key={item.id} {...item} counter={props.data.counter}/>
-              ))
+    <div className="interview__container">
+      <div className = "history__container">
+        { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
+          && props.data.myData.map((myDataItem, index) => (
+            myDataItem.map((item) => (
+                <History key={item.id} {...item} counter={props.data.counter}/>
             ))
-          }
+          ))
+        }
       </div>
       <h1 className="interview__question">{props.data.question}</h1>
       {(props.data.currentData !== "wheres" || props.data.kind !== "query") 
         && <h4 className="interview__instruction">{props.data.instructionA}</h4>}
       {(!!props.data.instructionB && props.data.currentData === 'wheres' && props.data.kind === 'query')
-        && <h4 className="interview__instruction">{props.data.instructionB}</h4>}
-      {(props.data.kind === "list" ?
+        && <h4 className="interview__instruction">{props.data.instructionB}</h4>
+      }
+      {(props.match.params.id < 10000 ? 
         props.data.list.map((item) => ( 
-          <List key={item.id} {...item} currentData={props.data.currentData}/> 
+            <List key={item.id} {...item} currentData={props.data.currentData}/> 
         )) :
-        props.data.query.filter(item => item.parentId === props.data.dropdownId).map(item => (
+        props.data.query.filter(item => item.parentId == props.match.params.id).map(item => (
           <Query key={item.id} {...item}/>
         ))
       )}
-      </div>
-    }
-
+    </div>
     {props.data.determination && 
       <div className="determination__container">
         <div className="determination__box">
@@ -59,10 +57,10 @@ const InterviewPage = (props) => (
   </main>
 );
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
     data: state.data
   }
 };
 
-export default connect(mapStateToProps)(InterviewPage);
+export default connect(mapStateToProps)(Consultation);
