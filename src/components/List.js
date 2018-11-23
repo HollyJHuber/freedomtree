@@ -33,7 +33,7 @@ import { selectListId, startDetermination, showLoading } from '../actions/data';
           <ul className="list__dropDownItem">
           {
             props.data.dropdown.filter(item => item.parentId === props.id).map(item => (
-              <Dropdown key={item.id} {...item}/>
+              <Dropdown key={item.id} {...item} counter = {props.counter}/>
             ))
           }
           </ul>

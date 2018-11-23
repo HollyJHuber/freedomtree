@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom';
 
 import { startSelectDropdown } from '../actions/data';
 
-const Dropdown = ({ dispatch, id, notation, content, flag}) => (
+const Dropdown = ({ dispatch, id, notation, content, flag, counter}) => (
   <Link to={{
     pathname: `/consult/${id}`,
     state: {
       myId: id,
       myNotation: notation,
       myContent: content,
-      myFlag: flag
+      myFlag: flag,
+      myCount: counter
     }
   }}>
   <li

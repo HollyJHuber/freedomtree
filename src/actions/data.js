@@ -1,6 +1,7 @@
 import database from "../firebase/firebase";
 
 
+
 // asynchonous action that retrieves & parses the data from Firebase
 export const startSetData = () => {
   return (dispatch, getState) => {
@@ -267,3 +268,28 @@ const appendArrayItem = (arr, index, value) => { // pass the entire myData array
   //console.log('newArrayItem: ', newArrayItem);
   return setArrayImmutable(arr, index, newArrayItem);
 };
+
+
+// new action to retrieve new data structure from Firebase
+export const startGetData = () => {
+  return (dispatch, getState) => {
+    return database.ref().once('value').then((snapshot) => {
+      const newItems =[];
+      snapshot.forEach((childSnapshot) => {
+        newItems.push({
+          // adds index as id in object which may be better than using index for ref
+          //id: childSnapshot.key,
+          ...childSnapshot.val()
+        });
+      });
+      //console.log(newItems.count, newItems);
+      dispatch(getData(newItems));
+    });
+  };
+};
+
+// get new data structure from firebase (from startSetData)
+export const getData = (interview) => ({
+  type: 'GET_DATA',
+  interview
+});

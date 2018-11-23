@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom';
 
 import { startSelectQuery } from '../actions/data';
 
-const Query = ({ dispatch, id, notation, content, flag }) => {
+const Query = ({ dispatch, id, notation, content, flag, counter }) => {
+  counter++;
   return (
     <Link to={{
-      pathname: '/consult/1',
+      pathname: `/consult/${counter}`,
       state: {
         myId: id,
         myNotation: notation,
         myContent: content,
-        myFlag: flag
+        myFlag: flag,
+        myCount: counter
       }
     }}>
         <div className= "list__queryContainer">

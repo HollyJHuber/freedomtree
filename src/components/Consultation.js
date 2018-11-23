@@ -26,10 +26,10 @@ const Consultation = (props) => (
       }
       {(props.match.params.id < 10000 ? 
         props.data.list.map((item) => ( 
-            <List key={item.id} {...item} currentData={props.data.currentData}/> 
+            <List key={item.id} {...item} currentData={props.data.currentData} counter={props.data.counter}/> 
         )) :
         props.data.query.filter(item => item.parentId == props.match.params.id).map(item => (
-          <Query key={item.id} {...item}/>
+          <Query key={item.id} {...item} counter={props.data.counter}/>
         ))
       )}
     </div>

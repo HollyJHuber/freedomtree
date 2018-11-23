@@ -10,6 +10,7 @@ const dataReducerDefaultState = {
   history: [],
   instructionA: '',
   instructionB: '',
+  interview: [],
   kind: 'list',
   list:[],
   listContent: '',
@@ -27,6 +28,12 @@ const dataReducerDefaultState = {
 
 export default (state = dataReducerDefaultState, action) => {
   switch (action.type) {
+    // for new data structure
+    case 'GET_DATA':
+    return {
+      ...state,
+      interview: action.interview
+    };
     case 'SET_DATA':
       return {
         ...state,
