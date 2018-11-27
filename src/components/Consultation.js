@@ -16,16 +16,14 @@ const Consultation = (props) => {
   <main>
     <div className="interview__container">
       <div className = "history__container">
-        {/* (props.data.currentData !== 'whats' || props.data.kind !== 'list')
-          && props.data.myData.map((myDataItem, index) => (
-            myDataItem.map((item) => (
-                <History key={item.id} {...item} counter={counter}/>
-            ))
+        { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
+          && props.data.myData.map((item) => (
+                <History key={item.id} {...item}/>
           ))
-            */}
+        }
       </div>
       <h1 className="interview__question">
-        {!!interview[counter].question ? "should be dropdown Notation" : interview[counter].question}
+        {!!interview[counter].question ? interview[counter].question : props.data.dropdownNotation}
       </h1>
        <h4 className="interview__instruction">{interview[counter].instruction}</h4>
       {(props.match.params.id < 10000 ? 

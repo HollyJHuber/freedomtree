@@ -47,7 +47,7 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
     // what if the counter was from location instead of data??
     
     // we need to change the way we access currentdata, take from interview data instead??
-    let newData = [
+    const newData = [
       {
         counter: counter,
         data: currentData,
@@ -55,7 +55,8 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
         id: listId,
         notation: listNotation,
         content: listContent,
-        flag: listFlag
+        flag: listFlag,
+        link: counter
       },
       {
         counter: counter + 1,
@@ -64,7 +65,8 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
         id: dropdownId, 
         notation: dropdownNotation,
         content: dropdownContent,
-        flag: dropdownFlag
+        flag: dropdownFlag,
+        link: counter
       }
     ];
 
@@ -93,7 +95,7 @@ export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag
     !queryNotation && (queryNotation = queryContent);
     let counter = getState().data.counter;
     let currentData = getState().data.interview[counter].data;
-    const newData = 
+    const newData = [
     {
       counter: counter,
       data: currentData,
@@ -101,11 +103,13 @@ export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag
       id: queryId,
       notation: queryNotation,
       content: queryContent,
-      flag: queryFlag
-    };
+      flag: queryFlag,
+      link: getState().data.dropdownId
+    }];
     // update counter before update myData callback
     counter = increment(counter)(); 
     const myData = updateMyData(getState().data.myData, counter, newData);
+
     // update currentData <-- this may no longer be needed
     currentData = getState().data.interview[counter].data;
 

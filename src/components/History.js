@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 const History = (props) => (
 	<div className='history__path'>
 	<Link to={{
-		pathname: '/consult/10013'
+		pathname: `/consult/${props.link}`
 	}}>
 		{(props.kind === "dropdown" && ` > `) || 
 			(props.kind === "query" && <br />)}
 		{props.notation}
 		{(props.kind === "dropdown" && ` > `) || 
-			((props.kind === "query" && props.counter > 0 ) && <br />)}
+			((props.kind === "query" ) && <br />)}
 	</Link>
 	</div>
 );
