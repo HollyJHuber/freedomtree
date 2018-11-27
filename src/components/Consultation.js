@@ -6,30 +6,38 @@ import List from './List';
 import Query from './Query';
 import Determination from './Determination';
 
-const Consultation = (props) => (
+const Consultation = (props) => {
+  const counter = props.data.counter;
+  const interview = props.data.interview;
+  const currentData = props.data.currentData;
+  console.log(props.data.currentData, counter);
+  console.log(props.match.params.id);
+  return (
   <main>
     <div className="interview__container">
       <div className = "history__container">
-        { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
+        {/* (props.data.currentData !== 'whats' || props.data.kind !== 'list')
           && props.data.myData.map((myDataItem, index) => (
             myDataItem.map((item) => (
-                <History key={item.id} {...item} counter={props.data.counter}/>
+                <History key={item.id} {...item} counter={counter}/>
             ))
           ))
-        }
+            */}
       </div>
-      <h1 className="interview__question">{props.data.question}</h1>
-      {(props.data.currentData !== "wheres" || props.data.kind !== "query") 
-        && <h4 className="interview__instruction">{props.data.instructionA}</h4>}
-      {(!!props.data.instructionB && props.data.currentData === 'wheres' && props.data.kind === 'query')
-        && <h4 className="interview__instruction">{props.data.instructionB}</h4>
-      }
+      <h1 className="interview__question">
+        {!!interview[counter].question ? "should be dropdown Notation" : interview[counter].question}
+      </h1>
+       <h4 className="interview__instruction">{interview[counter].instruction}</h4>
       {(props.match.params.id < 10000 ? 
-        props.data.list.map((item) => ( 
-            <List key={item.id} {...item} currentData={props.data.currentData} counter={props.data.counter}/> 
+        currentData === 'whos' ? 
+          interview[counter].info.filter(item => item.parentId == props.match.params.id).map(item => (
+            <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
+          )) :
+          interview[counter].info.map((item) => ( 
+            <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
         )) :
-        props.data.query.filter(item => item.parentId == props.match.params.id).map(item => (
-          <Query key={item.id} {...item} counter={props.data.counter}/>
+        interview[counter].info.filter(item => item.parentId == props.match.params.id).map(item => (
+          <Query key={item.id} {...item} counter={counter} currentData={currentData} listId={props.data.listId}/>
         ))
       )}
     </div>
@@ -55,7 +63,7 @@ const Consultation = (props) => (
       </div>
     }
   </main>
-);
+)};
 
 const mapStateToProps = (state, props) => {
   return {

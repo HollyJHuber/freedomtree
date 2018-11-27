@@ -32,8 +32,8 @@ import { selectListId, startDetermination, showLoading } from '../actions/data';
         (props.data.listId === props.id) && (
           <ul className="list__dropDownItem">
           {
-            props.data.dropdown.filter(item => item.parentId === props.id).map(item => (
-              <Dropdown key={item.id} {...item} counter = {props.counter}/>
+            props.data.interview[props.counter+1].info.filter(item => item.parentId === props.id).map(item => (
+              <Dropdown key={item.id} {...item} counter = {props.counter} currentData = {props.currentData}/>
             ))
           }
           </ul>

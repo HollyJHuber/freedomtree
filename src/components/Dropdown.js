@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { startSelectDropdown } from '../actions/data';
 
-const Dropdown = ({ dispatch, id, notation, content, flag, counter}) => (
+const Dropdown = ({ dispatch, id, notation, content, flag, counter, currentData}) => (
   <Link to={{
     pathname: `/consult/${id}`,
     state: {
@@ -17,7 +17,7 @@ const Dropdown = ({ dispatch, id, notation, content, flag, counter}) => (
   }}>
   <li
     onClick = {() => {
-      dispatch(startSelectDropdown(id, notation, content, flag));
+      dispatch(startSelectDropdown(id, notation, content, flag, currentData));
     }}
   >
     {content} 

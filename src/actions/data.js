@@ -1,58 +1,27 @@
 import database from "../firebase/firebase";
 
-
-
-// asynchonous action that retrieves & parses the data from Firebase
-export const startSetData = () => {
+// startup action to retrieve all data from Firebase
+export const startGetData = () => {
   return (dispatch, getState) => {
-    const currentData = getState().data.currentData;
-    return database.ref(currentData).once('value').then((snapshot) => {
-      const items = [];
-      let list = [];
-      let dropdown = [];
-      let query = [];
-      let question ='';
-      let instructionA = '';
-      let instructionB = '';
+    return database.ref().once('value').then((snapshot) => {
+      const newItems =[];
       snapshot.forEach((childSnapshot) => {
-        items.push({
-          id:childSnapshot.key,
+        newItems.push({
+          // adds index as id in object which may be better than using index for ref
+          //id: childSnapshot.key,
           ...childSnapshot.val()
         });
       });
-      //console.log(items, items.count);
-      items.map((item) => {
-        let type = item.id;
-        // console.log(type);
-        delete item.id; // removes last item 
-        let newItem = Object.keys(item).map(key => item[key]);
-        // switch doesn't work here!
-        if (type === "list"){
-          list = newItem;
-        } else if (type === "dropdown"){
-          dropdown = newItem;
-        } else if (type === "query"){
-          query = newItem;
-        } else {
-          question = item.question;
-          instructionA = item.instructionA;
-          instructionB = item.instructionB;
-        }
-      });
-      dispatch(setData(list, dropdown, query, question, instructionA, instructionB));
+      //console.log(newItems.count, newItems);
+      dispatch(getData(newItems));
     });
   };
 };
 
-// set data from firebase (from startSetData)
-export const setData = (list, dropdown, query, question, instructionA, instructionB) => ({
-  type: 'SET_DATA',
-  list,
-  dropdown,
-  query,
-  question,
-  instructionA,
-  instructionB
+// get new data structure from firebase 
+export const getData = (interview) => ({
+  type: 'GET_DATA',
+  interview
 });
 
 // select list to display dropdown
@@ -65,18 +34,23 @@ export const selectListId = (listId, listNotation, listContent, listFlag) => ({
 });
 
 // select dropdown to display query
-export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownContent, dropdownFlag) => {
+export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownContent, dropdownFlag, currentData) => {
   return (dispatch, getState) => {
     // get all the list data (just once here instead of twice in startSelectList)
     const listId = getState().data.listId;
     const listContent = getState().data.listContent;
     let listNotation = getState().data.listNotation;
     const listFlag = getState().data.listFlag;
-    const currentData = getState().data.currentData;
     !listNotation && (listNotation = listContent);
     !dropdownNotation && (dropdownNotation = dropdownContent);
-    const newData = [
+    let counter = getState().data.counter;
+    // what if the counter was from location instead of data??
+    
+    // we need to change the way we access currentdata, take from interview data instead??
+    let newData = [
       {
+        counter: counter,
+        data: currentData,
         kind: 'list',
         id: listId,
         notation: listNotation,
@@ -84,6 +58,8 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
         flag: listFlag
       },
       {
+        counter: counter + 1,
+        data: currentData,
         kind: 'dropdown',
         id: dropdownId, 
         notation: dropdownNotation,
@@ -91,18 +67,23 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
         flag: dropdownFlag
       }
     ];
-    const flag = flagged(getState().data.flag, listFlag, dropdownFlag)();
-    const myData = setArrayImmutable(getState().data.myData, getState().data.counter, newData);
-    dispatch(selectDropdownId(dropdownId, dropdownNotation, flag, myData));
+
+    counter = increment(counter)(); // for list
+    counter = increment(counter)(); // for dropdown
+    //new callback to update the myData array requires accurate counter!!
+    const myData = updateMyData(getState().data.myData, counter, newData);
+    // change question from interview to dropdownNotation??
+    // this is like updateMyData callback, to change one element!!
+    dispatch(selectDropdownId(dropdownId, dropdownNotation, counter, myData));
   };
 };
 
 // Dropdown to display Query
-export const selectDropdownId = (dropdownId, dropdownNotation, flag, myData) => ({
+export const selectDropdownId = (dropdownId, dropdownNotation, counter, myData) => ({
   type: 'SELECT_DROPDOWN_ID',
   dropdownId,
   dropdownNotation,
-  flag, 
+  counter,
   myData,
 });
 
@@ -110,75 +91,34 @@ export const selectDropdownId = (dropdownId, dropdownNotation, flag, myData) => 
 export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag) => {
   return (dispatch, getState) => {
     !queryNotation && (queryNotation = queryContent);
+    let counter = getState().data.counter;
+    let currentData = getState().data.interview[counter].data;
     const newData = 
     {
+      counter: counter,
+      data: currentData,
       kind: 'query',
       id: queryId,
       notation: queryNotation,
       content: queryContent,
       flag: queryFlag
     };
-    const index = getState().data.counter;
-    const myData = appendArrayItem(getState().data.myData, index, newData);
-    const flag = flagged(getState().data.flag, queryFlag)();
-    const counter = increment(index)();
-    const currentData = getState().data.database[counter];
+    // update counter before update myData callback
+    counter = increment(counter)(); 
+    const myData = updateMyData(getState().data.myData, counter, newData);
+    // update currentData <-- this may no longer be needed
+    currentData = getState().data.interview[counter].data;
 
-    // I need to replace this duplicate code with a setData callback
-    let list = [];
-    let dropdown = [];
-    let query = [];
-    let question ='';
-    let instructionA = '';
-    let instructionB = '';
-    return database.ref(currentData).once('value').then((snapshot) => {
-      const items = [];
-      snapshot.forEach((childSnapshot) => {
-        items.push({
-          id:childSnapshot.key,
-          ...childSnapshot.val()
-        });
-      });
-      //console.log(items, items.count);
-      items.map((item) => {
-        let type = item.id;
-        // console.log(type);
-        delete item.id; // removes last item 
-        let newItem = Object.keys(item).map(key => item[key]);
-        // switch doesn't work here!
-        if (type === "list"){
-          list = newItem;
-        } else if (type === "dropdown"){
-          dropdown = newItem;
-        } else if (type === "query"){
-          query = newItem;
-        } else {
-          question = item.question;
-          instructionA = item.instructionA;
-          instructionB = item.instructionB;
-        }
-      });
-      if (currentData === 'whos'){
-        list = list.filter(item => item.parentId === getState().data.listId);
-      }
-      dispatch(selectQueryId(queryId, counter, currentData, list, dropdown, query, question, instructionA, instructionB, flag, myData));
-    });
+    dispatch(selectQueryId(queryId, counter, currentData, myData));
   };
 };
 
 // Query to display next
-export const selectQueryId = (queryId, counter, currentData, list, dropdown, query, question, instructionA, instructionB, flag, myData) => ({
+export const selectQueryId = (queryId, counter, currentData, myData) => ({
   type: 'SELECT_QUERY_ID',
   queryId,
   counter,
   currentData,
-  list, 
-  dropdown, 
-  query,
-  question,
-  instructionA,
-  instructionB,
-  flag,
   myData
 });
 
@@ -234,9 +174,12 @@ export const setDetermination = (flag, determination, question, instructionA, in
   myData
 });
 
+//CALLBACK FUNCTIONS
+
 //callback function for getting currentData?? or add it to counter?
 // you can only return one value from a function but that value can be an array 
 // might be nice to update counter and currentData separately
+
 // counter callback function
 const increment = (counter) => {
   return function incrementCounter(){
@@ -253,43 +196,8 @@ const flagged = (flag, newFlag=0, anotherNewFlag=0) => {
   };
 };
 
-// update myData replace array item callback
-const setArrayImmutable = (arr, index, value) => {
-  const newArray = [...arr];
-  newArray[index] = value;
-  //console.log('newImmutableArray: ', newArray);
-  return newArray;
-}
-
-// append an item to the array then replace it in the myData array
-const appendArrayItem = (arr, index, value) => { // pass the entire myData array to use later
-  const newArrayItem = arr[index];
-  newArrayItem.push(value);
-  //console.log('newArrayItem: ', newArrayItem);
-  return setArrayImmutable(arr, index, newArrayItem);
-};
+// update myData based on counter <-- counter must be accurate for this to work!!
+const updateMyData = (array, index, value) => [...array.slice(0, index), ...value];
+// takes the current myData array, the updated counter, and the newData array
 
 
-// new action to retrieve new data structure from Firebase
-export const startGetData = () => {
-  return (dispatch, getState) => {
-    return database.ref().once('value').then((snapshot) => {
-      const newItems =[];
-      snapshot.forEach((childSnapshot) => {
-        newItems.push({
-          // adds index as id in object which may be better than using index for ref
-          //id: childSnapshot.key,
-          ...childSnapshot.val()
-        });
-      });
-      //console.log(newItems.count, newItems);
-      dispatch(getData(newItems));
-    });
-  };
-};
-
-// get new data structure from firebase (from startSetData)
-export const getData = (interview) => ({
-  type: 'GET_DATA',
-  interview
-});

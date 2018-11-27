@@ -34,17 +34,16 @@ export default (state = dataReducerDefaultState, action) => {
       ...state,
       interview: action.interview
     };
-    case 'SET_DATA':
-      return {
-        ...state,
-        list: action.list,
-        dropdown: action.dropdown,
-        query: action.query,
-        question: action.question,
-        instructionA: action.instructionA,
-        instructionB: action.instructionB,
-
-      };
+    // case 'SET_DATA':
+    //   return {
+    //     ...state,
+    //     list: action.list,
+    //     dropdown: action.dropdown,
+    //     query: action.query,
+    //     question: action.question,
+    //     instructionA: action.instructionA,
+    //     instructionB: action.instructionB,
+    //   };
     case 'SELECT_LIST_ID':
       return {
         ...state,
@@ -56,13 +55,12 @@ export default (state = dataReducerDefaultState, action) => {
     case 'SELECT_DROPDOWN_ID':
       return {
         ...state,
-        data: '',
         kind: 'query',
         dropdownId: action.dropdownId,
         dropdownNotation: action.dropdownNotation,
         question: action.dropdownNotation,
-        myData: action.myData,
-        flag: action.flag,      
+        counter: action.counter,
+        myData: action.myData
       };
       case 'SELECT_QUERY_ID':
       return {
@@ -73,13 +71,6 @@ export default (state = dataReducerDefaultState, action) => {
         queryId: action.queryId,
         counter: action.counter,
         currentData: action.currentData,
-        list: action.list,
-        dropdown: action.dropdown,
-        query: action.query,
-        question: action.question,
-        instructionA: action.instructionA,
-        instructionB: action.instructionB,
-        flag: action.flag,
         myData: action.myData
       };
       case 'SET_DETERMINATION':
