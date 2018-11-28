@@ -14,41 +14,41 @@ const Consultation = (props) => {
   console.log(props.match.params.id);
   return (
   <main>
-    <div className="interview__container">
-      <div className = "history__container">
-        { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
-          && props.data.myData.map((item) => (
-                <History key={item.id} {...item}/>
-          ))
-        }
-      </div>
-      <h1 className="interview__question">
-        {!!interview[counter].question ? interview[counter].question : props.data.dropdownNotation}
-      </h1>
-       <h4 className="interview__instruction">{interview[counter].instruction}</h4>
-      {(props.match.params.id < 10000 ? 
-        currentData === 'whos' ? 
-          interview[counter].info.filter(item => item.parentId == props.match.params.id).map(item => (
-            <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
+    {!props.data.determination &&
+      <div className="interview__container">
+        <div className = "history__container">
+          { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
+            && props.data.myData.map((item) => (
+                  <History key={item.id} {...item}/>
+            ))
+          }
+        </div>
+        <h1 className="interview__question">
+          {!!interview[counter].question ? interview[counter].question : props.data.dropdownNotation}
+        </h1>
+        <h4 className="interview__instruction">{interview[counter].instruction}</h4>
+        {(props.match.params.id < 10000 ? 
+          currentData === 'whos' ? 
+            interview[counter].info.filter(item => item.parentId == props.match.params.id).map(item => (
+              <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
+            )) :
+            interview[counter].info.map((item) => ( 
+              <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
           )) :
-          interview[counter].info.map((item) => ( 
-            <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
-        )) :
-        interview[counter].info.filter(item => item.parentId == props.match.params.id).map(item => (
-          <Query key={item.id} {...item} counter={counter} currentData={currentData} listId={props.data.listId}/>
-        ))
-      )}
-    </div>
+          interview[counter].info.filter(item => item.parentId == props.match.params.id).map(item => (
+            <Query key={item.id} {...item} counter={counter} currentData={currentData} listId={props.data.listId}/>
+          ))
+        )}
+      </div>
+    }
     {props.data.determination && 
       <div className="determination__container">
         <div className="determination__box">
           <h1 className="determination__question">{props.data.question}</h1>
           <h4 className="determination__instruction">{props.data.instructionA}</h4>
           <hr></hr>
-          { props.data.myData.map((myDataItem, index) => (
-              myDataItem.map((item) => (
+          { props.data.myData.map((item) => (
               <Determination key={item.id} {...item} />
-              ))
             ))
           }
           <hr></hr>

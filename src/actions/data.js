@@ -135,46 +135,52 @@ export const showLoading = () => ({
 export const startDetermination = (listId, listNotation, listContent, listFlag) => {
   return (dispatch, getState) => {
     !listNotation && (listNotation = listContent);
+    let counter = getState().data.counter;
     const newData = [
       {
+        counter: counter,
+        data: 'whos',
         kind: 'list',
         id: listId,
         notation: listNotation,
         content: listContent,
-        flag: listFlag
+        flag: listFlag,
+        link: counter
       }
     ];
-    const myData = setArrayImmutable(getState().data.myData, getState().data.counter, newData);
-    const flag = flagged(getState().data.flag, listFlag)();
+    counter = increment(counter)(); // for list
+    //new callback to update the myData array requires accurate counter!!
+    const myData = updateMyData(getState().data.myData, counter, newData);
+    console.log(myData);
+    const flag = flagged(myData);
+
     let determination = '';
     let question = '';
-    let instructionA = '';
-    let instructionB = '';
+    let instruction = '';
     if (flag == 0){
       determination = 'Y';
       question = "Violation Confirmed";
-      instructionA = "Based on the following information provided, it appears your rights have been violated.";
+      instruction = "Based on the following information provided, it appears your rights have been violated.";
     } else if (flag >= 100) {
       determination = "N";
       question = "No Violation Found";
-      instructionA = "Based on the following information provided, it does not appear that your rights have been violated.";
+      instruction = "Based on the following information provided, it does not appear that your rights have been violated.";
     } else {
       determination = "U";
       question = "Violation Unknown";
-      instructionA = "We are unable to make a determination based on the following information provided.";
+      instruction = "We are unable to make a determination based on the following information provided.";
     }
-    dispatch(setDetermination(flag, determination, question, instructionA, instructionB, myData));
+    dispatch(setDetermination(flag, determination, question, instruction, myData));
   };
 };
 
 // display Determination
-export const setDetermination = (flag, determination, question, instructionA, instructionB, myData) => ({
+export const setDetermination = (flag, determination, question, instruction, myData) => ({
   type: 'SET_DETERMINATION',
   flag,
   determination,
   question,
-  instructionA,
-  instructionB,
+  instruction,
   myData
 });
 
@@ -192,16 +198,17 @@ const increment = (counter) => {
   };
 };
 
-// update flag callback
-const flagged = (flag, newFlag=0, anotherNewFlag=0) => {
-  return function updateFlag(){
-    let flagSum = Number(flag) + Number(newFlag) + Number(anotherNewFlag);
-    return flagSum;
-  };
+// update myData based on counter <-- counter must be accurate for this to work!!
+// takes the current myData array, the updated counter, and the newData array
+const updateMyData = (array, index, value) => [...array.slice(0, index), ...value];
+
+// calculate flag value
+const flagged = (myData) => {
+  return myData
+    .map((item) => item.flag)
+    .reduce((sum, value) => sum + Number(value), 0);
 };
 
-// update myData based on counter <-- counter must be accurate for this to work!!
-const updateMyData = (array, index, value) => [...array.slice(0, index), ...value];
-// takes the current myData array, the updated counter, and the newData array
+
 
 

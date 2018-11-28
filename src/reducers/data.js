@@ -7,9 +7,7 @@ const dataReducerDefaultState = {
   dropdownId: 0,
   dropdownNotation: '',
   flag: 0,
-  history: [],
-  instructionA: '',
-  instructionB: '',
+  instruction: '',
   interview: [],
   kind: 'list',
   list:[],
@@ -34,16 +32,6 @@ export default (state = dataReducerDefaultState, action) => {
       ...state,
       interview: action.interview
     };
-    // case 'SET_DATA':
-    //   return {
-    //     ...state,
-    //     list: action.list,
-    //     dropdown: action.dropdown,
-    //     query: action.query,
-    //     question: action.question,
-    //     instructionA: action.instructionA,
-    //     instructionB: action.instructionB,
-    //   };
     case 'SELECT_LIST_ID':
       return {
         ...state,
@@ -79,8 +67,7 @@ export default (state = dataReducerDefaultState, action) => {
         flag: action.flag,
         determination: action.determination,
         question: action.question,
-        instructionA: action.instructionA,
-        instructionB: action.instructionB,
+        instruction: action.instruction,
         myData: action.myData,
         loading: false
       }
