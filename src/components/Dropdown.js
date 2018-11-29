@@ -8,11 +8,8 @@ const Dropdown = ({ dispatch, id, notation, content, flag, counter, currentData}
   <Link to={{
     pathname: `/interview/${id}`,
     state: {
-      myId: id,
-      myNotation: notation,
-      myContent: content,
-      myFlag: flag,
-      myCount: counter
+      id: id,
+      counter: counter + 2
     }
   }}>
   <li
