@@ -7,10 +7,8 @@ import NavBar from '../components/NavBar';
 import LandingPage from '../components/LandingPage';
 import InterviewPage from '../components/InterviewPage';
 import Loading from '../components/Loading';
-import TestPage from '../components/Test';
 import Footer from '../components/Footer';
 import NotFoundPage from '../components/NotFound';
-import Consultation from '../components/Consultation';
 
 const AppRouter = () => (
   <ConnectedRouter history={history}> 
@@ -18,10 +16,8 @@ const AppRouter = () => (
       <NavBar />
       <Switch>
         <Route path="/" component={LandingPage} exact={true} />
-        <Route path="/interview" component={InterviewPage} />
-        <Route path="/consult/:id" component={Consultation} />
+        <Route path="/interview/:id" component={InterviewPage} />
         <Route path="/loading" component={Loading} />
-        <Route path="/test" component={TestPage} />
         <Route component={NotFoundPage}/>
       </Switch>
       <Footer />

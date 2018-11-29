@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const History = (props) => (
 	<div className='history__path'>
 	<Link to={{
-		pathname: `/consult/${props.link}`
+		pathname: `/interview/${props.link}`
 	}}>
 		{(props.kind === "dropdown" && ` > `) || 
 			(props.kind === "query" && <br />)}

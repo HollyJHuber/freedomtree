@@ -72,6 +72,7 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
 
     counter = increment(counter)(); // for list
     counter = increment(counter)(); // for dropdown
+    console.log('updated counter: ', counter);
     //new callback to update the myData array requires accurate counter!!
     const myData = updateMyData(getState().data.myData, counter, newData);
     // change question from interview to dropdownNotation??

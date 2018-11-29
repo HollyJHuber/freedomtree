@@ -6,7 +6,7 @@ import { startSelectDropdown } from '../actions/data';
 
 const Dropdown = ({ dispatch, id, notation, content, flag, counter, currentData}) => (
   <Link to={{
-    pathname: `/consult/${id}`,
+    pathname: `/interview/${id}`,
     state: {
       myId: id,
       myNotation: notation,

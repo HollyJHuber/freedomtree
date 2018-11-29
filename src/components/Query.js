@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom';
 import { startSelectQuery } from '../actions/data';
 
 const Query = ({ dispatch, id, notation, content, flag, counter, currentData, listId}) => {
+  console.log(`counter: ${counter}`);
   counter++;
+  console.log(`counter: ${counter}`);
   let pathNo = counter;
   if(currentData === "wheres"){
     pathNo = listId;
   }
   return (
     <Link to={{
-      pathname: `/consult/${pathNo}`,
+      pathname: `/interview/${pathNo}`,
       state: {
         myId: id,
         myNotation: notation,
