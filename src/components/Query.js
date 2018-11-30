@@ -21,7 +21,7 @@ const Query = ({ dispatch, id, notation, content, flag, counter, currentData, li
           <div 
             className="list__queryListing"
             onClick= {() => {
-              { dispatch(startSelectQuery(id, notation, content, flag))}
+              { dispatch(startSelectQuery(id, notation, content, flag, counter, currentData))}
             }}
           >
             {content}

@@ -34,7 +34,7 @@ export const selectListId = (listId, listNotation, listContent, listFlag) => ({
 });
 
 // select dropdown to display query
-export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownContent, dropdownFlag, currentData) => {
+export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownContent, dropdownFlag, counter, currentData) => {
   return (dispatch, getState) => {
     // get all the list data (just once here instead of twice in startSelectList)
     const listId = getState().data.listId;
@@ -43,10 +43,7 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
     const listFlag = getState().data.listFlag;
     !listNotation && (listNotation = listContent);
     !dropdownNotation && (dropdownNotation = dropdownContent);
-    let counter = getState().data.counter;
-    // what if the counter was from location instead of data??
-    
-    // we need to change the way we access currentdata, take from interview data instead??
+  
     const newData = [
       {
         counter: counter,
@@ -69,33 +66,28 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
         link: counter
       }
     ];
-
+    // internally updating the counter updating myData with newData
     counter = increment(counter)(); // for list
     counter = increment(counter)(); // for dropdown
-    console.log('updated counter: ', counter);
+    console.log('before updateMyData counter is:', counter);
     //new callback to update the myData array requires accurate counter!!
     const myData = updateMyData(getState().data.myData, counter, newData);
-    // change question from interview to dropdownNotation??
-    // this is like updateMyData callback, to change one element!!
-    dispatch(selectDropdownId(dropdownId, dropdownNotation, counter, myData));
+    dispatch(selectDropdownId(dropdownId, dropdownNotation, myData));
   };
 };
 
 // Dropdown to display Query
-export const selectDropdownId = (dropdownId, dropdownNotation, counter, myData) => ({
+export const selectDropdownId = (dropdownId, dropdownNotation, myData) => ({
   type: 'SELECT_DROPDOWN_ID',
   dropdownId,
   dropdownNotation,
-  counter,
   myData,
 });
 
 // select query, set data for next list display, update counter 
-export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag) => {
+export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag, counter, currentData) => {
   return (dispatch, getState) => {
     !queryNotation && (queryNotation = queryContent);
-    let counter = getState().data.counter;
-    let currentData = getState().data.interview[counter].data;
     const newData = [
     {
       counter: counter,
@@ -109,21 +101,17 @@ export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag
     }];
     // update counter before update myData callback
     counter = increment(counter)(); 
+    console.log('before updateMyData counter is:', counter);
     const myData = updateMyData(getState().data.myData, counter, newData);
 
-    // update currentData <-- this may no longer be needed
-    currentData = getState().data.interview[counter].data;
-
-    dispatch(selectQueryId(queryId, counter, currentData, myData));
+    dispatch(selectQueryId(queryId, myData));
   };
 };
 
 // Query to display next
-export const selectQueryId = (queryId, counter, currentData, myData) => ({
+export const selectQueryId = (queryId, myData) => ({
   type: 'SELECT_QUERY_ID',
   queryId,
-  counter,
-  currentData,
   myData
 });
 
@@ -133,10 +121,9 @@ export const showLoading = () => ({
 });
 
 // action to set determination data for display 
-export const startDetermination = (listId, listNotation, listContent, listFlag) => {
+export const startDetermination = (listId, listNotation, listContent, listFlag, counter) => {
   return (dispatch, getState) => {
     !listNotation && (listNotation = listContent);
-    let counter = getState().data.counter;
     const newData = [
       {
         counter: counter,
@@ -150,6 +137,7 @@ export const startDetermination = (listId, listNotation, listContent, listFlag) 
       }
     ];
     counter = increment(counter)(); // for list
+    console.log('before updateMyData counter is:', counter);
     //new callback to update the myData array requires accurate counter!!
     const myData = updateMyData(getState().data.myData, counter, newData);
     console.log(myData);

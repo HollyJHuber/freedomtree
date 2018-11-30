@@ -47,7 +47,6 @@ export default (state = dataReducerDefaultState, action) => {
         dropdownId: action.dropdownId,
         dropdownNotation: action.dropdownNotation,
         question: action.dropdownNotation,
-        counter: action.counter,
         myData: action.myData
       };
       case 'SELECT_QUERY_ID':
@@ -57,8 +56,6 @@ export default (state = dataReducerDefaultState, action) => {
         dropdownId: 0,
         kind: 'list',
         queryId: action.queryId,
-        counter: action.counter,
-        currentData: action.currentData,
         myData: action.myData
       };
       case 'SET_DETERMINATION':

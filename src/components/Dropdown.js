@@ -14,7 +14,7 @@ const Dropdown = ({ dispatch, id, notation, content, flag, counter, currentData}
   }}>
   <li
     onClick = {() => {
-      dispatch(startSelectDropdown(id, notation, content, flag, currentData));
+      dispatch(startSelectDropdown(id, notation, content, flag, counter, currentData));
     }}
   >
     {content} 
