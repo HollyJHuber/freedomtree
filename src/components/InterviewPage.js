@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import History from './History';
 import List from './List';
@@ -7,34 +8,33 @@ import Query from './Query';
 import Determination from './Determination';
 
 const InterviewPage = (props) => {
-  const counter = props.data.counter;
-  const interview = props.data.interview;
-  const currentData = props.data.currentData;
-  console.log(currentData, props.match.params.id)
+  const counter = props.location.state.counter
+  const interview = props.data.interview[counter];
+  const currentData = interview.data;
   return (
   <main>
     {!props.data.determination &&
       <div className="interview__container">
         <div className = "history__container">
-          { (props.data.currentData !== 'whats' || props.data.kind !== 'list')
+          { (currentData !== 'whats' || interview.kind !== 'list')
             && props.data.myData.map((item) => (
                   <History key={item.id} {...item}/>
             ))
           }
         </div>
         <h1 className="interview__question">
-          {!!interview[counter].question ? interview[counter].question : props.data.dropdownNotation}
+          {!!interview.question ? interview.question : props.data.dropdownNotation}
         </h1>
-        <h4 className="interview__instruction">{interview[counter].instruction}</h4>
+        <h4 className="interview__instruction">{interview.instruction}</h4>
         {(props.match.params.id < 10000 ? 
           currentData === 'whos' ? 
-            interview[counter].info.filter(item => item.parentId == props.match.params.id).map(item => (
+            interview.info.filter(item => item.parentId == props.match.params.id).map(item => (
               <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
             )) :
-            interview[counter].info.map((item) => ( 
+            interview.info.map((item) => ( 
               <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
           )) :
-          interview[counter].info.filter(item => item.parentId == props.match.params.id).map(item => (
+          interview.info.filter(item => item.parentId == props.match.params.id).map(item => (
             <Query key={item.id} {...item} counter={counter} currentData={currentData} listId={props.data.listId}/>
           ))
         )}
@@ -54,9 +54,16 @@ const InterviewPage = (props) => {
           <hr></hr>
           <h4 className="determination__notation">Does this information accurately represent your complaint?</h4>
           <div className="determination__buttonBox">
-            <button className="determination__button" onClick= {() => alert("Coming Soon!")}>YES<br />Sign Up</button> &nbsp;
+            <button className="determination__button" onClick= {() => alert("Coming Soon!")}>YES<br />Sign Up</button>
+            <Link to={{
+              pathname: `/interview/0`,
+              state: {
+                id: 0,
+                counter: 0
+              }
+            }}>
             <button className="determination__button"onClick= {() => location.reload()}>NO<br />Start Over</button>
-            <button className="determination__button" onClick = {() => props.history.push('/interview/0')}>To<br/>Start</button>
+            </Link>
           </div>
         </div>
       </div>
