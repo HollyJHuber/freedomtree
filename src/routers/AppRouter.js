@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar';
 import LandingPage from '../components/LandingPage';
 import InterviewPage from '../components/InterviewPage';
 import Loading from '../components/Loading';
+import Determination from '../components/Determination';
 import Footer from '../components/Footer';
 import NotFoundPage from '../components/NotFound';
 
@@ -18,6 +19,7 @@ const AppRouter = () => (
         <Route path="/" component={LandingPage} exact={true} />
         <Route path="/interview/:id" component={InterviewPage} />
         <Route path="/loading" component={Loading} />
+        <Route path="/determination" component={Determination} />
         <Route component={NotFoundPage}/>
       </Switch>
       <Footer />

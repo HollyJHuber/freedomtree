@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import History from './History';
 import List from './List';
 import Query from './Query';
-import Determination from './Determination';
 
 const InterviewPage = (props) => {
   let counter = props.location.state.counter
@@ -17,61 +16,40 @@ const InterviewPage = (props) => {
 
   return (
   <main>
-    {!props.data.determination &&
-      <div className="interview__container">
-        <div className = "history__container">
-          { (currentData !== 'whats' || interview.kind !== 'list')
-            && props.data.myData.filter(item => item.counter < counter).map(item => (
-                <History key={item.id} {...item}/>
-            ))
-          }
-        </div>
-        <h1 className="interview__question">
-          {!!interview.question ? interview.question : props.data.dropdownNotation}
-        </h1>
-        <h4 className="interview__instruction">{interview.instruction}</h4>
-        {(props.match.params.id < 10000 ? 
-          currentData === 'whos' ? 
-            interview.info.filter(item => item.parentId == props.match.params.id).map(item => (
-              <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
-            )) :
-            interview.info.map((item) => ( 
-              <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
-          )) :
-          interview.info.filter(item => item.parentId == props.match.params.id).map(item => (
-            <Query key={item.id} {...item} counter={counter} currentData={currentData} listId={props.data.listId}/>
+    <div className="interview__container">
+      <div className = "history__container">
+        { (currentData !== 'whats' || interview.kind !== 'list')
+          && props.data.myData.filter(item => item.counter < counter).map(item => (
+              <History key={item.id} {...item}/>
           ))
-        )}
+        }
       </div>
-    }
-
-    {props.data.determination && 
-      <div className="determination__container">
-        <div className="determination__box">
-          <h1 className="determination__question">{props.data.question}</h1>
-          <h4 className="determination__instruction">{props.data.instructionA}</h4>
-          <hr></hr>
-          { props.data.myData.map((item) => (
-              <Determination key={item.id} {...item} />
-            ))
-          }
-          <hr></hr>
-          <h4 className="determination__notation">Does this information accurately represent your complaint?</h4>
-          <div className="determination__buttonBox">
-            <button className="determination__button" onClick= {() => alert("Coming Soon!")}>YES<br />Sign Up</button>
+      <h1 className="interview__question">
+        {!!interview.question ? interview.question : 
+          (props.data.myData.length > 1 && props.data.myData[counter-1].notation)}
+      </h1>
+      <h4 className="interview__instruction">{interview.instruction}</h4>
+      {(props.match.params.id < 10000 ? 
+        currentData === 'whos' ? 
+          interview.info.filter(item => item.parentId == props.match.params.id).map(item => (
             <Link to={{
-              pathname: `/interview/0`,
+              pathname: `/determination`,
               state: {
                 id: 0,
-                counter: 0
+                counter: 7
               }
             }}>
-            <button className="determination__button"onClick= {() => location.reload()}>NO<br />Start Over</button>
+            <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
             </Link>
-          </div>
-        </div>
-      </div>
-    }
+          )) :
+          interview.info.map((item) => ( 
+            <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
+        )) :
+        interview.info.filter(item => item.parentId == props.match.params.id).map(item => (
+          <Query key={item.id} {...item} counter={counter} currentData={currentData} listId={props.data.listId}/>
+        ))
+      )}
+    </div>
   </main>
 )};
 
