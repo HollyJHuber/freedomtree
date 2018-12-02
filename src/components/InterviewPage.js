@@ -8,17 +8,21 @@ import Query from './Query';
 import Determination from './Determination';
 
 const InterviewPage = (props) => {
-  const counter = props.location.state.counter
+  let counter = props.location.state.counter
+  if(props.data.interview[counter].kind === "dropdown"){
+    counter = counter -1;
+  }
   const interview = props.data.interview[counter];
   const currentData = interview.data;
+
   return (
   <main>
     {!props.data.determination &&
       <div className="interview__container">
         <div className = "history__container">
           { (currentData !== 'whats' || interview.kind !== 'list')
-            && props.data.myData.map((item) => (
-                  <History key={item.id} {...item}/>
+            && props.data.myData.filter(item => item.counter < counter).map(item => (
+                <History key={item.id} {...item}/>
             ))
           }
         </div>

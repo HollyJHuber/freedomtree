@@ -43,6 +43,9 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
     const listFlag = getState().data.listFlag;
     !listNotation && (listNotation = listContent);
     !dropdownNotation && (dropdownNotation = dropdownContent);
+
+    let link = counter;
+    currentData === "whos" && (link = listId);
   
     const newData = [
       {
@@ -66,11 +69,11 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
         link: counter
       }
     ];
-    // internally updating the counter updating myData with newData
-    counter = increment(counter)(); // for list
+ 
     //new callback to update the myData array requires accurate counter!!
     const myData = updateMyData(getState().data.myData, counter, newData);
     // update counter AFTER updateMyData callback
+    counter = increment(counter)(); // for list
     counter = increment(counter)(); // for dropdown
     dispatch(selectDropdownId(dropdownId, dropdownNotation, myData));
   };
