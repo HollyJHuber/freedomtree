@@ -68,10 +68,10 @@ export const startSelectDropdown = (dropdownId, dropdownNotation, dropdownConten
     ];
     // internally updating the counter updating myData with newData
     counter = increment(counter)(); // for list
-    counter = increment(counter)(); // for dropdown
-    console.log('before updateMyData counter is:', counter);
     //new callback to update the myData array requires accurate counter!!
     const myData = updateMyData(getState().data.myData, counter, newData);
+    // update counter AFTER updateMyData callback
+    counter = increment(counter)(); // for dropdown
     dispatch(selectDropdownId(dropdownId, dropdownNotation, myData));
   };
 };
@@ -99,11 +99,9 @@ export const startSelectQuery = (queryId, queryNotation, queryContent, queryFlag
       flag: queryFlag,
       link: getState().data.dropdownId
     }];
-    // update counter before update myData callback
-    counter = increment(counter)(); 
-    console.log('before updateMyData counter is:', counter);
     const myData = updateMyData(getState().data.myData, counter, newData);
-
+    // update counter AFTER updateMyData callback
+    counter = increment(counter)(); 
     dispatch(selectQueryId(queryId, myData));
   };
 };
