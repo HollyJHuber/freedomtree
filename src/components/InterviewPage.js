@@ -35,11 +35,10 @@ const InterviewPage = (props) => {
             <Link to={{
               pathname: `/determination`,
               state: {
-                id: 0,
                 counter: 7
               }
             }}>
-            <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
+              <List key={item.id} {...item} currentData={currentData} counter={counter}/> 
             </Link>
           )) :
           interview.info.map((item) => ( 

@@ -138,10 +138,8 @@ export const startDetermination = (listId, listNotation, listContent, listFlag, 
       }
     ];
     counter = increment(counter)(); // for list
-    console.log('before updateMyData counter is:', counter);
     //new callback to update the myData array requires accurate counter!!
     const myData = updateMyData(getState().data.myData, counter, newData);
-    console.log(myData);
     const flag = flagged(myData);
 
     let determination = '';

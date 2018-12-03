@@ -19,7 +19,7 @@ const Determination = (props) => {
       <div className="determination__container">
         <div className="determination__box">
           <h1 className="determination__question">{props.data.question}</h1>
-          <h4 className="determination__instruction">{props.data.instructionA}</h4>
+          <h4 className="determination__instruction">{props.data.instruction}</h4>
           <hr></hr>
           { props.data.myData.map((item) => (
               <InterviewInfo key={item.counter} {...item} />
