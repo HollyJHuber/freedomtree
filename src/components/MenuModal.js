@@ -31,7 +31,7 @@ const MenuModal = (props) => (
         <li>studying and tracking civil rights cases; and </li>
         <li>developing technology to assist and educate the public. </li>
       </ul>
-      <p>Freedom Tree is also the developer of <a href="www.civilrightswiki.org">Civil Rights Wiki</a>, a new website exclusively for civil rights.</p>
+      <p>Freedom Tree is also the developer of <a href="http://www.civilrightswiki.org" target="_blank">Civil Rights Wiki</a>, a new website exclusively for civil rights.</p>
       <h5>Disclaimer</h5>
       <p>Freedom Tree provides general information that is intended, but not guaranteed, to be correct and up-to-date. The information is not presented as a source of legal advice. You should not rely, for legal advice, on statements or representations made by Freedom Tree.</p>
       <p>If you need legal advice upon which you intend to rely in the course of your legal affairs, consult a competent, independent attorney.</p>
@@ -43,13 +43,14 @@ const MenuModal = (props) => (
     {props.menuOption === "Contact" && 
       <div className="modal__frame">
         <h4>Freedom Tree</h4>
-        <p>6090 Ridgeview Drive 
-        <br/> Norton Shores, MI 49441
-        <br/>Phone: 231-855-6271
+        <p>Phone: 231-855-6271
         <br/>Email: <a href="mailto:info@freedomtreeusa.org?subject=Email%20From%20FreedomTreeUSA">info@freedomtreeusa.org</a>
         <br/>App: freedomtreeusa.org</p>
-        <p>Holly J. Huber, Executive Director</p>
-        <p className="modal__center"><i className="fab fa-facebook-square fa-2x"></i>&nbsp;&nbsp;<i className="fab fa-twitter-square fa-2x"></i></p>
+        <p>Holly J. Huber, Programmer/Developer</p>
+        <p className="modal__center">
+          <a href="https://www.facebook.com/FreedomTreeUSA" target="_blank"><i className="fab fa-facebook-square fa-2x"></i></a>&nbsp;&nbsp;
+          <a href="https://twitter.com/FreedomTreeUSA" target="_blank"><i className="fab fa-twitter-square fa-2x"></i></a>
+        </p>
       </div>
     }
 
